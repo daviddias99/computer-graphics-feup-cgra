@@ -16,7 +16,15 @@ class MyInterface extends CGFinterface {
         
         var obj = this;
 
-        //Checkbox element in GUI
+        //Add checkboxes for the elements
+
+        this.gui.add(this.scene, 'displayTriangle').name('Display Triangle (Normal)');
+        this.gui.add(this.scene, 'displayTriangleS').name('Display Triangle (Small)');
+        this.gui.add(this.scene, 'displayTriangleL').name('Display Triangle (Large)');
+        this.gui.add(this.scene, 'displayDiamond').name('Display Diamond');
+        this.gui.add(this.scene, 'displayParallelogram').name('Display Parall');
+
+        //Add a checkbox for the Axis
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
 
         //Slider element in GUI
