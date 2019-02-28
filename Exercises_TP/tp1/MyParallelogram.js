@@ -9,6 +9,8 @@ class MyParallelogram extends CGFobject {
 		this.initBuffers();
 	}
 	initBuffers() {
+
+	
 		this.vertices = [
 			0, 0, 0,	//0
 			2, 0, 0,	//1
