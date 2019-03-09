@@ -18,6 +18,7 @@ class MyTriangleSmall extends CGFobject {
 		//Counter-clockwise reference of vertices
 		this.indices = [
 			0, 1, 2,
+			2, 1, 0
 		];
 
 		this.normals = [
@@ -25,8 +26,12 @@ class MyTriangleSmall extends CGFobject {
 			0,0,1,
 			0,0,1,
 			0,0,1,
+
+			0,0,-1,
+			0,0,-1,
+			0,0,-1
 		]
-		
+
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}

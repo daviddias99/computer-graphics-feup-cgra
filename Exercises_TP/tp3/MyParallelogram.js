@@ -14,6 +14,11 @@ class MyParallelogram extends CGFobject {
 			2, 0, 0,	//1
 			1, 1, 0,	//2
 			3, 1, 0,
+
+			0, 0, 0,	//0
+			2, 0, 0,	//1
+			1, 1, 0,	//2
+			3, 1, 0
 		];
 
 		//Counter-clockwise reference of vertices
@@ -29,8 +34,15 @@ class MyParallelogram extends CGFobject {
 			0,0,1,
 			0,0,1,
 			0,0,1,
-			0,0,1
-		]
+			0,0,1,
+
+			0,0,-1,
+			0,0,-1,
+			0,0,-1,
+			0,0,-1
+
+		];
+
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}

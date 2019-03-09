@@ -13,6 +13,16 @@ class MyTriangleBig extends CGFobject {
 			2, 0, 0,	//0
 			0, 2, 0,	//1
 			-2, 0, 0,	//2
+
+			2, 0, 0,	//0
+			0, 2, 0,	//1
+			-2, 0, 0,	//2
+		];
+
+		//Counter-clockwise reference of vertices
+		this.indices = [
+			0, 1, 2,
+			2, 1, 0
 		];
 
 		this.normals = [
@@ -20,12 +30,14 @@ class MyTriangleBig extends CGFobject {
 			0,0,1,
 			0,0,1,
 			0,0,1,
-		]
+			0,0,1,
 
-		//Counter-clockwise reference of vertices
-		this.indices = [
-			0, 1, 2,
+			0,0,-1,
+			0,0,-1,
+			0,0,-1,
+			0,0,-1
 		];
+
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}

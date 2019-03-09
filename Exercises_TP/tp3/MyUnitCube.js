@@ -9,6 +9,10 @@ class MyUnitCube extends CGFobject {
 		this.initBuffers();
 	}
 	initBuffers() {
+
+		// reference to the vertices of the cube. Each vertex has been declared three times
+		// for all the faces that meet at a single vertex (used for normal vector declaring)
+
 		this.vertices = [
 			0.5, 0.5, -0.5,		//0
 			-0.5, 0.5, -0.5,	//1
@@ -18,6 +22,58 @@ class MyUnitCube extends CGFobject {
 			-0.5, 0.5, 0.5,		//5
 			-0.5, -0.5, 0.5,	//6
 			0.5, -0.5, 0.5,		//7
+
+			0.5, 0.5, -0.5,		//0
+			-0.5, 0.5, -0.5,	//1
+			-0.5, -0.5, -0.5,	//2
+			0.5, -0.5, -0.5,	//3
+			0.5, 0.5, 0.5,		//4
+			-0.5, 0.5, 0.5,		//5
+			-0.5, -0.5, 0.5,	//6
+			0.5, -0.5, 0.5,		//7
+
+			0.5, 0.5, -0.5,		//0
+			-0.5, 0.5, -0.5,	//1
+			-0.5, -0.5, -0.5,	//2
+			0.5, -0.5, -0.5,	//3
+			0.5, 0.5, 0.5,		//4
+			-0.5, 0.5, 0.5,		//5
+			-0.5, -0.5, 0.5,	//6
+			0.5, -0.5, 0.5,		//7
+		];
+
+		// reference to the normal-vectors of the cube's vertices. Each vertex has 3 normals declared to account 
+		// for all the faces that meet at a single vertex
+		
+		this.normals = [
+
+			0,1,0,				//0
+			0,1,0,				//1
+			0,-1,0,				//2
+			0,-1,0,				//3
+			0,1,0,				//4
+			0,1,0,				//5
+			0,-1,0,				//6
+			0,-1,0,				//7
+
+			1,0,0,				//0
+			-1,0,0,				//1
+			-1,0,0,				//2
+			1,0,0,				//3
+			1,0,0,				//4
+			-1,0,0,				//5
+			-1,0,0,				//6
+			1,0,0,				//7
+
+			0,0,-1,				//0
+			0,0,-1,				//1
+			0,0,-1,				//2
+			0,0,-1,				//3
+			0,0,1,				//4
+			0,0,1,				//5
+			0,0,1,				//6
+			0,0,1				//7
+
 		];
 
 		//Counter-clockwise reference of vertices

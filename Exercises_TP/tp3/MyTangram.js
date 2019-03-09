@@ -16,10 +16,38 @@ class MyTangram extends CGFobject {
         this.triangleSmall1 = new MyTriangleSmall(this.scene);
         this.triangleBig2 = new MyTriangleBig(this.scene);
 		this.triangleSmall2 = new MyTriangleSmall(this.scene);
-	}
+    }
+    
+
+    enableNormalViz() {
+
+        this.diamond.enableNormalViz();
+        this.triangle.enableNormalViz();
+        this.parallelogram.enableNormalViz();
+        this.triangleBig1.enableNormalViz();
+        this.triangleSmall1.enableNormalViz();
+        this.triangleBig2.enableNormalViz();
+        this.triangleSmall2.enableNormalViz();
+
+    }
+
+    disableNormalViz() {
+
+        this.diamond.disableNormalViz();
+        this.triangle.disableNormalViz();
+        this.parallelogram.disableNormalViz();
+        this.triangleBig1.disableNormalViz();
+        this.triangleSmall1.disableNormalViz();
+        this.triangleBig2.disableNormalViz();
+        this.triangleSmall2.disableNormalViz();
+
+    }
+
+
 	display() {
 		this.scene.pushMatrix();
 
+        
         var diamondR = [Math.cos(Math.PI / 4.0), Math.sin(Math.PI / 4.0), 0.0, 0.0,
                         -Math.sin(Math.PI / 4.0), Math.cos(Math.PI / 4.0), 0.0, 0.0,
                         0.0, 0.0, 1.0, 0.0,
@@ -39,8 +67,7 @@ class MyTangram extends CGFobject {
         this.scene.multMatrix(diamondT);
         this.scene.multMatrix(diamondR);
 
-        this.diamond.display();
-
+        this.diamond.display(); 
         // ---- 
 
         this.scene.popMatrix();

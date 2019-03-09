@@ -26,12 +26,13 @@ class MyScene extends CGFscene {
         this.plane = new MyPlane(this, 5);
         this.cone = new MyCone(this, 3, 1);
         this.pyramid = new MyPyramid(this, 3, 1);
-        this.tangram = new Tangram();
+        this.tangram = new MyTangram(this);
+        this.cube = new MyUnitCube(this);
         
-        this.objects = [this.plane, this.pyramid, this.cone];
+        this.objects = [this.plane, this.pyramid, this.cone, this.tangram, this.cube];
 
         // Labels and ID's for object selection on MyInterface
-        this.objectIDs = { 'Plane': 0 , 'Pyramid': 1, 'Cone': 2};
+        this.objectIDs = { 'Plane': 0 , 'Pyramid': 1, 'Cone': 2, 'Tangram': 3, 'Cube': 4};
 
         //Other variables connected to MyInterface
         this.selectedObject = 0;
@@ -166,9 +167,6 @@ class MyScene extends CGFscene {
         
         this.lights[0].update();
         this.lights[1].update();
-
-        // Alter lights
-        //this.setGlobalAmbientLight(this.amLightStr, this.amLightStr, this.amLightStr, 1.0);
 
         // Draw axis
         if (this.displayAxis)
