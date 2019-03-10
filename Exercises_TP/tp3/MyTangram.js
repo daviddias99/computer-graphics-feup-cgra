@@ -18,7 +18,9 @@ class MyTangram extends CGFobject {
 		this.triangleSmall2 = new MyTriangleSmall(this.scene);
     }
     
-
+    /**
+     * Applies the normal vizualization for each element of the tangram
+     */
     enableNormalViz() {
 
         this.diamond.enableNormalViz();
@@ -31,6 +33,9 @@ class MyTangram extends CGFobject {
 
     }
 
+    /**
+     * Disables the normal vizualization for each element of the tangram
+     */
     disableNormalViz() {
 
         this.diamond.disableNormalViz();
@@ -138,7 +143,7 @@ class MyTangram extends CGFobject {
         this.scene.popMatrix();
     }
     
-
+    // Updates the complexity of each element of the tangram
     updateBuffers(complexity){
         
         this.diamond.updateBuffers(complexity);

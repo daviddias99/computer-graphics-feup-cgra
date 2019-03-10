@@ -102,6 +102,10 @@ class MyUnitCube extends CGFobject {
 		this.initGLBuffers();
 	}
 
+	/**
+	 * Updates the complexity of the cube (currently nothing happens)
+	 * @param {*} complexity 
+	 */
 	updateBuffers(complexity){
         
 

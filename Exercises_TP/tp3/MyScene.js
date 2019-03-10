@@ -136,8 +136,12 @@ class MyScene extends CGFscene {
         this.material3.setSpecular(1, 0, 0, 1.0);
         this.material3.setShininess(10.0);
 
-        // Wood-like
+        // Wood-like material
         this.material4 = new CGFappearance(this);
+        this.material4.setAmbient(0.59,0.44,0.2,1.0);
+        this.material4.setDiffuse(0.75, 0.59, 0.36, 1.0);
+        this.material4.setSpecular(1,0.87,0.63);
+        this.material4.setShininess(10.0);
 
         // Custom material (can be changed in the interface)
         // initially midrange values on ambient, diffuse and specular, on R, G and B respectively
