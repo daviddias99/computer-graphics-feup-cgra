@@ -42,4 +42,9 @@ class MyTriangle extends CGFobject {
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}
+
+	updateBuffers(complexity){
+        
+
+    }
 }

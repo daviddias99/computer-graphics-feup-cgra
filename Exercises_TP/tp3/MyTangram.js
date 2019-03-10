@@ -136,5 +136,19 @@ class MyTangram extends CGFobject {
         
         this.triangleSmall2.display();
         this.scene.popMatrix();
-	}
+    }
+    
+
+    updateBuffers(complexity){
+        
+        this.diamond.updateBuffers(complexity);
+        this.triangle.updateBuffers(complexity);
+        this.parallelogram.updateBuffers(complexity);
+        this.triangleBig1.updateBuffers(complexity);
+        this.triangleSmall1.updateBuffers(complexity);
+        this.triangleBig2.updateBuffers(complexity);
+        this.triangleSmall2.updateBuffers(complexity);
+
+    }
+
 }
