@@ -164,64 +164,74 @@ class MyTangram extends CGFobject {
         this.triangleSmall2.updateBuffers(complexity);
 
     }
-
     initPieceMaterials() {
 
-        // diamond material
-        this.diamondMt = new CGFappearance(this.scene);
+        let rgb;
+        let diffuseFactor = 2;
+        let ambientFactor = 1.5;
 
-        this.diamondMt.setAmbient(0.0, 1.0, 0.0, 1.0);
-        this.diamondMt.setDiffuse(1, 0, 0, 1.0);
-        this.diamondMt.setSpecular(0, 0, 0, 1.0);
+        // diamond material
+        rgb = this.scene.hexToRgbA("#02ff00");
+
+        this.diamondMt = new CGFappearance(this.scene);
+        this.diamondMt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.diamondMt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.diamondMt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
         this.diamondMt.setShininess(10.0);       
 
         // triangle material
-        this.triangleMt = new CGFappearance(this.scene);
+        rgb = this.scene.hexToRgbA("#ff9cd2");
 
-        this.triangleMt.setAmbient(1.0, 0.61, 0.82, 1.0);
-        this.triangleMt.setDiffuse(1, 0, 0, 1.0);
-        this.triangleMt.setSpecular(0, 0, 0, 1.0);
-        this.triangleMt.setShininess(10.0);     
+        this.triangleMt = new CGFappearance(this.scene);
+        this.triangleMt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.triangleMt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.triangleMt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
+        this.triangleMt.setShininess(10.0);       
 
         // parallelogram material
-        this.parallelMt = new CGFappearance(this.scene);
+        rgb = this.scene.hexToRgbA("#ffff01");
 
-        this.parallelMt.setAmbient(1.0, 1.0, 0.0, 1.0);
-        this.parallelMt.setDiffuse(1, 0, 0, 1.0);
-        this.parallelMt.setSpecular(0, 0, 0, 1.0);
+        this.parallelMt = new CGFappearance(this.scene);
+        this.parallelMt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.parallelMt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.parallelMt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
         this.parallelMt.setShininess(10.0);   
         
         // triangleBig 1 material
-        this.triBig1Mt = new CGFappearance(this.scene);
+        rgb = this.scene.hexToRgbA("#ff9c01");
 
-        this.triBig1Mt.setAmbient(1.0, 0.61, 0.0, 1.0);
-        this.triBig1Mt.setDiffuse(1, 0, 0, 1.0);
-        this.triBig1Mt.setSpecular(0, 0, 0, 1.0);
-        this.triBig1Mt.setShininess(10.0);  
+        this.triBig1Mt = new CGFappearance(this.scene);
+        this.triBig1Mt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.triBig1Mt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.triBig1Mt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
+        this.triBig1Mt.setShininess(10.0);   
 
         // triangleBig 2 material
-        this.triBig2Mt = new CGFappearance(this.scene);
+        rgb = this.scene.hexToRgbA("#009cff");
 
-        this.triBig2Mt.setAmbient(0.0, 0.61, 1.0, 1.0);
-        this.triBig2Mt.setDiffuse(1, 0, 0, 1.0);
-        this.triBig2Mt.setSpecular(0, 0, 0, 1.0);
-        this.triBig2Mt.setShininess(10.0);  
+        this.triBig2Mt = new CGFappearance(this.scene);
+        this.triBig2Mt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.triBig2Mt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.triBig2Mt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
+        this.triBig2Mt.setShininess(10.0); 
 
         // triangleSmall 1 material
-        this.triSmall1Mt = new CGFappearance(this.scene);
+        rgb = this.scene.hexToRgbA("#ff1313");
 
-        this.triSmall1Mt.setAmbient(1.0, 0.0, 0.0, 1.0);
-        this.triSmall1Mt.setDiffuse(1, 0, 0, 1.0);
-        this.triSmall1Mt.setSpecular(0, 0, 0, 1.0);
-        this.triSmall1Mt.setShininess(10.0);  
+        this.triSmall1Mt = new CGFappearance(this.scene);
+        this.triSmall1Mt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.triSmall1Mt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.triSmall1Mt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
+        this.triSmall1Mt.setShininess(10.0); 
 
         // triangleSmall 2 material
-        this.triSmall2Mt = new CGFappearance(this.scene);
+        rgb = this.scene.hexToRgbA("#A850C1");
 
-        this.triSmall2Mt.setAmbient(0.67, 0.31, 0.76, 1.0);
-        this.triSmall2Mt.setDiffuse(1, 0, 0, 1.0);
-        this.triSmall2Mt.setSpecular(0, 0, 0, 1.0);
-        this.triSmall2Mt.setShininess(10.0);  
+        this.triSmall2Mt = new CGFappearance(this.scene);
+        this.triSmall2Mt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.triSmall2Mt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.triSmall2Mt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
+        this.triSmall2Mt.setShininess(10.0); 
 
     }
 }
