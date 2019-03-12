@@ -41,10 +41,6 @@ class MyScene extends CGFscene {
         this.displayNormals = false;
         this.objectComplexity = 0.5;
         this.scaleFactor = 2.0;
-
-        
-        
-
     }
     initLights() {
 
@@ -136,16 +132,18 @@ class MyScene extends CGFscene {
         this.material3.setSpecular(1, 0, 0, 1.0);
         this.material3.setShininess(10.0);
 
-        // Wood-like material
-        this.material4 = new CGFappearance(this);
-        this.material4.setAmbient(0.59,0.44,0.2,1.0);
-        this.material4.setDiffuse(0.75, 0.59, 0.36, 1.0);
-        this.material4.setSpecular(1,0.87,0.63);
-        this.material4.setShininess(10.0);
+        // Wood-like material 
+        var woodRGBA = this.hexToRgbA("#855E42");
+        var factor = 6;
+
+        this.wood = new CGFappearance(this);
+        this.wood.setAmbient(woodRGBA[0], woodRGBA[1], woodRGBA[2], 1.0);
+        this.wood.setDiffuse(woodRGBA[0], woodRGBA[1], woodRGBA[2], 1.0);
+        this.wood.setSpecular(woodRGBA[0] / factor, woodRGBA[1] / factor, woodRGBA[2] / factor, 1.0);
+        this.wood.setShininess(10.0);
 
         // Custom material (can be changed in the interface)
         // initially midrange values on ambient, diffuse and specular, on R, G and B respectively
-
         this.customMaterialValues = {
             'Ambient': '#0000ff',
             'Diffuse': '#ff0000',
@@ -156,10 +154,10 @@ class MyScene extends CGFscene {
 
         this.updateCustomMaterial();
 
-        this.materials = [this.material1, this.material2, this.material3, this.customMaterial, this.material4];
+        this.materials = [this.material1, this.material2, this.material3, this.wood, this.customMaterial];
 
         // Labels and ID's for object selection on MyInterface
-        this.materialIDs = {'Red Ambient': 0, 'Red Diffuse': 1, 'Red Specular': 2, 'Custom': 3 , 'Wood-like': 4};
+        this.materialIDs = {'Red Ambient': 0, 'Red Diffuse': 1, 'Red Specular': 2, 'Wood-like': 3, 'Custom': 4};
     }
     display() {
         // ---- BEGIN Background, camera and axis setup

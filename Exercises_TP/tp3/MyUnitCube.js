@@ -107,8 +107,7 @@ class MyUnitCube extends CGFobject {
 	 * @param {*} complexity 
 	 */
 	updateBuffers(complexity){
-        
-
+		
     }
 }
 
