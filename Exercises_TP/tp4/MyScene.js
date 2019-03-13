@@ -90,7 +90,7 @@ class MyScene extends CGFscene {
     updateTexCoords() {
         this.quad.updateTexCoords(this.texCoords);
     }
-
+    
     hexToRgbA(hex)
     {
         var ret;
