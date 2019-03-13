@@ -1,32 +1,29 @@
 /**
- * MyParallelogram
+ * MyTriangle
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyParallelogram extends CGFobject {
+class MyTriangle extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
 	}
 	initBuffers() {
 		this.vertices = [
-			0, 0, 0,	//0
-			2, 0, 0,	//1
-			1, 1, 0,	//2
-			3, 1, 0,	//3
+			-1, -1, 0,	//0
+			1, -1, 0,	//1
+			-1, 1, 0,	//2
 
-			0, 0, 0,	//0 - 4
-			2, 0, 0,	//1 - 5
-			1, 1, 0,	//2 - 6
-			3, 1, 0		//3 - 7
+			-1, -1, 0,	//0 - 3
+			1, -1, 0,	//1 - 4
+			-1, 1, 0	//2 - 5
+
 		];
 
 		//Counter-clockwise reference of vertices
 		this.indices = [
 			0, 1, 2,
-			1, 3, 2,
-			6, 5, 4,
-			6, 7, 5
+			5, 4, 3
 		];
 
 		this.normals = [
@@ -34,14 +31,20 @@ class MyParallelogram extends CGFobject {
 			0,0,1,
 			0,0,1,
 			0,0,1,
-			0,0,1,
 
-			0,0,-1,
 			0,0,-1,
 			0,0,-1,
 			0,0,-1
-
 		];
+
+		this.texCoords = [
+			0, 1,
+			0.5, 1,
+			0, 0.5,
+			0, 1,
+			0.5, 1,
+			0, 0.5
+		]
 
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
