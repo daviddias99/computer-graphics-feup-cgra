@@ -14,15 +14,15 @@ class MyTriangleSmall extends CGFobject {
 			0, 1.0, 0,	//1
 			-1.0, 0, 0,	//2
 
-			1.0, 0, 0,	//0
-			0, 1.0, 0,	//1
-			-1.0, 0, 0	//2
+			1.0, 0, 0,	//0 - 3
+			0, 1.0, 0,	//1 - 4
+			-1.0, 0, 0	//2 - 5
 		];
 
 		//Counter-clockwise reference of vertices
 		this.indices = [
 			0, 1, 2,
-			2, 1, 0
+			5, 4, 3
 		];
 
 		this.normals = [

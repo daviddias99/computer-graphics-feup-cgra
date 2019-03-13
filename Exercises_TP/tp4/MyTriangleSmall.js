@@ -22,7 +22,7 @@ class MyTriangleSmall extends CGFobject {
 		//Counter-clockwise reference of vertices
 		this.indices = [
 			0, 1, 2,
-			2, 1, 0
+			5, 4, 3
 		];
 
 		this.normals = [
