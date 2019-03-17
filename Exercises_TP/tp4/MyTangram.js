@@ -73,9 +73,9 @@ class MyTangram extends CGFobject {
         this.scene.multMatrix(diamondT);
         this.scene.multMatrix(diamondR);
 
-        this.diamondMt.apply();
-
+        this.tangramLines.apply();
         this.diamond.display(); 
+
         // ---- 
 
         this.scene.popMatrix();
@@ -97,11 +97,11 @@ class MyTangram extends CGFobject {
         this.scene.rotate(-Math.PI / 4, 0.0, 0.0, 1.0);
         this.scene.rotate(Math.PI, 1.0, 0.0, 0.0);
 
-        this.parallelMt.apply();
+        this.tangramLines.apply();
         this.parallelogram.display();  
 
         // ----
-
+        
         this.scene.popMatrix();
         this.scene.pushMatrix();
         
@@ -134,7 +134,7 @@ class MyTangram extends CGFobject {
         this.scene.translate(- Math.sqrt(2), Math.sqrt(2), 0);
         this.scene.rotate(- 3 * Math.PI / 4, 0, 0, 1);
 
-        this.triangleMt.apply();
+        this.tangramLines.apply();
         this.triangle.display();
 
         // ----
@@ -171,37 +171,42 @@ class MyTangram extends CGFobject {
         let ambientFactor = 1.5;
         let factor = 0.5;
         //this.texLines = new CGFtexture(this, 'images/tangram-lines.png');
-    
+        
+        this.tangramLines = new CGFappearance(this.scene);
+        this.tangramLines.setAmbient(factor, factor, factor, 1.0);
+        this.tangramLines.setDiffuse(factor, factor, factor, 1.0);
+        this.tangramLines.setSpecular(factor, factor, factor, 1.0);
+        this.tangramLines.setShininess(10.0);  
+        this.tangramLines.loadTexture('images/tangram-lines.png');
+
+        /*
         // diamond material
         rgb = this.scene.hexToRgbA("#02ff00");
 
         this.diamondMt = new CGFappearance(this.scene);
-        this.diamondMt.setAmbient(factor, factor, factor, 1.0);
-        this.diamondMt.setDiffuse(factor, factor, factor, 1.0);
-        this.diamondMt.setSpecular(factor, factor, factor, 1.0);
-        this.diamondMt.setShininess(10.0);  
-        this.diamondMt.loadTexture('images/tangram-lines.png');
-        // this.diamondMt.setTextureWrap('Repeat', 'Repeat');     
+        this.diamondMt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.diamondMt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.diamondMt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
+        this.diamondMt.setShininess(10.0);       
 
         // triangle material
         rgb = this.scene.hexToRgbA("#ff9cd2");
 
         this.triangleMt = new CGFappearance(this.scene);
-        this.triangleMt.setAmbient(factor, factor, factor, 1.0);
-        this.triangleMt.setDiffuse(factor, factor, factor, 1.0);
-        this.triangleMt.setSpecular(factor, factor, factor, 1.0);
-        this.triangleMt.setShininess(10.0);
-        this.triangleMt.loadTexture('images/tangram-lines.png');     
+        this.triangleMt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.triangleMt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.triangleMt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
+        this.triangleMt.setShininess(10.0);       
 
         // parallelogram material
         rgb = this.scene.hexToRgbA("#ffff01");
 
         this.parallelMt = new CGFappearance(this.scene);
-        this.parallelMt.setAmbient(factor, factor, factor, 1.0);
-        this.parallelMt.setDiffuse(factor, factor, factor, 1.0);
-        this.parallelMt.setSpecular(factor, factor, factor, 1.0);
-        this.parallelMt.setShininess(10.0);  
-        this.parallelMt.loadTexture('images/tangram-lines.png');      
+        this.parallelMt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
+        this.parallelMt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
+        this.parallelMt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
+        this.parallelMt.setShininess(10.0);   
+        */
         
         // triangleBig 1 material
         rgb = this.scene.hexToRgbA("#ff9c01");
