@@ -36,6 +36,22 @@ class MyTriangleBig extends CGFobject {
 			0,0,-1
 		];
 
+		this.texCoords = [
+			0, 0,
+			0.5, 0.5,
+			1, 0,
+			0, 0,
+			0.5, 0.5,
+			1, 0
+		]
+
+		this.primitiveType = this.scene.gl.TRIANGLES;
+		this.initGLBuffers();
+	}
+
+	changeTexCoords(texCoords) {
+		this.texCoords = texCoords;
+
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}
