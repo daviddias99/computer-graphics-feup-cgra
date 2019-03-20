@@ -186,9 +186,6 @@ class MyTangram extends CGFobject {
     }
     initPieceMaterials() {
 
-        let rgb;
-        let diffuseFactor = 2;
-        let ambientFactor = 1.5;
         let factor = 0.5;
         //this.texLines = new CGFtexture(this, 'images/tangram-lines.png');
         
