@@ -73,9 +73,9 @@ class MyTangram extends CGFobject {
         this.scene.multMatrix(diamondT);
         this.scene.multMatrix(diamondR);
 
-        this.diamondMt.apply();
-
+        this.tangram.apply();
         this.diamond.display(); 
+
         // ---- 
 
         this.scene.popMatrix();
@@ -84,7 +84,7 @@ class MyTangram extends CGFobject {
         this.scene.rotate(-Math.PI / 4 - Math.PI / 6, 0.0, 0.0, 1.0);
         this.scene.translate(0, -1, 0);
         
-        this.triSmall1Mt.apply();
+        this.tangram.apply();
         this.triangleSmall1.display();
 
         // ----
@@ -97,11 +97,11 @@ class MyTangram extends CGFobject {
         this.scene.rotate(-Math.PI / 4, 0.0, 0.0, 1.0);
         this.scene.rotate(Math.PI, 1.0, 0.0, 0.0);
 
-        this.parallelMt.apply();
+        this.tangram.apply();
         this.parallelogram.display();  
 
         // ----
-
+        
         this.scene.popMatrix();
         this.scene.pushMatrix();
         
@@ -110,7 +110,7 @@ class MyTangram extends CGFobject {
         this.scene.rotate(3 * Math.PI / 4, 0.0, 0.0, 1.0);
         this.scene.translate(-2, 0, 0);
 
-        this.triBig1Mt.apply();
+        this.tangram.apply();
         this.triangleBig1.display();
 
         // ----
@@ -122,7 +122,17 @@ class MyTangram extends CGFobject {
         this.scene.translate(Math.sqrt(8), 2 - Math.sqrt(2), 0);
         this.scene.rotate(Math.PI, 0.0, 0.0, 1.0);
 
-        this.triBig2Mt.apply();
+        let texCoords = [
+            1, 0,
+            0.5, 0.5,
+            1, 1,
+            1, 0,
+            0.5, 0.5,
+            1, 1
+        ]
+        
+        this.triangleBig2.changeTexCoords(texCoords);
+        this.tangram.apply();
         this.triangleBig2.display();
     
         // ----
@@ -134,7 +144,7 @@ class MyTangram extends CGFobject {
         this.scene.translate(- Math.sqrt(2), Math.sqrt(2), 0);
         this.scene.rotate(- 3 * Math.PI / 4, 0, 0, 1);
 
-        this.triangleMt.apply();
+        this.tangram.apply();
         this.triangle.display();
 
         // ----
@@ -147,7 +157,17 @@ class MyTangram extends CGFobject {
         this.scene.rotate(- 3 * Math.PI / 4, 0, 0, 1);
         this.scene.translate(0, -1, 0);
         
-        this.triSmall2Mt.apply();
+        texCoords = [
+            0, 0,
+            0.25, 0.25,
+            0, 0.5,
+            0, 0,
+            0.25, 0.25,
+            0, 0.5,
+        ]
+
+        this.triangleSmall2.changeTexCoords(texCoords);
+        this.tangram.apply();
         this.triangleSmall2.display();
         this.scene.popMatrix();
     }
@@ -171,73 +191,12 @@ class MyTangram extends CGFobject {
         let ambientFactor = 1.5;
         let factor = 0.5;
         //this.texLines = new CGFtexture(this, 'images/tangram-lines.png');
-    
-        // diamond material
-        rgb = this.scene.hexToRgbA("#02ff00");
-
-        this.diamondMt = new CGFappearance(this.scene);
-        this.diamondMt.setAmbient(factor, factor, factor, 1.0);
-        this.diamondMt.setDiffuse(factor, factor, factor, 1.0);
-        this.diamondMt.setSpecular(factor, factor, factor, 1.0);
-        this.diamondMt.setShininess(10.0);  
-        this.diamondMt.loadTexture('images/tangram-lines.png');
-        // this.diamondMt.setTextureWrap('Repeat', 'Repeat');     
-
-        // triangle material
-        rgb = this.scene.hexToRgbA("#ff9cd2");
-
-        this.triangleMt = new CGFappearance(this.scene);
-        this.triangleMt.setAmbient(factor, factor, factor, 1.0);
-        this.triangleMt.setDiffuse(factor, factor, factor, 1.0);
-        this.triangleMt.setSpecular(factor, factor, factor, 1.0);
-        this.triangleMt.setShininess(10.0);
-        this.triangleMt.loadTexture('images/tangram-lines.png');     
-
-        // parallelogram material
-        rgb = this.scene.hexToRgbA("#ffff01");
-
-        this.parallelMt = new CGFappearance(this.scene);
-        this.parallelMt.setAmbient(factor, factor, factor, 1.0);
-        this.parallelMt.setDiffuse(factor, factor, factor, 1.0);
-        this.parallelMt.setSpecular(factor, factor, factor, 1.0);
-        this.parallelMt.setShininess(10.0);  
-        this.parallelMt.loadTexture('images/tangram-lines.png');      
         
-        // triangleBig 1 material
-        rgb = this.scene.hexToRgbA("#ff9c01");
-
-        this.triBig1Mt = new CGFappearance(this.scene);
-        this.triBig1Mt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
-        this.triBig1Mt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
-        this.triBig1Mt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
-        this.triBig1Mt.setShininess(10.0);   
-
-        // triangleBig 2 material
-        rgb = this.scene.hexToRgbA("#009cff");
-
-        this.triBig2Mt = new CGFappearance(this.scene);
-        this.triBig2Mt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
-        this.triBig2Mt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
-        this.triBig2Mt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
-        this.triBig2Mt.setShininess(10.0); 
-
-        // triangleSmall 1 material
-        rgb = this.scene.hexToRgbA("#ff1313");
-
-        this.triSmall1Mt = new CGFappearance(this.scene);
-        this.triSmall1Mt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
-        this.triSmall1Mt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
-        this.triSmall1Mt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
-        this.triSmall1Mt.setShininess(10.0); 
-
-        // triangleSmall 2 material
-        rgb = this.scene.hexToRgbA("#A850C1");
-
-        this.triSmall2Mt = new CGFappearance(this.scene);
-        this.triSmall2Mt.setAmbient(rgb[0] / ambientFactor, rgb[1] / ambientFactor, rgb[2] / ambientFactor, 1.0);
-        this.triSmall2Mt.setDiffuse(rgb[0] / diffuseFactor, rgb[1] / diffuseFactor, rgb[2] / diffuseFactor, 1.0);
-        this.triSmall2Mt.setSpecular(rgb[0], rgb[1], rgb[2], 1.0);
-        this.triSmall2Mt.setShininess(10.0); 
-
+        this.tangram = new CGFappearance(this.scene);
+        this.tangram.setAmbient(factor, factor, factor, 1.0);
+        this.tangram.setDiffuse(factor, factor, factor, 1.0);
+        this.tangram.setSpecular(factor, factor, factor, 1.0);
+        this.tangram.setShininess(10.0);  
+        this.tangram.loadTexture('images/tangram.png');
     }
 }
