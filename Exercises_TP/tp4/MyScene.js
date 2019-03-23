@@ -49,6 +49,7 @@ class MyScene extends CGFscene {
         this.selectedTexture = -1;        
         this.wrapS = 0;
         this.wrapT = 0;
+        this.selectedObject = 0;
 
         this.textures = [this.texture1, this.texture2, this.texture3];
         this.texCoords = [0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0];
@@ -57,6 +58,10 @@ class MyScene extends CGFscene {
         this.textureIds = { 'Board': 0, 'Floor': 1, 'Window': 2 };
         this.wrappingS = { 'Repeat': 0, 'Clamp to edge': 1, 'Mirrored repeat': 2 };
         this.wrappingT = { 'Repeat': 0, 'Clamp to edge': 1, 'Mirrored repeat': 2 };
+
+        this.objectIDs = { 'Quad':0, 'Tangram':1, 'Minecraft Cube':2};
+        this.objects = [this.quad,this.tangram,this.unitCubeQuad];
+
       }
 
     initLights() {
@@ -136,19 +141,18 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        //this.quadMaterial.apply();
+        this.quadMaterial.apply();
 
         // Default texture filtering in WebCGF is LINEAR. 
         // Uncomment next line for NEAREST when magnifying, or 
         // add a checkbox in the GUI to alternate in real time
         
          
+        this.objects[this.selectedObject].display();
 
-        //this.quad.display();
 
         // ---- END Primitive drawing section
 
-        //this.tangram.display();
-        this.unitCubeQuad.display();
+     
     }
 }
