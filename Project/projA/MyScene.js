@@ -21,8 +21,10 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
+        this.hill = new MyVoxelHill(this,8);
 
         //Objects connected to MyInterface
+
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -52,6 +54,7 @@ class MyScene extends CGFscene {
 
         // Draw axis
         this.axis.display();
+        this.hill.display();
 
         //Apply default appearance
         this.setDefaultAppearance();
