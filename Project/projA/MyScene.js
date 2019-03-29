@@ -18,6 +18,7 @@ class MyScene extends CGFscene {
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
+        this.enableTextures(true);
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
@@ -26,13 +27,13 @@ class MyScene extends CGFscene {
         //Objects connected to MyInterface
         this.prism = new MyPrism(this, 5, 5);
 
-        this.texture = new CGFappearance(this);
-        this.texture.setAmbient(0.5, 0.5, 0.5, 1);
-        this.texture.setSpecular(0.5, 0.5, 0.5, 1);
-        this.texture.setDiffuse(0.5, 0.5, 0.5, 1);
-        this.texture.setShininess(10);
-        this.texture.loadTexture('images/board.jpg');
-
+        this.tex = new CGFappearance(this);
+        this.tex.setAmbient(0.8, 0.8, 0.8, 1);
+        this.tex.setSpecular(0.8, 0.8, 0.8, 1);
+        this.tex.setDiffuse(0.8, 0.8, 0.8, 1);
+        this.tex.setShininess(10);
+        this.tex.loadTexture('images/david.jpg');
+        this.tex.setTextureWrap('REPEAT', 'REPEAT');
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -71,7 +72,8 @@ class MyScene extends CGFscene {
         // this.hill.display();
 
 
-        this.texture.apply();
+        this.tex.apply();
+
         this.prism.display();
 
         // ---- END Primitive drawing section

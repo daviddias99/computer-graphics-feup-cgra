@@ -58,11 +58,15 @@ class MyPrism extends CGFobject {
 
             this.indices.push(4*i+2, 4*i , 4*i+1);
             this.indices.push(4*i + 1, 4*i+3, 4*i + 2);
+            
+            var tex = [
+                i / this.slices, 1,
+                (i + 1) / this.slices, 1,
+                i / this.slices, 0,
+                (i + 1) / this.slices, 0
+            ];
 
-            this.texCoords.push(i / this.slices , 1);
-            this.texCoords.push((i + 1) / this.slices, 1);
-            this.texCoords.push(1 / this.slices, 0);
-            this.texCoords.push((i + 1) / this.slices, 0);
+            this.texCoords.push(...tex);
 
             ang+=alphaAng;
         }
