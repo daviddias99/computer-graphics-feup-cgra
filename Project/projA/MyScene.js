@@ -23,6 +23,14 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
 
         //Objects connected to MyInterface
+        this.prism = new MyPrism(this, 5, 5);
+
+        this.texture = new CGFappearance(this);
+        this.texture.setAmbient(0.5, 0.5, 0.5, 1);
+        this.texture.setSpecular(0.5, 0.5, 0.5, 1);
+        this.texture.setDiffuse(0.5, 0.5, 0.5, 1);
+        this.texture.setShininess(10);
+        this.texture.loadTexture('images/board.jpg');
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -58,6 +66,8 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
+        this.texture.apply();
+        this.prism.display();
 
         // ---- END Primitive drawing section
     }

@@ -13,6 +13,7 @@ class MyPrism extends CGFobject {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+        this.texCoords = [];
 
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
@@ -22,19 +23,20 @@ class MyPrism extends CGFobject {
             // even if they are shared with others, as the normals 
             // in each face will be different
 
-            var sa=Math.sin(ang);
-            var saa=Math.sin(ang+alphaAng);
-            var ca=Math.cos(ang);
-            var caa=Math.cos(ang+alphaAng);
+            var sa = Math.sin(ang);
+            var saa = Math.sin(ang+alphaAng);
+            var ca = Math.cos(ang);
+            var caa = Math.cos(ang+alphaAng);
 
-            this.vertices.push(0,1,0);
             this.vertices.push(ca, 0, -sa);
             this.vertices.push(caa, 0, -saa);
-
+            this.vertices.push(ca, 1, -sa);
+            this.vertices.push(caa, 1, -saa);
+            
             // triangle normal computed by cross product of two edges
             var normal= [
                 saa-sa,
-                ca*saa-sa*caa,
+                0,
                 caa-ca
             ];
 
@@ -52,8 +54,15 @@ class MyPrism extends CGFobject {
             this.normals.push(...normal);
             this.normals.push(...normal);
             this.normals.push(...normal);
+            this.normals.push(...normal);
 
-            this.indices.push(3*i, (3*i+1) , (3*i+2) );
+            this.indices.push(4*i+2, 4*i , 4*i+1);
+            this.indices.push(4*i + 1, 4*i+3, 4*i + 2);
+
+            this.texCoords.push(i / this.slices , 1);
+            this.texCoords.push((i + 1) / this.slices, 1);
+            this.texCoords.push(1 / this.slices, 0);
+            this.texCoords.push((i + 1) / this.slices, 0);
 
             ang+=alphaAng;
         }
