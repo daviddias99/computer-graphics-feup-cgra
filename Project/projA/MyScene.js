@@ -21,6 +21,7 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
+        this.hill = new MyVoxelHill(this,8);
 
         //Objects connected to MyInterface
         this.prism = new MyPrism(this, 5, 5);
@@ -31,6 +32,7 @@ class MyScene extends CGFscene {
         this.texture.setDiffuse(0.5, 0.5, 0.5, 1);
         this.texture.setShininess(10);
         this.texture.loadTexture('images/board.jpg');
+
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -65,6 +67,9 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
+
+        // this.hill.display();
+
 
         this.texture.apply();
         this.prism.display();
