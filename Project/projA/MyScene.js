@@ -23,10 +23,11 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.hill = new MyVoxelHill(this,8);
+        // this.prism = new MyPrism(this, 5, 5);
+        this.cyl = new MyCylinder(this, 10, 5);
 
         //Objects connected to MyInterface
-        this.prism = new MyPrism(this, 5, 5);
-
+   
         this.tex = new CGFappearance(this);
         this.tex.setAmbient(0.8, 0.8, 0.8, 1);
         this.tex.setSpecular(0.8, 0.8, 0.8, 1);
@@ -71,9 +72,12 @@ class MyScene extends CGFscene {
 
         // this.hill.display();
 
-        this.tex.apply();
+         this.tex.apply();
 
-        this.prism.display();
+        // this.prism.display();
+        this.cyl.enableNormalViz();
+        this.cyl.display();
+
 
         // ---- END Primitive drawing section
     }

@@ -39,12 +39,8 @@ class MyVoxelHill extends CGFobject {
                 this.scene.popMatrix();
                 
             }
-
-
         }
 
-        
-       
         this.scene.popMatrix();
     }
     
