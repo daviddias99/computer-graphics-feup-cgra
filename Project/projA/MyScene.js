@@ -71,7 +71,6 @@ class MyScene extends CGFscene {
 
         // this.hill.display();
 
-
         this.tex.apply();
 
         this.prism.display();
