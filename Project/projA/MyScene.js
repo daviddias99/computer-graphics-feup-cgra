@@ -13,7 +13,6 @@ class MyScene extends CGFscene {
 
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
@@ -22,12 +21,14 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
+        this.map = new MyCubeMap(this);
+
         // this.hill = new MyVoxelHill(this,8);
         // this.prism = new MyPrism(this, 5, 5);
-        this.cyl = new MyCylinder(this, 10, 5);
+        // this.cyl = new MyCylinder(this, 10, 5);
+        this.house = new MyHouse(this);
 
         //Objects connected to MyInterface
-   
         this.tex = new CGFappearance(this);
         this.tex.setAmbient(0.8, 0.8, 0.8, 1);
         this.tex.setSpecular(0.8, 0.8, 0.8, 1);
@@ -69,15 +70,8 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
-
-        // this.hill.display();
-
-        this.tex.apply();
-
-        // this.prism.display();
-        this.cyl.enableNormalViz();
-        this.cyl.display();
-
+        this.map.display();
+        this.house.display();
 
         // ---- END Primitive drawing section
     }
