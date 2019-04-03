@@ -12,6 +12,7 @@ serialInclude(['../lib/CGF.js'
                 , 'MyCylinder.js',
                 , 'MyTree.js',
                 , 'MyCone.js',
+                , 'MyTreeGroupPatch.js',
         
 
 main=function()
