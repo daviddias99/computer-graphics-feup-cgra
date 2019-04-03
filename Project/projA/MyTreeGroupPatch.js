@@ -19,10 +19,10 @@ class MyTreeGroupPatch extends CGFobject {
 	}
 	initBuffers() {
         
-        this.trunkRadius = 1;
-        this.trunkHeight = 1;
-        this.treeTopRadius = 2;
-        this.treeTopHeight = 2;
+        this.trunkRadius = 0.5;
+        this.trunkHeight = 2;
+        this.treeTopRadius = 0.8;
+        this.treeTopHeight = 3;
         this.minimumScaleFactor = 0.5;
 
         this.tree = new MyTree(this.scene,this.trunkHeight,this.trunkRadius,this.treeTopHeight,this.treeTopRadius,null,null);
@@ -34,7 +34,7 @@ class MyTreeGroupPatch extends CGFobject {
         for(let i = 0; i < 3; i++){
 
             this.xOffsets.push([getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4]);
-            this.yOffsets.push([getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4]);
+            this.zOffsets.push([getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4]);
             this.sizeScalings.push([getRandNumber(0.8,1),getRandNumber(0.8,1),getRandNumber(0.8,1)]);
 
         }
