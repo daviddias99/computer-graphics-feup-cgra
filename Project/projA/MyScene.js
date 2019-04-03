@@ -27,6 +27,8 @@ class MyScene extends CGFscene {
         // this.prism = new MyPrism(this, 5, 5);
         // this.cyl = new MyCylinder(this, 10, 5);
         this.house = new MyHouse(this);
+        //  this.tree = new MyTree(this,5,2,5,4,null,null);
+        this.treeGPatch = new MyTreeGroupPatch(this);
 
         //Objects connected to MyInterface
         this.tex = new CGFappearance(this);
@@ -70,8 +72,20 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
+
+        // this.hill.display();
+
+        this.tex.apply();
+
+        // this.prism.display();
+        //this.cyl.enableNormalViz();
+        //this.cyl.display();
+
+        // this.tree.display();
+
+        this.treeGPatch.display();
         this.map.display();
-        this.house.display();
+
 
         // ---- END Primitive drawing section
     }
