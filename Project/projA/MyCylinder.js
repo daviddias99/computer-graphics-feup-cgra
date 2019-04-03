@@ -47,12 +47,9 @@ class MyCylinder extends CGFobject {
                 this.indices.push(2*i+2, 2*i+3, 2*i + 1);
             }
             
-        
             var tex = [
                 i / this.slices, 1,
-                (i + 1) / this.slices, 1,
-                i / this.slices, 0,
-                (i + 1) / this.slices, 0
+                i / this.slices, 0
             ];
             
             this.texCoords.push(...tex);

@@ -22,7 +22,7 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.hill = new MyVoxelHill(this,8);
+        // this.hill = new MyVoxelHill(this,8);
         // this.prism = new MyPrism(this, 5, 5);
         this.cyl = new MyCylinder(this, 10, 5);
 
@@ -72,7 +72,7 @@ class MyScene extends CGFscene {
 
         // this.hill.display();
 
-         this.tex.apply();
+        this.tex.apply();
 
         // this.prism.display();
         this.cyl.enableNormalViz();
