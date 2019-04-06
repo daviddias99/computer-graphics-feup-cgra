@@ -9,7 +9,7 @@ class MyCubeMap extends CGFobject {
 		this.initBuffers();
 	}
 	initBuffers() {
-		let side = 4;
+		let side = 50;
 		let halfSide = side / 2;
 
 		// reference to the vertices of the cube. Each vertex has been declared three times
@@ -98,10 +98,10 @@ class MyCubeMap extends CGFobject {
 		];
 
 		this.texCoords = [
-			0.5, 0,
-			0.25, 0,
-			0.25, 1/3,
 			0.5, 1/3,
+			0.25, 1/3,
+			0.25, 0,
+			0.5, 0,
 			0.5, 2/3,
 			0.25, 2/3,
 			0.25, 1,
