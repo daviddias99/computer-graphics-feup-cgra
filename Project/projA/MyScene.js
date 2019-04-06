@@ -79,9 +79,10 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
-        //this.texture.apply();
+        this.texture.apply();
         this.map.display();
 
+        /*
         // this.hill.display();
 
         this.tex.apply();
@@ -92,7 +93,7 @@ class MyScene extends CGFscene {
 
         // this.tree.display();
         this.treeGPatch.display();
-    
+        */
 
         // ---- END Primitive drawing section
     }
