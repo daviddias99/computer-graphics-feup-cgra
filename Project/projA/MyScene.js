@@ -38,6 +38,13 @@ class MyScene extends CGFscene {
         this.tex.setShininess(10);
         this.tex.loadTexture('images/david.jpg');
         this.tex.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.texture = new CGFappearance(this);
+		this.texture.setAmbient(1, 1, 1, 1.0);
+        this.texture.setDiffuse(0.1, 0.1, 0.1, 1.0);
+        this.texture.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.texture.setShininess(10.0);  
+		this.texture.loadTexture('images/skybox.png');
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -72,6 +79,8 @@ class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
+        this.texture.apply();
+        this.map.display();
 
         // this.hill.display();
 
@@ -82,10 +91,8 @@ class MyScene extends CGFscene {
         //this.cyl.display();
 
         // this.tree.display();
-
         this.treeGPatch.display();
-        this.map.display();
-
+    
 
         // ---- END Primitive drawing section
     }
