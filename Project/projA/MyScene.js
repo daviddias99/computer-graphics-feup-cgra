@@ -41,10 +41,11 @@ class MyScene extends CGFscene {
 
         this.texture = new CGFappearance(this);
 		this.texture.setAmbient(1, 1, 1, 1.0);
-        this.texture.setDiffuse(0.1, 0.1, 0.1, 1.0);
-        this.texture.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.texture.setDiffuse(0.2, 0.2, 0.2, 1.0);
+        this.texture.setSpecular(0.2, 0.2, 0.2, 1.0);
         this.texture.setShininess(10.0);  
-		this.texture.loadTexture('images/skybox.png');
+        this.texture.loadTexture('images/xp.png');
+        this.texture.setTextureWrap('CLAMP_TO_EDGE', 'CLAM_TO_EDGE');
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
