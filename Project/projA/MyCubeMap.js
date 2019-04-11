@@ -9,41 +9,41 @@ class MyCubeMap extends CGFobject {
 		this.initBuffers();
 	}
 	initBuffers() {
-		let side = 50;
-		let halfSide = side / 2;
+		let halfSide = 20;
+		let margin = 0.0005;
 
 		// reference to the vertices of the cube. Each vertex has been declared three times
 		// for all the faces that meet at a single vertex (used for normal vector declaring)
 		this.vertices = [
 			/* top and bottom */
-			halfSide, side, -halfSide,		//0
-			-halfSide, side, -halfSide,		//1
-			-halfSide, side, halfSide,		//2
-			halfSide, side, halfSide,		//3
-			halfSide, 0, -halfSide,			//4
-			-halfSide, 0, -halfSide,		//5
-			-halfSide, 0, halfSide,			//6
-			halfSide, 0, halfSide,			//7
+			halfSide, halfSide, -halfSide,			//0
+			-halfSide, halfSide, -halfSide,			//1
+			-halfSide, halfSide, halfSide,			//2
+			halfSide, halfSide, halfSide,			//3
+			halfSide, -halfSide, -halfSide,			//4
+			-halfSide, -halfSide, -halfSide,		//5
+			-halfSide, -halfSide, halfSide,			//6
+			halfSide, -halfSide, halfSide,			//7
 			/* left and right */
-			halfSide, side, -halfSide,		//0
-			-halfSide, side, -halfSide,		//1
-			-halfSide, side, halfSide,		//2
-			halfSide, side, halfSide,		//3
-			halfSide, 0, -halfSide,			//4
-			-halfSide, 0, -halfSide,		//5
-			-halfSide, 0, halfSide,			//6
-			halfSide, 0, halfSide,			//7
+			halfSide, halfSide, -halfSide,			//0
+			-halfSide, halfSide, -halfSide,			//1
+			-halfSide, halfSide, halfSide,			//2
+			halfSide, halfSide, halfSide,			//3
+			halfSide, -halfSide, -halfSide,			//4
+			-halfSide, -halfSide, -halfSide,		//5
+			-halfSide, -halfSide, halfSide,			//6
+			halfSide, -halfSide, halfSide,			//7
 			/* front and back */
-			halfSide, side, -halfSide,		//0
-			-halfSide, side, -halfSide,		//1
-			-halfSide, side, halfSide,		//2
-			halfSide, side, halfSide,		//3
-			halfSide, 0, -halfSide,			//4
-			-halfSide, 0, -halfSide,		//5
-			-halfSide, 0, halfSide,			//6
-			halfSide, 0, halfSide,			//7
+			halfSide, halfSide, -halfSide,			//0
+			-halfSide, halfSide, -halfSide,			//1
+			-halfSide, halfSide, halfSide,			//2
+			halfSide, halfSide, halfSide,			//3
+			halfSide, -halfSide, -halfSide,			//4
+			-halfSide, -halfSide, -halfSide,		//5
+			-halfSide, -halfSide, halfSide,			//6
+			halfSide, -halfSide, halfSide			//7
 		];
-
+		
 		// reference to the normal-vectors of the cube's vertices. Each vertex has 3 normals declared to account 
 		// for all the faces that meet at a single vertex
 		this.normals = [
@@ -74,6 +74,7 @@ class MyCubeMap extends CGFobject {
 			0,0,-1,				//6
 			0,0,-1				//7
 		];
+		
 
 		//Counter-clockwise reference of vertices
 		this.indices = [
@@ -98,32 +99,32 @@ class MyCubeMap extends CGFobject {
 		];
 
 		this.texCoords = [
-			0.5, 1/3,
-			0.25, 1/3,
-			0.25, 0,
-			0.5, 0,
-			0.5, 2/3,
-			0.25, 2/3,
-			0.25, 1,
-			0.5, 1,
+			0.5 - margin, 1/3,
+			0.25 + margin, 1/3,
+			0.25 + margin, 0,
+			0.5 - margin, 0,
+			0.5 - margin, 2/3,
+			0.25 + margin, 2/3,
+			0.25 + margin, 1,
+			0.5 - margin, 1,
 
-			0.5, 1/3,
-			0.25, 1/3,
-			0, 1/3,
-			0.75, 1/3,
-			0.5, 2/3,
-			0.25, 2/3,
-			0, 2/3,
-			0.75, 2/3,
+			0.5 - margin, 1/3 + margin,
+			0.25 + margin, 1/3 + margin,
+			0, 1/3 + margin,
+			0.75, 1/3 + margin,
+			0.5 - margin, 2/3 - margin,
+			0.25 + margin, 2/3 - margin,
+			0, 2/3 - margin,
+			0.75, 2/3 - margin,
 			
 			0.5, 1/3,
 			0.25, 1/3,
-			1, 1/3,
-			0.75, 1/3,
+			1, 1/3 + margin,
+			0.75, 1/3 + margin,
 			0.5, 2/3,
 			0.25, 2/3,
-			1, 2/3,
-			0.75, 2/3
+			1, 2/3 - margin,
+			0.75, 2/3 - margin
 		];
 
 		this.primitiveType = this.scene.gl.TRIANGLES;
