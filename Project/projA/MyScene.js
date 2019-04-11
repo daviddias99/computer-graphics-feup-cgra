@@ -29,6 +29,7 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.tree = new MyTree(this, 5, 2, 5, 4, null, null);
         this.treeGPatch = new MyTreeGroupPatch(this);
+        this.treeRPatch = new MyTreeRowPatch(this);
 
         //Objects connected to MyInterface
         this.tex = new CGFappearance(this);
@@ -90,7 +91,8 @@ class MyScene extends CGFscene {
         // this.prism.display();
         // this.cyl.display();
         // this.tree.display();
-        this.treeGPatch.display();
+        // this.treeGPatch.display();
+        this.treeRPatch.display();
 
         // ---- END Primitive drawing section
     }
