@@ -21,7 +21,8 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        // this.map = new MyCubeMap(this);
+        this.map = new MyCubeMap(this);
+        this.terrain = new MyQuad(this);
 
         this.hill = new MyVoxelHill(this, 8);
         this.prism = new MyPrism(this, 5, 5);
@@ -41,12 +42,24 @@ class MyScene extends CGFscene {
         this.tex.setTextureWrap('REPEAT', 'REPEAT');
 
         this.texture = new CGFappearance(this);
-        this.texture.setAmbient(1, 1, 1, 1.0);
-        this.texture.setDiffuse(0.2, 0.2, 0.2, 1.0);
-        this.texture.setSpecular(0.2, 0.2, 0.2, 1.0);
-        this.texture.setShininess(10.0);
+        //this.texture.setAmbient(1, 1, 1, 1.0);
+        this.texture.setEmission(1, 1, 1, 1);
+        //this.texture.setDiffuse(0, 0, 0, 1.0);
+        //this.texture.setSpecular(0, 0, 0, 1.0);
+        //this.texture.setShininess(10.0);
         this.texture.loadTexture('images/xp.png');
         this.texture.setTextureWrap('CLAMP_TO_EDGE', 'CLAM_TO_EDGE');
+
+        //Objects connected to MyInterface
+        this.terrainTex = new CGFappearance(this);
+        this.terrainTex.setAmbient(1, 1, 1, 1);
+        this.terrainTex.setSpecular(0.4, 0.4, 0.4, 1);
+        this.terrainTex.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.terrainTex.setShininess(10);
+        this.terrainTex.loadTexture('images/grass.jpg');
+        this.terrainTex.setTextureWrap('REPEAT', 'REPEAT');
+
+
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -55,7 +68,7 @@ class MyScene extends CGFscene {
         this.lights[0].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(60, 30, 60), vec3.fromValues(0, 0, 0));
     }
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -76,24 +89,30 @@ class MyScene extends CGFscene {
 
         // Draw axis
         this.axis.display();
-
+        
         //Apply default appearance
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
-        this.texture.apply();
-        // this.map.display();
 
-        // this.tex.apply();
-        
+        this.displayBackground();
 
-        // this.hill.display();
-        // this.prism.display();
-        // this.cyl.display();
-        // this.tree.display();
-        // this.treeGPatch.display();
-        this.treeRPatch.display();
-
+        this.treeGPatch.display();
+        this.tex.apply();
         // ---- END Primitive drawing section
+    }
+    displayBackground() {
+        this.texture.apply();
+        this.pushMatrix();
+        this.translate(0, 2, 0);
+        this.map.display();
+        this.popMatrix();
+
+        this.terrainTex.apply();
+        this.pushMatrix();
+        this.scale(100, 1, 100);
+        this.rotate(-Math.PI / 2, 1, 0, 0);
+        this.terrain.display();
+        this.popMatrix();
     }
 }
