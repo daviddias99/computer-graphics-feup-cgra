@@ -21,13 +21,13 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-    // this.map = new MyCubeMap(this);
+        // this.map = new MyCubeMap(this);
 
-         this.hill = new MyVoxelHill(this,8);
-        // this.prism = new MyPrism(this, 5, 5);
-        // this.cyl = new MyCylinder(this, 10, 5);
-        //this.house = new MyHouse(this);
-        //  this.tree = new MyTree(this,5,2,5,4,null,null);
+        this.hill = new MyVoxelHill(this, 8);
+        this.prism = new MyPrism(this, 5, 5);
+        this.cyl = new MyCylinder(this, 10, 5);
+        this.house = new MyHouse(this);
+        this.tree = new MyTree(this, 5, 2, 5, 4, null, null);
         this.treeGPatch = new MyTreeGroupPatch(this);
 
         //Objects connected to MyInterface
@@ -40,10 +40,10 @@ class MyScene extends CGFscene {
         this.tex.setTextureWrap('REPEAT', 'REPEAT');
 
         this.texture = new CGFappearance(this);
-		this.texture.setAmbient(1, 1, 1, 1.0);
+        this.texture.setAmbient(1, 1, 1, 1.0);
         this.texture.setDiffuse(0.2, 0.2, 0.2, 1.0);
         this.texture.setSpecular(0.2, 0.2, 0.2, 1.0);
-        this.texture.setShininess(10.0);  
+        this.texture.setShininess(10.0);
         this.texture.loadTexture('images/xp.png');
         this.texture.setTextureWrap('CLAMP_TO_EDGE', 'CLAM_TO_EDGE');
     }
@@ -83,18 +83,14 @@ class MyScene extends CGFscene {
         this.texture.apply();
         // this.map.display();
 
+        // this.tex.apply();
         
-        this.hill.display();
-/*
-        this.tex.apply();
 
+        // this.hill.display();
         // this.prism.display();
-        //this.cyl.enableNormalViz();
-        //this.cyl.display();
-*/
+        // this.cyl.display();
         // this.tree.display();
-        //this.treeGPatch.display();
-        
+        this.treeGPatch.display();
 
         // ---- END Primitive drawing section
     }

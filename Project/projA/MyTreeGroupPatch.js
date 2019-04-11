@@ -24,6 +24,8 @@ class MyTreeGroupPatch extends CGFobject {
         this.treeTopRadius = 3;
         this.treeTopHeight = 5;
         this.minimumScaleFactor = 0.5;
+        this.defaultTreeDistance = 3 * this.treeTopRadius;
+        this.maximumOffsetDistance = this.treeTopRadius/2;
 
         this.tree = new MyTree(this.scene,this.trunkHeight,this.trunkRadius,this.treeTopHeight,this.treeTopRadius,null,null);
 
@@ -33,8 +35,8 @@ class MyTreeGroupPatch extends CGFobject {
 
         for(let i = 0; i < 3; i++){
 
-            this.xOffsets.push([getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4]);
-            this.zOffsets.push([getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4,getRandNumber(-1,1)*this.treeTopRadius/4]);
+            this.xOffsets.push([getRandNumber(-1,1)*this.maximumOffsetDistance,getRandNumber(-1,1)*this.maximumOffsetDistance,getRandNumber(-1,1)*this.maximumOffsetDistance]);
+            this.zOffsets.push([getRandNumber(-1,1)*this.maximumOffsetDistance,getRandNumber(-1,1)*this.maximumOffsetDistance,getRandNumber(-1,1)*this.maximumOffsetDistance]);
             this.sizeScalings.push([getRandNumber(0.8,1),getRandNumber(0.8,1),getRandNumber(0.8,1)]);
 
         }
@@ -58,7 +60,7 @@ class MyTreeGroupPatch extends CGFobject {
                 
                 let currentScaling = this.getTreeScaling(i,j);
 
-                this.scene.translate(i*(2.5*this.treeTopRadius ) + this.xOffsets[i][j],0, j*(2.5*this.treeTopRadius) + this.zOffsets[i][j]);
+                this.scene.translate(i*this.defaultTreeDistance + this.xOffsets[i][j],0, j*this.defaultTreeDistance + this.zOffsets[i][j]);
                 this.scene.scale(currentScaling,currentScaling,currentScaling);
                 this.tree.display();
 
