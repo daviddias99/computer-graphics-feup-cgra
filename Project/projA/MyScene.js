@@ -40,10 +40,11 @@ class MyScene extends CGFscene {
         this.tex.setTextureWrap('REPEAT', 'REPEAT');
 
         this.texture = new CGFappearance(this);
-		this.texture.setAmbient(1, 1, 1, 1.0);
-        this.texture.setDiffuse(0.2, 0.2, 0.2, 1.0);
-        this.texture.setSpecular(0.2, 0.2, 0.2, 1.0);
-        this.texture.setShininess(10.0);  
+        //this.texture.setAmbient(1, 1, 1, 1.0);
+        this.texture.setEmission(1, 1, 1, 1);
+        //this.texture.setDiffuse(0, 0, 0, 1.0);
+        //this.texture.setSpecular(0, 0, 0, 1.0);
+        //this.texture.setShininess(10.0);
         this.texture.loadTexture('images/xp.png');
         this.texture.setTextureWrap('CLAMP_TO_EDGE', 'CLAM_TO_EDGE');
     }
@@ -75,15 +76,20 @@ class MyScene extends CGFscene {
 
         // Draw axis
         this.axis.display();
-
+        
         //Apply default appearance
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
-        this.texture.apply();
-        this.map.display();
 
-        /*
+        this.treeGPatch.display();
+        this.texture.apply();
+        
+        this.map.display();
+        
+        
+        this.treeGPatch.display();
+        
         // this.hill.display();
 
         this.tex.apply();
@@ -93,9 +99,8 @@ class MyScene extends CGFscene {
         //this.cyl.display();
 
         // this.tree.display();
-        this.treeGPatch.display();
-        */
-
+        //this.treeGPatch.display();
+    
         // ---- END Primitive drawing section
     }
 }
