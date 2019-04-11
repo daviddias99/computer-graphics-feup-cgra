@@ -59,7 +59,7 @@ class MyTreeGroupPatch extends CGFobject {
                 let currentScaling = this.getTreeScaling(i,j);
 
                 this.scene.translate(i*(2.5*this.treeTopRadius ) + this.xOffsets[i][j],0, j*(2.5*this.treeTopRadius) + this.zOffsets[i][j]);
-                //this.scene.scale(currentScaling,currentScaling,currentScaling);
+                this.scene.scale(currentScaling,currentScaling,currentScaling);
                 this.tree.display();
 
                 this.scene.popMatrix();

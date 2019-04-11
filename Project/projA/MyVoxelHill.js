@@ -4,8 +4,19 @@
  * @param scene - Reference to MyVoxelHill object
  */
 
+
 function layerSideLength(h) {
     return 2 * h - 1;
+}
+
+function isInside(i, j, maxHeight, currentHeight){
+
+    var sidelength = layerSideLength(maxHeight - currentHeight);
+
+    if( (i == 0) || (i == sidelength - 1) || (j == 0) || (j == sidelength - 1))
+        return false;
+    else
+        return true;
 }
 
 class MyVoxelHill extends CGFobject {
@@ -13,14 +24,11 @@ class MyVoxelHill extends CGFobject {
         super(scene);
         this.height = height;
         this.initBuffers();
-        this.initPieceMaterials();
+
 	}
 	initBuffers() {
         
-        this.x = 0;
-        this.y = 0;
         this.baseLength =  layerSideLength(this.height);
-        this.numCubes = 0;
 
         this.cube = new MyUnitCubeQuad(this.scene,null);
     }
@@ -34,12 +42,16 @@ class MyVoxelHill extends CGFobject {
             for(let j = 0; j < Math.pow(this.baseLength - i * 2, 2); j++){
 
                 this.scene.pushMatrix();
+                let inLayerX = j%layerSideLength(this.height - i);
+                let inLayerZ = Math.floor(j / layerSideLength(this.height - i));
                 
-                if((true)){ //CHANGE THIS CONDITION
+                if( ! isInside(inLayerX,inLayerZ,this.height,i) || i == 0){ 
 
-                    this.scene.translate( j % layerSideLength(this.height - i) + i ,i,  Math.floor(j / layerSideLength(this.height - i)) + i);
+                    this.scene.translate( inLayerX + i ,i, inLayerZ + i);
                     this.cube.display();
                 }
+                else
+                    continue;
 
                 this.scene.popMatrix();
                 
@@ -49,16 +61,5 @@ class MyVoxelHill extends CGFobject {
         this.scene.popMatrix();
     }
     
-    // Updates the complexity of each element of the tangram
-    updateBuffers(complexity){
-        
-        this.diamond.updateBuffers(complexity);
-        this.triangle.updateBuffers(complexity);
-        this.parallelogram.updateBuffers(complexity);
-        this.triangleBig1.updateBuffers(complexity);
-        this.triangleSmall1.updateBuffers(complexity);
-        this.triangleBig2.updateBuffers(complexity);
-        this.triangleSmall2.updateBuffers(complexity);
 
-    }
 }

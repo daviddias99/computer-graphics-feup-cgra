@@ -21,12 +21,12 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.map = new MyCubeMap(this);
+    // this.map = new MyCubeMap(this);
 
          this.hill = new MyVoxelHill(this,8);
         // this.prism = new MyPrism(this, 5, 5);
         // this.cyl = new MyCylinder(this, 10, 5);
-        this.house = new MyHouse(this);
+        //this.house = new MyHouse(this);
         //  this.tree = new MyTree(this,5,2,5,4,null,null);
         this.treeGPatch = new MyTreeGroupPatch(this);
 
@@ -81,10 +81,10 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
         this.texture.apply();
-        this.map.display();
+        // this.map.display();
 
         
-        // this.hill.display();
+        this.hill.display();
 /*
         this.tex.apply();
 
@@ -93,7 +93,7 @@ class MyScene extends CGFscene {
         //this.cyl.display();
 */
         // this.tree.display();
-        this.treeGPatch.display();
+        //this.treeGPatch.display();
         
 
         // ---- END Primitive drawing section
