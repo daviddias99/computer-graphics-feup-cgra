@@ -23,7 +23,7 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.map = new MyCubeMap(this);
 
-        // this.hill = new MyVoxelHill(this,8);
+         this.hill = new MyVoxelHill(this,8);
         // this.prism = new MyPrism(this, 5, 5);
         // this.cyl = new MyCylinder(this, 10, 5);
         this.house = new MyHouse(this);
@@ -82,18 +82,18 @@ class MyScene extends CGFscene {
         this.texture.apply();
         this.map.display();
 
-        /*
+        
         // this.hill.display();
-
+/*
         this.tex.apply();
 
         // this.prism.display();
         //this.cyl.enableNormalViz();
         //this.cyl.display();
-
+*/
         // this.tree.display();
         this.treeGPatch.display();
-        */
+        
 
         // ---- END Primitive drawing section
     }
