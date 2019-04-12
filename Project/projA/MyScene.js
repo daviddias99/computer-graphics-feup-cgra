@@ -21,7 +21,7 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.map = new MyCubeMap(this);
+        this.map = new MyCubeMap(this,'images/xp.png');
         this.terrain = new MyQuad(this,null,'images/grass.jpg');
 
         this.hill = new MyVoxelHill(this, 8);
@@ -103,7 +103,8 @@ class MyScene extends CGFscene {
         // ---- END Primitive drawing section
     }
     displayBackground() {
-        this.texture.apply();
+        // this.texture.apply();
+        // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
         this.pushMatrix();
         this.translate(0, 2, 0);
         this.map.display();
