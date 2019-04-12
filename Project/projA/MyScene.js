@@ -22,7 +22,7 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.map = new MyCubeMap(this);
-        this.terrain = new MyQuad(this);
+        this.terrain = new MyQuad(this,null,'images/grass.jpg');
 
         this.hill = new MyVoxelHill(this, 8);
         this.prism = new MyPrism(this, 5, 5);
@@ -109,10 +109,16 @@ class MyScene extends CGFscene {
         this.map.display();
         this.popMatrix();
 
-        this.terrainTex.apply();
+        // this.terrainTex.apply();
         this.pushMatrix();
         this.scale(100, 1, 100);
         this.rotate(-Math.PI / 2, 1, 0, 0);
+        this.terrain.updateTexCoords([
+			-3,3,
+			3,3,
+			-3,-3,
+			3,-3
+		]) 
         this.terrain.display();
         this.popMatrix();
     }

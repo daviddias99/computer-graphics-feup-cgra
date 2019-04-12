@@ -4,8 +4,10 @@
  * @param scene - Reference to MyScene object
  */
 class MyQuad extends CGFobject {
-	constructor(scene, coords) {
+	constructor(scene, coords,texture) {
 		super(scene);
+		this.texture = texture;
+		this.initMaterials();
 		this.initBuffers();
 		if (coords != undefined)
 			this.updateTexCoords(coords);
@@ -44,10 +46,10 @@ class MyQuad extends CGFobject {
         */
 
 		this.texCoords = [
-			-3,3,// 0, 1,
-			3,3,// 1, 1,
-			-3,-3,// 0, 0,
-			3,-3// 1, 0
+			0, 1,
+			1, 1,
+			0, 0,
+			1, 0
 		]
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
@@ -79,7 +81,7 @@ class MyQuad extends CGFobject {
     display(){
 
 		if(this.texture != null)
-			this.texture.apply();
+			this.material.apply();
         super.display();
 
     }
