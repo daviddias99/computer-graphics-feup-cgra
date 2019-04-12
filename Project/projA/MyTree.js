@@ -20,9 +20,7 @@ class MyTree extends CGFobject {
 	initBuffers() {
 
 		this.trunk = new MyCylinder(this.scene,10,5);
-        this.treeTop = new MyCone(this.scene,10,5);
-
-        
+        this.treeTop = new MyCone(this.scene,10,5,'images/foliage.jpg');
 
     }
     

@@ -38,7 +38,7 @@ class MyScene extends CGFscene {
         this.tex.setSpecular(0.8, 0.8, 0.8, 1);
         this.tex.setDiffuse(0.8, 0.8, 0.8, 1);
         this.tex.setShininess(10);
-        this.tex.loadTexture('images/david.jpg');
+        this.tex.loadTexture('images/foliage.jpg');
         this.tex.setTextureWrap('REPEAT', 'REPEAT');
 
         this.texture = new CGFappearance(this);
@@ -97,8 +97,9 @@ class MyScene extends CGFscene {
 
         this.displayBackground();
 
+        //this.tex.apply();
         this.treeGPatch.display();
-        this.tex.apply();
+
         // ---- END Primitive drawing section
     }
     displayBackground() {
