@@ -3,11 +3,12 @@
 * @constructor
 */
 class MyCylinder extends CGFobject {
-    constructor(scene, slices, stacks,texture) {
+    constructor(scene, slices, stacks,texture,height) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
         this.texture = texture;
+        height == null ? this.height = 1 : this.height = height;
         this.initBuffers();
         this.initMaterials();
     }
@@ -29,7 +30,7 @@ class MyCylinder extends CGFobject {
             var ca = Math.cos(ang);
 
             this.vertices.push(ca, 0, -sa);
-            this.vertices.push(ca, 1, -sa);
+            this.vertices.push(ca, this.height, -sa);
             
             // The normal of the vertices the bisector of the angle created by two edges
             var normal= [
