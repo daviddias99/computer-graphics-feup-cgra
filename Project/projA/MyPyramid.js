@@ -3,16 +3,19 @@
 * @constructor
 */
 class MyPyramid extends CGFobject {
-    constructor(scene, slices, stacks) {
+    constructor(scene, slices, stacks,texture) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
+        this.texture = texture;
         this.initBuffers();
+        this.initMaterials();
     }
     initBuffers() {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+        this.texCoords = [];
 
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
@@ -55,9 +58,14 @@ class MyPyramid extends CGFobject {
 
             this.indices.push(3*i, (3*i+1) , (3*i+2) );
 
+            this.texCoords.push(0.5, 1);
+            this.texCoords.push(0, 0); 
+            this.texCoords.push(1, 0);
+            
             ang+=alphaAng;
         }
 
+        
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
     }
@@ -69,6 +77,27 @@ class MyPyramid extends CGFobject {
         this.initBuffers();
         this.initNormalVizBuffers();
     }
+
+    initMaterials(){
+
+        let factor = 0.8;
+        this.material = new CGFappearance(this.scene);
+        this.material.setAmbient(factor, factor, factor, 1.0);
+        this.material.setDiffuse(factor, factor, factor, 1.0);
+        this.material.setSpecular(factor, factor, factor, 1.0);
+        this.material.setShininess(10.0);  
+        this.material.loadTexture(this.texture);
+        this.material.setTextureWrap('REPEAT', 'REPEAT');
+
+    }
+
+    display(){
+
+        this.material.apply();
+        super.display();
+
+    }
+
 }
 
 

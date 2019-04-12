@@ -15,11 +15,10 @@ class MyTree extends CGFobject {
         this.treeTopHeigth = treeTopHeight;
 
         this.initBuffers();
-        this.initPieceMaterials();
 	}
 	initBuffers() {
 
-		this.trunk = new MyCylinder(this.scene,10,5);
+		this.trunk = new MyCylinder(this.scene,10,5,'images/bark.jpg');
         this.treeTop = new MyCone(this.scene,10,5,'images/foliage.jpg');
 
     }
@@ -62,7 +61,5 @@ class MyTree extends CGFobject {
 
 
     }
-    initPieceMaterials() {
 
-    }
 }

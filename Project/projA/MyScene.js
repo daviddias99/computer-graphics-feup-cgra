@@ -97,8 +97,8 @@ class MyScene extends CGFscene {
 
         this.displayBackground();
 
-        //this.tex.apply();
-        this.treeGPatch.display();
+        // this.treeGPatch.display();
+        this.house.display();
 
         // ---- END Primitive drawing section
     }

@@ -9,9 +9,9 @@ class MyHouse extends CGFobject {
         this.initBuffers();
 	}
 	initBuffers() {
-        this.pyramid = new MyPyramid(this.scene, 4, 10);
+        this.pyramid = new MyPyramid(this.scene, 4, 10,'images/bark.jpg');
         this.cube = new MyUnitCubeQuad(this.scene);
-        this.prism = new MyPrism(this.scene, 8, 10);
+        this.prism = new MyPrism(this.scene, 8, 10,'images/david.jpg');
     }
     /**
      * Applies the normal vizualization for each element of the tangram
