@@ -33,6 +33,8 @@ class MyScene extends CGFscene {
         // this.treeRPatch = new MyTreeRowPatch(this);
         this.poly = new MyRegPolygon(this,5,-1);
         this.cylB  = new MyCylinderWBottoms(this,5,3,5,null,null);
+        this.coneB  = new MyConeWBottoms(this,5,3,1,null,null);
+        this.priB  = new MyPrismWBottoms(this,5,3,5,null,null);
         // this.lamp = new MyLamp(this,7,0.5,1.5,1.5);
 
         //Objects connected to MyInterface
@@ -87,7 +89,9 @@ class MyScene extends CGFscene {
         // this.tree.display();
         this.pushMatrix();
         this.translate(0,1,0);
-        this.cylB.display();
+        // this.cylB.display();
+        // this.coneB.display();
+        this.priB.display();
         this.popMatrix();
 
         // ---- END Primitive drawing section

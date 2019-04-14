@@ -20,6 +20,8 @@ serialInclude(['../lib/CGF.js'
                 , 'MyLamp.js',
                 , 'MyRegPolygon.js',
                 , 'MyCylinderWBottoms.js',
+                , 'MyConeWBottoms.js',
+                , 'MyPrismWBottoms.js',
 
 main=function()
 {

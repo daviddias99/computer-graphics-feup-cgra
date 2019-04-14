@@ -1,9 +1,9 @@
 /**
- * MyCylinderWBottoms
+ * MyConeWBottoms
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyCylinderWBottoms extends CGFobject {
+class MyConeWBottoms extends CGFobject {
 
 	constructor(scene, slices, stacks,height, sideTexture, bottomTexture) {
         super(scene);
@@ -20,7 +20,7 @@ class MyCylinderWBottoms extends CGFobject {
 	}
 	initBuffers() {
 
-		this.cylinder = new MyCylinder(this.scene,this.slices,null);
+		this.cone = new MyCone(this.scene,this.slices,null);
         this.bottom = new MyRegPolygon(this.scene,this.slices,-1);
 
     }
@@ -50,17 +50,9 @@ class MyCylinderWBottoms extends CGFobject {
         this.scene.pushMatrix();
 
         this.scene.scale(1,this.height,1);
-        this.cylinder.display();
+        this.cone.display();
 
         this.scene.popMatrix();
-        this.scene.pushMatrix();
-
-        this.scene.translate(0,this.height,0);
-        this.scene.rotate(-Math.PI,1,0,0);
-        this.bottom.display();
-
-        this.scene.popMatrix();
-        
 
     }
     
