@@ -3,11 +3,11 @@
 * @constructor
 */
 class MyPrism extends CGFobject {
-    constructor(scene, slices, stacks,height) {
+    constructor(scene, slices, stacks) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
-        height == null ? this.height = 1 : this.height = height;
+
         this.initBuffers();
     }
     initBuffers() {
@@ -31,8 +31,8 @@ class MyPrism extends CGFobject {
 
             this.vertices.push(ca, 0, -sa);
             this.vertices.push(caa, 0, -saa);
-            this.vertices.push(ca, this.height, -sa);
-            this.vertices.push(caa, this.height, -saa);
+            this.vertices.push(ca, 1, -sa);
+            this.vertices.push(caa, 1, -saa);
             
             // triangle normal computed by cross product of two edges
             var normal= [

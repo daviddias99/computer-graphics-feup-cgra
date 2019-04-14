@@ -3,11 +3,11 @@
 * @constructor
 */
 class MyCone extends CGFobject {
-    constructor(scene, slices, stacks,height) {
+    constructor(scene, slices, stacks) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
-        height == null ? this.height = 1 : this.height = height;
+
         this.initBuffers();
 
     }
@@ -29,7 +29,7 @@ class MyCone extends CGFobject {
 
             (i%2 == 0) ? this.texCoords.push(0, 0) : this.texCoords.push(1, 0);
         }
-        this.vertices.push(0,this.height,0);
+        this.vertices.push(0,1,0);
         this.normals.push(0,1,0);
         this.texCoords.push(0.5, 1);
 

@@ -48,7 +48,6 @@ class MyRegPolygon extends CGFobject {
             // push normal once for each vertex of this triangle
             this.normals.push(...normal);
 
-            console.log(i);
             if (i < this.slices -1 ) 
                 this.indices.push(i+1,i+2,0);
             else
