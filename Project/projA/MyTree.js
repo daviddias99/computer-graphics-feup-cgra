@@ -14,12 +14,42 @@ class MyTree extends CGFobject {
         this.treeTopRadius = treeTopRadius;
         this.treeTopHeigth = treeTopHeight;
 
+        this.treeTopTexture = treeTopTexture;
+        this.trunkTexture = trunkTexture;
+
+        this.initMaterials();
         this.initBuffers();
-	}
+    }
+    
+    initMaterials(){
+
+        // treeTop material
+
+        let factorTT = 0.8;
+        this.treeTopMaterial = new CGFappearance(this.scene);
+        this.treeTopMaterial.setAmbient(factorTT, factorTT, factorTT, 1.0);
+        this.treeTopMaterial.setDiffuse(factorTT, factorTT, factorTT, 1.0);
+        this.treeTopMaterial.setSpecular(factorTT, factorTT, factorTT, 1.0);
+        this.treeTopMaterial.setShininess(10.0);  
+        this.treeTopMaterial.loadTexture(this.treeTopTexture);
+        this.treeTopMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        // trunk material
+
+        let factorT = 0.8;
+        this.trunkMaterial = new CGFappearance(this.scene);
+        this.trunkMaterial.setAmbient(factorT, factorT, factorT, 1.0);
+        this.trunkMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
+        this.trunkMaterial.setSpecular(factorT, factorT, factorT, 1.0);
+        this.trunkMaterial.setShininess(10.0);  
+        this.trunkMaterial.loadTexture(this.trunkTexture);
+        this.trunkMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+    }
 	initBuffers() {
 
-		this.trunk = new MyCylinder(this.scene,10,5,'images/bark.jpg');
-        this.treeTop = new MyCone(this.scene,10,5,'images/foliage.jpg');
+		this.trunk = new MyCylinder(this.scene,10,5);
+        this.treeTop = new MyCone(this.scene,10,5);
 
     }
     
@@ -42,17 +72,18 @@ class MyTree extends CGFobject {
 		this.scene.pushMatrix();
 
         this.scene.scale(this.trunkRadius,this.trunkHeight,this.trunkRadius);
+        this.trunkMaterial.apply();
         this.trunk.display();
-        this.scene.popMatrix();
 
+        this.scene.popMatrix();
         this.scene.pushMatrix();
 
         this.scene.translate(0,this.trunkHeight,0);
         this.scene.scale(this.treeTopRadius,this.treeTopHeigth,this.treeTopRadius);
+        this.treeTopMaterial.apply();
         this.treeTop.display();
-        this.scene.popMatrix();
-        
 
+        this.scene.popMatrix();
     }
     
     // Updates the complexity of each element of the tangram

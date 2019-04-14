@@ -4,11 +4,9 @@
  * @param scene - Reference to MyScene object
  */
 class MyCubeMap extends CGFobject {
-	constructor(scene,texture) {
+	constructor(scene) {
 		super(scene);
-		this.texture = texture;
 		this.initBuffers();
-		this.initMaterials();
 	}
 	initBuffers() {
 		let halfSide = 100;
@@ -133,26 +131,5 @@ class MyCubeMap extends CGFobject {
 		this.initGLBuffers();
 	}
 
-	initMaterials(){
-
-        this.material = new CGFappearance(this.scene);
-        //this.texture.setAmbient(1, 1, 1, 1.0);
-        this.material.setEmission(1, 1, 1, 1);
-        //this.texture.setDiffuse(0, 0, 0, 1.0);
-        //this.texture.setSpecular(0, 0, 0, 1.0);
-        //this.texture.setShininess(10.0);
-        this.material.loadTexture(this.texture);
-        this.material.setTextureWrap('CLAMP_TO_EDGE', 'CLAM_TO_EDGE');
-
-    }
-
-    display(){
-
-		if(this.texture != null)
-			this.material.apply();
-		
-        super.display();
-
-    }
 }
 

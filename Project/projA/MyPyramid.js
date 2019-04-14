@@ -3,14 +3,12 @@
 * @constructor
 */
 class MyPyramid extends CGFobject {
-    constructor(scene, slices, stacks,texture,height) {
+    constructor(scene, slices, stacks,height) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
-        this.texture = texture;
         height == null ? this.height = 1 : this.height = height;
         this.initBuffers();
-        this.initMaterials();
     }
     initBuffers() {
         this.vertices = [];
@@ -79,25 +77,7 @@ class MyPyramid extends CGFobject {
         this.initNormalVizBuffers();
     }
 
-    initMaterials(){
 
-        let factor = 0.8;
-        this.material = new CGFappearance(this.scene);
-        this.material.setAmbient(factor, factor, factor, 1.0);
-        this.material.setDiffuse(factor, factor, factor, 1.0);
-        this.material.setSpecular(factor, factor, factor, 1.0);
-        this.material.setShininess(10.0);  
-        this.material.loadTexture(this.texture);
-        this.material.setTextureWrap('REPEAT', 'REPEAT');
-
-    }
-
-    display(){
-
-        this.material.apply();
-        super.display();
-
-    }
 
 }
 

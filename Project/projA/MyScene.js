@@ -10,6 +10,7 @@ class MyScene extends CGFscene {
         super.init(application);
         this.initCameras();
         this.initLights();
+        this.initMaterials();
 
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -21,16 +22,16 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.map = new MyCubeMap(this,'images/xp.png');
-        this.terrain = new MyQuad(this,null,'images/grass.jpg');
+        this.map = new MyCubeMap(this);
+        this.terrain = new MyQuad(this,null);
         this.hill = new MyVoxelHill(this, 8);
         this.prism = new MyPrism(this, 5, 5);
         this.cyl = new MyCylinder(this, 10, 5);
         this.house = new MyHouse(this);
-        this.tree = new MyTree(this, 5, 2, 5, 4, null, null);
+        this.tree = new MyTree(this, 5, 2, 5, 4, 'images/bark.jpg', 'images/foliage.jpg');
         this.treeGPatch = new MyTreeGroupPatch(this);
         this.treeRPatch = new MyTreeRowPatch(this);
-        this.lamp = new MyLamp(this,7,0.5,1.5,1.5);
+        // this.lamp = new MyLamp(this,7,0.5,1.5,1.5);
 
         //Objects connected to MyInterface
 
@@ -76,14 +77,38 @@ class MyScene extends CGFscene {
 
         this.displayBackground();
 
-        // this.treeGPatch.display();
-        // this.house.display();
-        this.lamp.display();
+        //  this.treeGPatch.display();
+        this.house.display();
+        // this.lamp.display();
+        // this.tree.display();
 
         // ---- END Primitive drawing section
     }
+
+    initMaterials(){
+
+        let factor = 0.8;
+        this.floorMaterial = new CGFappearance(this);
+        this.floorMaterial.setAmbient(factor, factor, factor, 1.0);
+        this.floorMaterial.setDiffuse(factor, factor, factor, 1.0);
+        this.floorMaterial.setSpecular(factor, factor, factor, 1.0);
+        this.floorMaterial.setShininess(10.0);  
+        this.floorMaterial.loadTexture('images/grass.jpg');
+        this.floorMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.skyMaterial = new CGFappearance(this);
+        //this.skyMaterial.setAmbient(1, 1, 1, 1.0);
+        this.skyMaterial.setEmission(1, 1, 1, 1);
+        //this.skyMaterial.setDiffuse(0, 0, 0, 1.0);
+        //this.skyMaterial.setSpecular(0, 0, 0, 1.0);
+        //this.skyMaterial.setShininess(10.0);
+        this.skyMaterial.loadTexture('images/xp.png');
+        this.skyMaterial.setTextureWrap('CLAMP_TO_EDGE', 'CLAM_TO_EDGE');
+
+    }
+
     displayBackground() {
-        // this.texture.apply();
+        this.skyMaterial.apply();
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
         this.pushMatrix();
         this.translate(0, 2, 0);
@@ -99,7 +124,9 @@ class MyScene extends CGFscene {
 			3,3,
 			-3,-3,
 			3,-3
-		]) 
+        ]) 
+        
+        this.floorMaterial.apply();
         this.terrain.display();
         this.popMatrix();
     }

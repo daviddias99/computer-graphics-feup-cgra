@@ -4,10 +4,9 @@
  * @param scene - Reference to MyScene object
  */
 class MyQuad extends CGFobject {
-	constructor(scene, coords,texture) {
+	constructor(scene, coords) {
 		super(scene);
-		this.texture = texture;
-		this.initMaterials();
+
 		this.initBuffers();
 		if (coords != undefined)
 			this.updateTexCoords(coords);
@@ -65,26 +64,6 @@ class MyQuad extends CGFobject {
 		this.updateTexCoordsGLBuffers();
 	}
 
-	initMaterials(){
-
-        let factor = 0.8;
-        this.material = new CGFappearance(this.scene);
-        this.material.setAmbient(factor, factor, factor, 1.0);
-        this.material.setDiffuse(factor, factor, factor, 1.0);
-        this.material.setSpecular(factor, factor, factor, 1.0);
-        this.material.setShininess(10.0);  
-        this.material.loadTexture(this.texture);
-        this.material.setTextureWrap('REPEAT', 'REPEAT');
-
-    }
-
-    display(){
-
-		if(this.texture != null)
-			this.material.apply();
-        super.display();
-
-    }
 
 }
 
