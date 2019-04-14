@@ -31,6 +31,7 @@ class MyScene extends CGFscene {
         this.tree = new MyTree(this, 5, 2, 5, 4, 'images/bark.jpg', 'images/foliage.jpg');
         this.treeGPatch = new MyTreeGroupPatch(this);
         this.treeRPatch = new MyTreeRowPatch(this);
+        this.poly = new MyRegPolygon(this,5,-1);
         // this.lamp = new MyLamp(this,7,0.5,1.5,1.5);
 
         //Objects connected to MyInterface
@@ -77,10 +78,16 @@ class MyScene extends CGFscene {
 
         this.displayBackground();
 
-        //  this.treeGPatch.display();
-        this.house.display();
+        this.skyMaterial.apply();
+        // this.cyl.display();
+        // this.treeGPatch.display();
+        // this.house.display();
         // this.lamp.display();
         // this.tree.display();
+        this.pushMatrix();
+        this.translate(0,1,0);
+        this.poly.display();
+        this.popMatrix();
 
         // ---- END Primitive drawing section
     }

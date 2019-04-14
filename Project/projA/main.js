@@ -18,6 +18,7 @@ serialInclude(['../lib/CGF.js'
                 , 'MyTreeRowPatch.js'
                 , 'MyCubeMap.js',
                 , 'MyLamp.js',
+                , 'MyRegPolygon.js',
 
 main=function()
 {

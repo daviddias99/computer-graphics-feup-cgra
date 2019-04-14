@@ -30,7 +30,7 @@ class MyVoxelHill extends CGFobject {
         
         this.baseLength =  layerSideLength(this.height);
 
-        this.cube = new MyUnitCubeQuad(this.scene,null);
+        this.cube = new MyUnitCubeQuad(this.scene);
     }
 
     
