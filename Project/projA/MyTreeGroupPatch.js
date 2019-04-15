@@ -32,21 +32,29 @@ class MyTreeGroupPatch extends CGFobject {
         this.xOffsets = [];
         this.zOffsets = [];
         this.sizeScalings = [];
+        this.sizeScalingsHeight = [];
+        this.sizeScalingsWidth = [];
 
         for(let i = 0; i < 3; i++){
 
             this.xOffsets.push([getRandNumber(-1,1)*this.maximumOffsetDistance,getRandNumber(-1,1)*this.maximumOffsetDistance,getRandNumber(-1,1)*this.maximumOffsetDistance]);
             this.zOffsets.push([getRandNumber(-1,1)*this.maximumOffsetDistance,getRandNumber(-1,1)*this.maximumOffsetDistance,getRandNumber(-1,1)*this.maximumOffsetDistance]);
-            this.sizeScalings.push([getRandNumber(0.8,1),getRandNumber(0.8,1),getRandNumber(0.8,1)]);
+            this.sizeScalingsHeight.push([getRandNumber(0.8,1),getRandNumber(0.8,1),getRandNumber(0.8,1)]);
+            this.sizeScalingsWidth.push([getRandNumber(0.8,1),getRandNumber(0.8,1),getRandNumber(0.8,1)]);
 
         }
 
 
     }
 
-    getTreeScaling(i,j){
+    getTreeScalingH(i,j){
 
-        return this.sizeScalings[i][j] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalings[i][j];
+        return this.sizeScalingsH[i][j] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalingsH[i][j];
+    }
+
+    getTreeScalingW(i,j){
+
+        return this.sizeScalingsW[i][j] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalingsW[i][j];
     }
     
 	display() {
@@ -58,10 +66,11 @@ class MyTreeGroupPatch extends CGFobject {
 
                 this.scene.pushMatrix();
                 
-                let currentScaling = this.getTreeScaling(i,j);
+                let currentScalingWidth = this.getTreeScalingW(i,j);
+                let currentScalingHeight = this.getTreeScalingH(i,j);
 
                 this.scene.translate(i*this.defaultTreeDistance + this.xOffsets[i][j],0, j*this.defaultTreeDistance + this.zOffsets[i][j]);
-                this.scene.scale(currentScaling,currentScaling,currentScaling);
+                this.scene.scale(currentScalingWidth, currentScalingHeight, currentScalingWidth);
                 this.tree.display();
 
                 this.scene.popMatrix();

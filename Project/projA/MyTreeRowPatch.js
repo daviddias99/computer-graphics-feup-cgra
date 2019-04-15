@@ -25,29 +25,37 @@ class MyTreeRowPatch extends CGFobject {
         this.treeTopHeight = 5;
         this.minimumScaleFactor = 0.5;
         this.defaultTreeDistance = 3 * this.treeTopRadius;
-        this.maximumOffsetDistance = this.treeTopRadius/2;
+        this.maximumOffsetDistance = this.treeTopRadius/4*3;
 
         this.tree = new MyTree(this.scene,this.trunkHeight,this.trunkRadius,this.treeTopHeight,this.treeTopRadius,'images/bark.jpg','images/foliage.jpg');
 
         this.xOffsets = [];
         this.zOffsets = [];
-        this.sizeScalings = [];
+        this.sizeScalingsHeight = [];
+        this.sizeScalingsWidth = [];
 
         for(let i = 0; i < 6; i++){
 
             this.xOffsets.push(getRandNumber(-1,1)*this.maximumOffsetDistance);
             this.zOffsets.push(getRandNumber(-1,1)*this.maximumOffsetDistance);
-            this.sizeScalings.push(getRandNumber(0.8,1),getRandNumber(0.8,1),getRandNumber(0.8,1));
+            this.sizeScalingsHeight.push(getRandNumber(0.8,1),getRandNumber(0.8,1),getRandNumber(0.8,1));
+            this.sizeScalingsWidth.push(getRandNumber(0.8,1),getRandNumber(0.8,1),getRandNumber(0.8,1));
 
         }
 
 
     }
 
-    getTreeScaling(i){
+    getTreeScalingH(i){
 
-        return this.sizeScalings[i] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalings[i];
+        return this.sizeScalingsHeight[i] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalingsHeight[i];
     }
+
+    getTreeScalingW(i){
+
+        return this.sizeScalingsWidth[i] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalingsWidth[i];
+    }
+    
     
 	display() {
         this.scene.pushMatrix();
@@ -55,11 +63,12 @@ class MyTreeRowPatch extends CGFobject {
         for(let i = 0; i < 6; i++){
 
             this.scene.pushMatrix();
-            console.log("passou aqui");
-            let currentScaling = this.getTreeScaling(i);
+            
+            let currentScalingHeight = this.getTreeScalingH(i);
+            let currentScalingWidth = this.getTreeScalingW(i);
 
             this.scene.translate(i * this.defaultTreeDistance + this.xOffsets[i], 0, this.zOffsets[i]);
-            this.scene.scale(currentScaling, currentScaling, currentScaling);
+            this.scene.scale(currentScalingWidth, currentScalingHeight, currentScalingWidth);
             this.tree.display();
 
             this.scene.popMatrix();

@@ -30,7 +30,7 @@ class MyScene extends CGFscene {
         // this.house = new MyHouse(this);
         // this.tree = new MyTree(this, 5, 2, 5, 4, 'images/bark.jpg', 'images/foliage.jpg');
         // this.treeGPatch = new MyTreeGroupPatch(this);
-        // this.treeRPatch = new MyTreeRowPatch(this);
+        this.treeRPatch = new MyTreeRowPatch(this);
         this.poly = new MyRegPolygon(this,5,-1);
         this.cylB  = new MyCylinderWBottoms(this,5,3,5,null,null);
         this.coneB  = new MyConeWBottoms(this,5,3,1,null,null);
@@ -83,16 +83,16 @@ class MyScene extends CGFscene {
 
         this.skyMaterial.apply();
         // this.cyl.display();
-        // this.treeGPatch.display();
+        this.treeRPatch.display();
         // this.house.display();
         // this.lamp.display();
         // this.tree.display();
-        this.pushMatrix();
-        this.translate(0,1,0);
+        // this.pushMatrix();
+        // this.translate(0,1,0);
         // this.cylB.display();
         // this.coneB.display();
-        this.priB.display();
-        this.popMatrix();
+        // this.priB.display();
+        // this.popMatrix();
 
         // ---- END Primitive drawing section
     }
@@ -121,7 +121,7 @@ class MyScene extends CGFscene {
 
     displayBackground() {
         this.skyMaterial.apply();
-        // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
         this.pushMatrix();
         this.translate(0, 2, 0);
         this.map.display();
