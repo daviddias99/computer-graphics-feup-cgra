@@ -13,7 +13,7 @@ class MyPool extends CGFobject {
 	initBuffers() {
 
         this.water = new MyQuad(this.scene);
-        this.tank = new MyPrismWBottoms(this.scene, 4, null, 5, this.stoneMaterial, this.stoneMaterial)
+        this.tank = new MyPrismWBottoms(this.scene, 4, 5, 5, this.stoneMaterial, this.stoneMaterial)
     }
 
 
