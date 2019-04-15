@@ -29,8 +29,8 @@ class MyTree extends CGFobject {
         this.treeTopMaterial = new CGFappearance(this.scene);
         this.treeTopMaterial.setAmbient(factorTT, factorTT, factorTT, 1.0);
         this.treeTopMaterial.setDiffuse(factorTT, factorTT, factorTT, 1.0);
-        this.treeTopMaterial.setSpecular(factorTT, factorTT, factorTT, 1.0);
-        this.treeTopMaterial.setShininess(10.0);  
+        this.treeTopMaterial.setSpecular(0.3, 0.3, 0.3, 1.0);
+        this.treeTopMaterial.setShininess(3.0);  
         this.treeTopMaterial.loadTexture(this.treeTopTexture);
         this.treeTopMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
@@ -40,8 +40,8 @@ class MyTree extends CGFobject {
         this.trunkMaterial = new CGFappearance(this.scene);
         this.trunkMaterial.setAmbient(factorT, factorT, factorT, 1.0);
         this.trunkMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
-        this.trunkMaterial.setSpecular(factorT, factorT, factorT, 1.0);
-        this.trunkMaterial.setShininess(10.0);  
+        this.trunkMaterial.setSpecular(0.2, 0.2, 0.2, 1.0);
+        this.trunkMaterial.setShininess(3.0);  
         this.trunkMaterial.loadTexture(this.trunkTexture);
         this.trunkMaterial.setTextureWrap('REPEAT', 'REPEAT');
 

@@ -21,7 +21,7 @@ class MyPrismWBottoms extends CGFobject {
 
     initBuffers() {
 
-        this.prism = new MyCylinder(this.scene, this.slices, null);
+        this.prism = new MyPrism(this.scene, this.slices, null);
         this.bottom = new MyRegPolygon(this.scene, this.slices, -1);
 
     }

@@ -48,12 +48,12 @@ class MyTreeGroupPatch extends CGFobject {
 
     getTreeScalingH(i,j){
 
-        return this.sizeScalingsH[i][j] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalingsH[i][j];
+        return this.sizeScalingsHeight[i][j] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalingsHeight[i][j];
     }
 
     getTreeScalingW(i,j){
 
-        return this.sizeScalingsW[i][j] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalingsW[i][j];
+        return this.sizeScalingsWidth[i][j] < this.minimumScaleFactor ? this.minimumScaleFactor : this.sizeScalingsWidth[i][j];
     }
     
 	display() {

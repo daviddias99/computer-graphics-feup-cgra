@@ -24,23 +24,43 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.map = new MyCubeMap(this);
         this.terrain = new MyQuad(this,null);
+
+        this.treeGPatch = new MyTreeGroupPatch(this);
+        this.pool = new MyPool(this);
         
         //Objects connected to MyInterface
 
 
     }
     initLights() {
-         //  sun light (warm)
-         
-        
-         this.setGlobalAmbientLight(0.6, 0.6, 0.5, 1.0);
 
-         this.lights[0].setPosition(0, 80, 0, 1.0);
-         this.lights[0].setDiffuse(1.0, 1.0, 0.6, 1.0);
-         this.lights[0].setSpecular(1.0, 1.0, 0.6, 1.0);
-         this.lights[0].disable();
-         this.lights[0].setVisible(true);
-         this.lights[0].update();
+        //  sun light (warm)
+
+        // this.setGlobalAmbientLight(0.9, 0.9, 0.9, 1.0);
+
+        this.lights[0].setConstantAttenuation(0.3);
+        this.lights[0].setPosition(-50, 70, -90, 1.0);
+        // this.lights[0].setAmbient(1, 1, 0.85, 1.0);
+        this.lights[0].setDiffuse(1, 1, 0.8, 1.0);
+        this.lights[0].setSpecular(1, 1, 0.8, 1.0);
+        this.lights[0].setSpotDirection(1,-1,1);
+        this.lights[0].enable();
+        this.lights[0].setVisible(true);
+        this.lights[0].update();
+
+        //  moon light (cold)
+
+        // this.setGlobalAmbientLight(0.9, 0.9, 0.9, 1.0);
+
+        // this.lights[1].setConstantAttenuation(0.40);
+        // this.lights[1].setPosition(-50, 70, -90, 1.0);
+        // // this.lights[1].setAmbient(1, 1, 0.85, 1.0);
+        // this.lights[1].setDiffuse(0.15, 0.3, 0.3, 1.0);
+        // this.lights[1].setSpecular(0.15, 0.3, 0.3, 1.0);
+        // this.lights[1].setSpotDirection(1,-1,1);
+        // this.lights[1].enable();
+        // this.lights[1].setVisible(true);
+        // this.lights[1].update();
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(60, 30, 60), vec3.fromValues(0, 0, 0));
@@ -64,6 +84,7 @@ class MyScene extends CGFscene {
 
         // Draw axis
         this.axis.display();
+        // this.lights[1].update();
         this.lights[0].update();
         
         //Apply default appearance
@@ -72,6 +93,8 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         this.displayBackground();
+        // this.treeGPatch.display();
+        this.pool.display();
         this.pushMatrix();
         this.popMatrix();
 
