@@ -4,40 +4,16 @@
  * @param scene - Reference to MyScene object
  */
 class MyUnitCubeQuad extends CGFobject {
-	constructor(scene) {
+	constructor(scene, topMaterial, bottomMaterial, sideMaterial) {
 		super(scene);
 		this.initBuffers();
-		this.initPieceMaterials();
+		this.bottom = bottomMaterial;
+		this.top = topMaterial;
+		this.side = sideMaterial;
 	}
 	
 	initBuffers() {
 		this.quad = new MyQuad(this.scene);
-	}
-
-	initPieceMaterials() {
-
-		let factor = 0.5;
-
-		this.bottom = new CGFappearance(this.scene);
-		this.bottom.setAmbient(factor, factor, factor, 1.0);
-        this.bottom.setDiffuse(factor, factor, factor, 1.0);
-        this.bottom.setSpecular(factor, factor, factor, 1.0);
-        this.bottom.setShininess(10.0);  
-		this.bottom.loadTexture('images/mineBottom.png');
-		
-		this.side = new CGFappearance(this.scene);
-		this.side.setAmbient(factor, factor, factor, 1.0);
-        this.side.setDiffuse(factor, factor, factor, 1.0);
-        this.side.setSpecular(factor, factor, factor, 1.0);
-        this.side.setShininess(10.0);  
-		this.side.loadTexture('images/mineSide.png');
-		
-		this.top = new CGFappearance(this.scene);
-		this.top.setAmbient(factor, factor, factor, 1.0);
-        this.top.setDiffuse(factor, factor, factor, 1.0);
-        this.top.setSpecular(factor, factor, factor, 1.0);
-        this.top.setShininess(10.0);  
-        this.top.loadTexture('images/mineTop.png');
 	}
 
 	display () {

@@ -27,6 +27,7 @@ class MyScene extends CGFscene {
 
         this.treeGPatch = new MyTreeGroupPatch(this);
         this.pool = new MyPool(this);
+        this.house = new MyHouse(this);
         
         //Objects connected to MyInterface
 
@@ -63,7 +64,7 @@ class MyScene extends CGFscene {
         // this.lights[1].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(60, 30, 60), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 20, 15), vec3.fromValues(0, 0, 0));
     }
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -94,7 +95,8 @@ class MyScene extends CGFscene {
 
         this.displayBackground();
         // this.treeGPatch.display();
-        this.pool.display();
+        //this.pool.display();
+        this.house.display();
         this.pushMatrix();
         this.popMatrix();
 
@@ -130,7 +132,7 @@ class MyScene extends CGFscene {
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
         this.pushMatrix();
         this.translate(0, 2, 0);
-        // this.map.display();
+        this.map.display();
         this.popMatrix();
 
         this.pushMatrix();
