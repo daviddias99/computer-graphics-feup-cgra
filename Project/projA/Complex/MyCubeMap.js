@@ -9,7 +9,7 @@ class MyCubeMap extends CGFobject {
 		this.initBuffers();
 	}
 	initBuffers() {
-		let halfSide = 100;
+		let halfSide = 15;
 		let margin = 0.0005;
 
 		// reference to the vertices of the cube. Each vertex has been declared three times

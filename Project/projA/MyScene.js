@@ -26,8 +26,10 @@ class MyScene extends CGFscene {
         this.terrain = new MyQuad(this,null);
 
         this.treeGPatch = new MyTreeGroupPatch(this);
+        this.treeRPatch = new MyTreeRowPatch(this);
         this.pool = new MyPool(this);
         this.house = new MyHouse(this);
+        this.pol = new MyRegPolygon(this,20,1);
         
         //Objects connected to MyInterface
 
@@ -84,7 +86,7 @@ class MyScene extends CGFscene {
         this.applyViewMatrix();
 
         // Draw axis
-        this.axis.display();
+        // this.axis.display();
         // this.lights[1].update();
         this.lights[0].update();
         
@@ -97,9 +99,43 @@ class MyScene extends CGFscene {
         // this.treeGPatch.display();
         //this.pool.display();
         this.house.display();
+        //this.scale(0.1,0.1,0.1);
+
         this.pushMatrix();
+
+        this.translate(-30,0,-30);
+        this.treeGPatch.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
+        this.translate(8,0,-40);
+        this.treeGPatch.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
+
+        this.rotate(-Math.PI/3,0,1,0);
+        this.translate(0,0,-30);
+        
+        this.treeRPatch.display();
+        
         this.popMatrix();
 
+
+        this.pushMatrix();
+        this.scale(0.5,0.5,0.5);
+        this.pool.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+        
+        this.test.apply();
+        this.translate(0,6,0);
+        this.pol.display();
+
+        this.popMatrix();
     
         // ---- END Primitive drawing section
     }
@@ -111,8 +147,8 @@ class MyScene extends CGFscene {
         this.floorMaterial = new CGFappearance(this);
         this.floorMaterial.setAmbient(factor, factor, factor, 1.0);
         this.floorMaterial.setDiffuse(factor, factor, factor, 1.0);
-        this.floorMaterial.setSpecular(factor, factor, factor, 1.0);
-        this.floorMaterial.setShininess(10.0);  
+        this.floorMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.floorMaterial.setShininess(5.0);  
         this.floorMaterial.loadTexture('images/grass.jpg');
         this.floorMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
@@ -125,18 +161,26 @@ class MyScene extends CGFscene {
         /// testing materials
 
 
+        
+        this.test = new CGFappearance(this);
+        this.test.setAmbient(factor, factor, factor, 1.0);
+        this.test.setDiffuse(factor, factor, factor, 1.0);
+        this.test.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.test.setShininess(5.0);  
+        this.test.loadTexture('images/david.jpg');
+        this.test.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     displayBackground() {
         this.skyMaterial.apply();
-        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
         this.pushMatrix();
         this.translate(0, 2, 0);
         this.map.display();
         this.popMatrix();
 
         this.pushMatrix();
-        this.scale(100, 1, 100);
+        this.scale(20, 1, 20);
         this.rotate(-Math.PI / 2, 1, 0, 0);
         this.terrain.updateTexCoords([
 			-3,3,

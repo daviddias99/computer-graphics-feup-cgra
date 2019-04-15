@@ -22,7 +22,7 @@ class MyRegPolygon extends CGFobject {
 
         this.vertices.push(0,0,0);
         this.normals.push(0, this.orientation, 0);
-        this.texCoords.push(0.5,1);
+        this.texCoords.push(0.5,0.5);
 
         for(var i = 0; i < this.slices; i++){
             // All vertices have to be declared for a given face
@@ -33,10 +33,7 @@ class MyRegPolygon extends CGFobject {
             var ca = Math.cos(ang);
 
             this.vertices.push(ca, 0, -sa);
-            if(i % 2 == 0)
-                this.texCoords.push(0,0);
-            else
-                this.texCoords.push(0,1);
+            this.texCoords.push(0.5 + ca*0.5, -0.5*sa+0.5);
             
             // The normal of the vertices the bisector of the angle created by two edges
             var normal= [

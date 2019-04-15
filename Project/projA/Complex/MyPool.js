@@ -13,7 +13,7 @@ class MyPool extends CGFobject {
 	initBuffers() {
 
         this.water = new MyQuad(this.scene);
-        this.tank = new MyPrismWBottoms(this.scene, 4, null, 5, this.stoneMaterial, this.stoneMaterial)
+        this.tank = new MyPrismWBottoms(this.scene, 4, 5, 5, this.stoneMaterial, this.stoneMaterial)
     }
 
 
@@ -27,7 +27,7 @@ class MyPool extends CGFobject {
         this.stoneMaterial.setDiffuse(factorTT, factorTT, factorTT, 1.0);
         this.stoneMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
         this.stoneMaterial.setShininess(10.0);  
-        this.stoneMaterial.loadTexture('images/stone.png');
+        this.stoneMaterial.loadTexture('images/rock_wall.jpg');
         this.stoneMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         // columns
