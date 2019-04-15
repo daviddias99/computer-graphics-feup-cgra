@@ -29,12 +29,14 @@ class MyConeWBottoms extends CGFobject {
 	display() {
         this.scene.pushMatrix();
 
+        this.bottomTexture.apply();
         this.bottom.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
         this.scene.scale(1,this.height,1); // adjust for height
+        this.sideTexture.apply();
         this.cone.display();
 
         this.scene.popMatrix();

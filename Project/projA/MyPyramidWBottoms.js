@@ -29,11 +29,13 @@ class MyPyramidWBottoms extends CGFobject {
 	display() {
         this.scene.pushMatrix();
 
+        this.bottomTexture.apply();
         this.bottom.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
+        this.sideTexture.apply();
         this.scene.scale(1,this.height,1); // adjust for height
         this.pyramid.display();
 

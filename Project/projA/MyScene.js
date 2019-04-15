@@ -35,7 +35,7 @@ class MyScene extends CGFscene {
         // this.cylB  = new MyCylinderWBottoms(this,5,3,5,null,null);
         // this.coneB  = new MyConeWBottoms(this,5,3,1,null,null);
         // this.priB  = new MyPrismWBottoms(this,5,3,5,null,null);
-        this.lamp = new MyLamp2(this,7,0.5,1.5,1.5,'images/metal.jpg',null);
+
 
         //Objects connected to MyInterface
 
@@ -85,7 +85,7 @@ class MyScene extends CGFscene {
         // this.cyl.display();
         // this.treeRPatch.display();
         // this.house.display();
-        // this.lamp.display();
+
         // this.tree.display();
         // this.pushMatrix();
         // this.translate(0,1,0);
