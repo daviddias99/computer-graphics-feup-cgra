@@ -21,27 +21,8 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
 
         //Initialize scene objects
-        this.axis = new CGFaxis(this);
-        this.map = new MyCubeMap(this);
-        this.terrain = new MyQuad(this,null);
-        this.hill = new MyVoxelHill(this, 8);
-        this.prism = new MyPrism(this, 5, 5);
-        this.cyl = new MyCylinder(this, 10, 5);
-        this.house = new MyHouse(this);
-        // this.tree = new MyTree(this, 5, 2, 5, 4, 'images/bark.jpg', 'images/foliage.jpg');
-        // this.treeGPatch = new MyTreeGroupPatch(this);
-        // this.treeRPatch = new MyTreeRowPatch(this);
-        this.poly = new MyRegPolygon(this,5,-1);
-        // this.cylB  = new MyCylinderWBottoms(this,5,3,5,null,null);
-        // this.coneB  = new MyConeWBottoms(this,5,3,1,null,null);
-        // this.priB  = new MyPrismWBottoms(this,5,3,5,null,null);
-
 
         //Objects connected to MyInterface
-
-
-        //Objects connected to MyInterface
-
 
 
     }
@@ -80,27 +61,16 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         this.displayBackground();
+        this.pushMatrix();
+        this.popMatrix();
 
-        
-        // this.cyl.display();
-        // this.treeRPatch.display();
-        // this.house.display();
-
-        // this.tree.display();
-        // this.pushMatrix();
-        // this.translate(0,1,0);
-
-        // this.poly.display();
-
-        // this.popMatrix();
-
-        
-
+    
         // ---- END Primitive drawing section
     }
 
     initMaterials(){
 
+        // scene grass floor
         let factor = 0.8;
         this.floorMaterial = new CGFappearance(this);
         this.floorMaterial.setAmbient(factor, factor, factor, 1.0);
@@ -110,14 +80,14 @@ class MyScene extends CGFscene {
         this.floorMaterial.loadTexture('images/grass.jpg');
         this.floorMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
+        // skybox material
         this.skyMaterial = new CGFappearance(this);
-        //this.skyMaterial.setAmbient(1, 1, 1, 1.0);
         this.skyMaterial.setEmission(1, 1, 1, 1);
-        //this.skyMaterial.setDiffuse(0, 0, 0, 1.0);
-        //this.skyMaterial.setSpecular(0, 0, 0, 1.0);
-        //this.skyMaterial.setShininess(10.0);
         this.skyMaterial.loadTexture('images/xp.png');
         this.skyMaterial.setTextureWrap('CLAMP_TO_EDGE', 'CLAM_TO_EDGE');
+
+        /// testing materials
+
 
     }
 
@@ -129,7 +99,6 @@ class MyScene extends CGFscene {
         this.map.display();
         this.popMatrix();
 
-        // this.terrainTex.apply();
         this.pushMatrix();
         this.scale(100, 1, 100);
         this.rotate(-Math.PI / 2, 1, 0, 0);

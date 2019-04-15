@@ -49,7 +49,7 @@ class MyCylinderWBottoms extends CGFobject {
 
         this.sideTexture.apply();
         this.scene.scale(1, this.height, 1);
-        this.prism.display();
+        this.cylinder.display();
 
         this.scene.popMatrix();
     }

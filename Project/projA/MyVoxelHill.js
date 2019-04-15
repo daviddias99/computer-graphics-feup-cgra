@@ -4,11 +4,23 @@
  * @param scene - Reference to MyVoxelHill object
  */
 
-
+/**
+ * layerSideLength - gives the number of cubes per side of a layer of a given height (the top layer as height 1 and as 1 cube)
+ * @function
+ * @param h     height of the current layer
+ */
 function layerSideLength(h) {
     return 2 * h - 1;
 }
 
+/**
+ * isInside - checks if a cube in a given position is inside of the voxelhill
+ * @function
+ * @param i                 i grid position in the currentHeight
+ * @param j                 j grid position in the currentHeight
+ * @param maxHeight         maxHeight of the voxelHill
+ * @param currentHeight     height of the current grid in the voxelhill
+ */
 function isInside(i, j, maxHeight, currentHeight){
 
     var sidelength = layerSideLength(maxHeight - currentHeight);
@@ -35,7 +47,6 @@ class MyVoxelHill extends CGFobject {
 
     
 	display() {
-        this.scene.pushMatrix();
         
         for(let i = 0; i < this.height; i++){
 
@@ -45,6 +56,7 @@ class MyVoxelHill extends CGFobject {
                 let inLayerX = j%layerSideLength(this.height - i);
                 let inLayerZ = Math.floor(j / layerSideLength(this.height - i));
                 
+                // don't draw the inner cubes as they aren't  visible
                 if( ! isInside(inLayerX,inLayerZ,this.height,i) || i == 0){ 
 
                     this.scene.translate( inLayerX + i ,i, inLayerZ + i);
@@ -57,8 +69,6 @@ class MyVoxelHill extends CGFobject {
                 
             }
         }
-
-        this.scene.popMatrix();
     }
     
 

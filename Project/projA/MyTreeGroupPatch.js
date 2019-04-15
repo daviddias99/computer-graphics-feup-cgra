@@ -57,7 +57,6 @@ class MyTreeGroupPatch extends CGFobject {
     }
     
 	display() {
-        this.scene.pushMatrix();
         
         for(let i = 0; i < 3; i++){
 
@@ -77,7 +76,6 @@ class MyTreeGroupPatch extends CGFobject {
             }
         }
 
-        this.scene.popMatrix();
     }
     
 
