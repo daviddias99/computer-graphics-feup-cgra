@@ -19,14 +19,13 @@ class MyTreeRowPatch extends CGFobject {
 	}
 	initBuffers() {
         
-        this.trunkRadius = 1.5;
-        this.trunkHeight = 3.5;
-        this.treeTopRadius = 3;
+        this.trunkRadius = 0.8;
+        this.trunkHeight = 1;
+        this.treeTopRadius = 1.5;
         this.treeTopHeight = 5;
         this.minimumScaleFactor = 0.5;
-        this.defaultTreeDistance = 3 * this.treeTopRadius;
-        this.maximumOffsetDistance = this.treeTopRadius/4*3;
-
+        this.defaultTreeDistance = 4 * this.treeTopRadius;
+        this.maximumOffsetDistance = this.treeTopRadius;
         this.tree = new MyTree(this.scene,this.trunkHeight,this.trunkRadius,this.treeTopHeight,this.treeTopRadius,'images/bark.jpg','images/foliage.jpg');
 
         this.xOffsets = [];

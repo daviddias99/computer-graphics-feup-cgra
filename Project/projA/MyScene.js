@@ -26,6 +26,7 @@ class MyScene extends CGFscene {
         this.terrain = new MyQuad(this,null);
 
         this.treeGPatch = new MyTreeGroupPatch(this);
+        this.treeRPatch = new MyTreeRowPatch(this);
         this.pool = new MyPool(this);
         
         //Objects connected to MyInterface
@@ -94,9 +95,38 @@ class MyScene extends CGFscene {
 
         this.displayBackground();
         // this.treeGPatch.display();
-        this.pool.display();
+        this.scale(0.1,0.1,0.1);
+
         this.pushMatrix();
+
+        this.translate(-30,0,-30);
+        this.treeGPatch.display();
+
         this.popMatrix();
+        this.pushMatrix();
+
+        this.translate(8,0,-40);
+        this.treeGPatch.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
+
+        this.rotate(-Math.PI/3,0,1,0);
+        this.translate(0,0,-30);
+        
+        this.treeRPatch.display();
+        
+        this.popMatrix();
+
+
+        this.pushMatrix();
+        this.scale(0.5,0.5,0.5);
+        this.pool.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+        
 
     
         // ---- END Primitive drawing section
@@ -127,14 +157,14 @@ class MyScene extends CGFscene {
 
     displayBackground() {
         this.skyMaterial.apply();
-        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
         this.pushMatrix();
         this.translate(0, 2, 0);
-        // this.map.display();
+        this.map.display();
         this.popMatrix();
 
         this.pushMatrix();
-        this.scale(100, 1, 100);
+        this.scale(20, 1, 20);
         this.rotate(-Math.PI / 2, 1, 0, 0);
         this.terrain.updateTexCoords([
 			-3,3,
