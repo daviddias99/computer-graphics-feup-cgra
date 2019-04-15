@@ -28,6 +28,7 @@ class MyScene extends CGFscene {
         this.treeGPatch = new MyTreeGroupPatch(this);
         this.treeRPatch = new MyTreeRowPatch(this);
         this.pool = new MyPool(this);
+        this.pol = new MyRegPolygon(this,20,1);
         
         //Objects connected to MyInterface
 
@@ -84,7 +85,7 @@ class MyScene extends CGFscene {
         this.applyViewMatrix();
 
         // Draw axis
-        this.axis.display();
+        // this.axis.display();
         // this.lights[1].update();
         this.lights[0].update();
         
@@ -127,7 +128,11 @@ class MyScene extends CGFscene {
         this.popMatrix();
         this.pushMatrix();
         
+        this.test.apply();
+        this.translate(0,6,0);
+        this.pol.display();
 
+        this.popMatrix();
     
         // ---- END Primitive drawing section
     }
@@ -153,6 +158,14 @@ class MyScene extends CGFscene {
         /// testing materials
 
 
+        
+        this.test = new CGFappearance(this);
+        this.test.setAmbient(factor, factor, factor, 1.0);
+        this.test.setDiffuse(factor, factor, factor, 1.0);
+        this.test.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.test.setShininess(5.0);  
+        this.test.loadTexture('images/david.jpg');
+        this.test.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     displayBackground() {
