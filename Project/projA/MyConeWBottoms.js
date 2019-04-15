@@ -25,42 +25,20 @@ class MyConeWBottoms extends CGFobject {
 
     }
     
-    /**
-     * Applies the normal vizualization for each element of the tangram
-     */
-    enableNormalViz() {
-
-    }
-
-    /**
-     * Disables the normal vizualization for each element of the tangram
-     */
-    disableNormalViz() {
-
-    }
-
-
+    
 	display() {
         this.scene.pushMatrix();
 
-        
         this.bottom.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.scale(1,this.height,1);
+        this.scene.scale(1,this.height,1); // adjust for height
         this.cone.display();
 
         this.scene.popMatrix();
 
     }
     
-    // Updates the complexity of each element of the tangram
-    updateBuffers(complexity){
-        
-
-
-    }
-
 }

@@ -53,24 +53,11 @@ class MyTree extends CGFobject {
 
     }
     
-    /**
-     * Applies the normal vizualization for each element of the tangram
-     */
-    enableNormalViz() {
-
-    }
-
-    /**
-     * Disables the normal vizualization for each element of the tangram
-     */
-    disableNormalViz() {
-
-    }
-
 
 	display() {
 		this.scene.pushMatrix();
 
+        // trunk
         this.scene.scale(this.trunkRadius,this.trunkHeight,this.trunkRadius);
         this.trunkMaterial.apply();
         this.trunk.display();
@@ -78,6 +65,7 @@ class MyTree extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
+        // treetop
         this.scene.translate(0,this.trunkHeight,0);
         this.scene.scale(this.treeTopRadius,this.treeTopHeigth,this.treeTopRadius);
         this.treeTopMaterial.apply();
@@ -86,11 +74,5 @@ class MyTree extends CGFobject {
         this.scene.popMatrix();
     }
     
-    // Updates the complexity of each element of the tangram
-    updateBuffers(complexity){
-        
-
-
-    }
 
 }

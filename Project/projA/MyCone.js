@@ -43,7 +43,6 @@ class MyCone extends CGFobject {
 
         // reinitialize buffers
         this.initBuffers();
-        this.initNormalVizBuffers();
     }
 
 }

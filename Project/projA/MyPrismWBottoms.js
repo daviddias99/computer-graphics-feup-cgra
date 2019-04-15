@@ -17,7 +17,8 @@ class MyPrismWBottoms extends CGFobject {
         this.bottomTexture =bottomTexture;
 
         this.initBuffers();
-	}
+    }
+    
 	initBuffers() {
 
 		this.prism = new MyCylinder(this.scene,this.slices,null);
@@ -25,36 +26,24 @@ class MyPrismWBottoms extends CGFobject {
 
     }
     
-    /**
-     * Applies the normal vizualization for each element of the tangram
-     */
-    enableNormalViz() {
-
-    }
-
-    /**
-     * Disables the normal vizualization for each element of the tangram
-     */
-    disableNormalViz() {
-
-    }
-
 
 	display() {
         this.scene.pushMatrix();
 
-        
+        // bottom face
         this.bottom.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
+        // side
         this.scene.scale(1,this.height,1);
         this.prism.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
+        // top face
         this.scene.translate(0,this.height,0);
         this.scene.rotate(-Math.PI,1,0,0);
         this.bottom.display();
@@ -64,11 +53,5 @@ class MyPrismWBottoms extends CGFobject {
 
     }
     
-    // Updates the complexity of each element of the tangram
-    updateBuffers(complexity){
-        
-
-
-    }
 
 }
