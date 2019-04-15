@@ -17,11 +17,12 @@ serialInclude(['../lib/CGF.js'
                 , 'MyTreeGroupPatch.js'
                 , 'MyTreeRowPatch.js'
                 , 'MyCubeMap.js',
-                , 'MyLamp.js',
                 , 'MyRegPolygon.js',
                 , 'MyCylinderWBottoms.js',
                 , 'MyConeWBottoms.js',
                 , 'MyPrismWBottoms.js',
+                , 'MyPyramidWBottoms.js',
+                , 'MyLamp2.js',
 
 main=function()
 {

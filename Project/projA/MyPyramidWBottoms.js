@@ -1,9 +1,9 @@
 /**
- * MyCylinderWBottoms
+ * MyPyramidWBottoms
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyCylinderWBottoms extends CGFobject {
+class MyPyramidWBottoms extends CGFobject {
 
 	constructor(scene, slices, stacks,height, sideTexture, bottomTexture) {
         super(scene);
@@ -20,39 +20,25 @@ class MyCylinderWBottoms extends CGFobject {
 	}
 	initBuffers() {
 
-		this.cylinder = new MyCylinder(this.scene,this.slices,null);
+		this.pyramid = new MyPyramid(this.scene,this.slices,null);
         this.bottom = new MyRegPolygon(this.scene,this.slices,-1);
 
     }
     
-
+    
 	display() {
-        
         this.scene.pushMatrix();
-        this.bottomTexture.apply();
-        // bottom face
 
         this.bottom.display();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        // top face
-        this.scene.translate(0, this.height, 0);
-        this.scene.rotate(-Math.PI, 1, 0, 0);
-        this.bottom.display();
+        this.scene.scale(1,this.height,1); // adjust for height
+        this.pyramid.display();
 
         this.scene.popMatrix();
-        this.scene.pushMatrix();
 
-        // side
-
-        this.sideTexture.apply();
-        this.scene.scale(1, this.height, 1);
-        this.prism.display();
-
-        this.scene.popMatrix();
     }
     
-
 }

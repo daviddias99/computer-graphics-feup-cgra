@@ -42,23 +42,6 @@ class MyHouse extends CGFobject {
 
     }
 
-    /**
-     * Applies the normal vizualization for each element of the tangram
-     */
-    enableNormalViz() {
-        this.pyramid.enableNormalViz();
-        this.cube.enableNormalViz();
-        this.prism.enableNormalViz();
-    }
-
-    /**
-     * Disables the normal vizualization for each element of the tangram
-     */
-    disableNormalViz() {
-        this.pyramid.disableNormalViz();
-        this.cube.disableNormalViz();
-        this.prism.disableNormalViz();
-    }
 
 	display() {
         this.scene.pushMatrix();

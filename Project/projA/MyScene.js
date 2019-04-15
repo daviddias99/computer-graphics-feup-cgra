@@ -26,16 +26,16 @@ class MyScene extends CGFscene {
         this.terrain = new MyQuad(this,null);
         this.hill = new MyVoxelHill(this, 8);
         this.prism = new MyPrism(this, 5, 5);
-        // this.cyl = new MyCylinder(this, 10, 5);
-        // this.house = new MyHouse(this);
+        this.cyl = new MyCylinder(this, 10, 5);
+        this.house = new MyHouse(this);
         // this.tree = new MyTree(this, 5, 2, 5, 4, 'images/bark.jpg', 'images/foliage.jpg');
         // this.treeGPatch = new MyTreeGroupPatch(this);
-        this.treeRPatch = new MyTreeRowPatch(this);
+        // this.treeRPatch = new MyTreeRowPatch(this);
         this.poly = new MyRegPolygon(this,5,-1);
-        this.cylB  = new MyCylinderWBottoms(this,5,3,5,null,null);
-        this.coneB  = new MyConeWBottoms(this,5,3,1,null,null);
-        this.priB  = new MyPrismWBottoms(this,5,3,5,null,null);
-        // this.lamp = new MyLamp(this,7,0.5,1.5,1.5);
+        // this.cylB  = new MyCylinderWBottoms(this,5,3,5,null,null);
+        // this.coneB  = new MyConeWBottoms(this,5,3,1,null,null);
+        // this.priB  = new MyPrismWBottoms(this,5,3,5,null,null);
+        this.lamp = new MyLamp2(this,7,0.5,1.5,1.5,'images/metal.jpg',null);
 
         //Objects connected to MyInterface
 
@@ -81,18 +81,20 @@ class MyScene extends CGFscene {
 
         this.displayBackground();
 
-        this.skyMaterial.apply();
+        
         // this.cyl.display();
-        this.treeRPatch.display();
+        // this.treeRPatch.display();
         // this.house.display();
         // this.lamp.display();
         // this.tree.display();
         // this.pushMatrix();
         // this.translate(0,1,0);
-        // this.cylB.display();
-        // this.coneB.display();
-        // this.priB.display();
+
+        // this.poly.display();
+
         // this.popMatrix();
+
+        
 
         // ---- END Primitive drawing section
     }
