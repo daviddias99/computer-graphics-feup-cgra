@@ -5,23 +5,23 @@ serialInclude=function(a){var b=console,c=serialInclude.l;if(a.length>0)c.splice
 serialInclude(['../lib/CGF.js'
                 , 'MyScene.js'
                 , 'MyInterface.js'
-                , 'MyPrism.js'
-                , 'MyQuad.js'
-                , 'MyUnitCubeQuad.js'
-                , 'MyVoxelHill.js'
-                , 'MyCylinder.js'
-                , 'MyPyramid.js'
-                , 'MyCone.js'
-                , 'MyHouse.js'
-                , 'MyTree.js'
-                , 'MyTreeGroupPatch.js'
-                , 'MyTreeRowPatch.js'
-                , 'MyCubeMap.js',
-                , 'MyRegPolygon.js',
-                , 'MyCylinderWBottoms.js',
-                , 'MyConeWBottoms.js',
-                , 'MyPrismWBottoms.js',
-                , 'MyPyramidWBottoms.js',
+                , 'Primitives/MyPrism.js'
+                , 'Primitives/MyQuad.js'
+                , 'Primitives/MyPyramid.js'
+                , 'Primitives/MyCone.js'
+                , 'Primitives/MyCylinder.js'
+                , 'Primitives/MyRegPolygon.js',
+                , 'Complex/MyUnitCubeQuad.js'
+                , 'Complex/MyVoxelHill.js'    
+                , 'Complex/MyHouse.js'
+                , 'Complex/MyTree.js'
+                , 'Complex/MyTreeGroupPatch.js'
+                , 'Complex/MyTreeRowPatch.js'
+                , 'Complex/MyCubeMap.js',
+                , 'Complex/MyCylinderWBottoms.js',
+                , 'Complex/MyConeWBottoms.js',
+                , 'Complex/MyPrismWBottoms.js',
+                , 'Complex/MyPyramidWBottoms.js',
 
 main=function()
 {

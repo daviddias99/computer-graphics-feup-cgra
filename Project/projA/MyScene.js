@@ -30,10 +30,17 @@ class MyScene extends CGFscene {
 
     }
     initLights() {
-        this.lights[0].setPosition(15, 2, 5, 1);
-        this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
-        this.lights[0].enable();
-        this.lights[0].update();
+         //  sun light (warm)
+         
+        
+         this.setGlobalAmbientLight(0.6, 0.6, 0.5, 1.0);
+
+         this.lights[0].setPosition(0, 80, 0, 1.0);
+         this.lights[0].setDiffuse(1.0, 1.0, 0.6, 1.0);
+         this.lights[0].setSpecular(1.0, 1.0, 0.6, 1.0);
+         this.lights[0].disable();
+         this.lights[0].setVisible(true);
+         this.lights[0].update();
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(60, 30, 60), vec3.fromValues(0, 0, 0));
@@ -57,9 +64,10 @@ class MyScene extends CGFscene {
 
         // Draw axis
         this.axis.display();
+        this.lights[0].update();
         
         //Apply default appearance
-        this.setDefaultAppearance();
+        // this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
 
@@ -99,7 +107,7 @@ class MyScene extends CGFscene {
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
         this.pushMatrix();
         this.translate(0, 2, 0);
-        this.map.display();
+        // this.map.display();
         this.popMatrix();
 
         this.pushMatrix();
