@@ -109,8 +109,8 @@ class MyScene extends CGFscene {
         this.floorMaterial = new CGFappearance(this);
         this.floorMaterial.setAmbient(factor, factor, factor, 1.0);
         this.floorMaterial.setDiffuse(factor, factor, factor, 1.0);
-        this.floorMaterial.setSpecular(factor, factor, factor, 1.0);
-        this.floorMaterial.setShininess(10.0);  
+        this.floorMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.floorMaterial.setShininess(5.0);  
         this.floorMaterial.loadTexture('images/grass.jpg');
         this.floorMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
