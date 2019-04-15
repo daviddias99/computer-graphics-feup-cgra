@@ -21,7 +21,10 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
 
         //Initialize scene objects
-
+        this.axis = new CGFaxis(this);
+        this.map = new MyCubeMap(this);
+        this.terrain = new MyQuad(this,null);
+        
         //Objects connected to MyInterface
 
 
