@@ -100,7 +100,7 @@ class MyScene extends CGFscene {
         //this.pool.display();
         this.house.display();
         //this.scale(0.1,0.1,0.1);
-
+/*
         this.pushMatrix();
 
         this.translate(-30,0,-30);
@@ -136,7 +136,7 @@ class MyScene extends CGFscene {
         this.pol.display();
 
         this.popMatrix();
-    
+    */
         // ---- END Primitive drawing section
     }
 

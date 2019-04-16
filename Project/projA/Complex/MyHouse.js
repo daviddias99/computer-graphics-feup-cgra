@@ -17,6 +17,7 @@ class MyHouse extends CGFobject {
         this.prism3 = new MyPrismWBottoms(this.scene, 3, 10, 3, this.roofMaterial, this.wallMaterial);
 
         this.door = new MyQuad(this.scene);
+        this.circle = new MyRegPolygon(this.scene, 30);
     }
 
 
@@ -60,6 +61,21 @@ class MyHouse extends CGFobject {
         this.doorMaterial.loadTexture('images/door.jpg');
         this.doorMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
+        this.windowMaterial = new CGFappearance(this.scene);
+        this.windowMaterial.setAmbient(factorT, factorT, factorT, 1.0);
+        this.windowMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
+        this.windowMaterial.setSpecular(factorT, factorT, factorT, 1.0);
+        this.windowMaterial.setShininess(10.0);  
+        this.windowMaterial.loadTexture('images/window.jpg');
+        this.windowMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.roundWindowMaterial = new CGFappearance(this.scene);
+        this.roundWindowMaterial.setAmbient(factorT, factorT, factorT, 1.0);
+        this.roundWindowMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
+        this.roundWindowMaterial.setSpecular(factorT, factorT, factorT, 1.0);
+        this.roundWindowMaterial.setShininess(10.0);  
+        this.roundWindowMaterial.loadTexture('images/round_window.jpg');
+        this.roundWindowMaterial.setTextureWrap('REPEAT', 'REPEAT');
     }
 
 
@@ -81,17 +97,24 @@ class MyHouse extends CGFobject {
 
         this.columnsMaterial.apply();
 
-        for (let i = 0; i < 4; i++) {
-            this.scene.pushMatrix();
-            this.scene.rotate(i * Math.PI / 2, 0, 1, 0);
-            this.scene.translate(0.6, 0, 0.6);
-            this.scene.scale(0.1, 1, 0.1);
-            this.prism.display();
-            this.scene.popMatrix();
-        }
+    
+        this.scene.pushMatrix();
+        this.scene.rotate(0 * Math.PI / 2, 0, 1, 0);
+        this.scene.translate(0.6, 0, 0.6);
+        this.scene.scale(0.1, 1, 0.1);
+        this.prism.display();
+        this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(-0.1, Math.sqrt(2) / 2, -0.5 - Math.sqrt(2) / 2);
+        this.scene.rotate(3 * Math.PI / 2, 0, 1, 0);
+        this.scene.translate(0.6, 0, 0.6);
+        this.scene.scale(0.1, 1, 0.1);
+        this.prism.display();
+        this.scene.popMatrix();
+        
+
+        this.scene.pushMatrix();
+        this.scene.translate(-0.4, Math.sqrt(2) / 2, -0.5 - Math.sqrt(2) / 2);
         this.scene.rotate(Math.PI / 2, 0, 0, 1);
         this.scene.translate(0, -1.5, 0);
         this.scene.rotate(Math.PI / 4, 0, 1, 0);
@@ -99,7 +122,7 @@ class MyHouse extends CGFobject {
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(-0.1, Math.sqrt(2) + 0.15, -0.5 - Math.sqrt(2) / 2);
+        this.scene.translate(-0.4, Math.sqrt(2) + 0.15, -0.5 - Math.sqrt(2) / 2);
         this.scene.scale(1, 0.5, 1);
         this.scene.rotate(Math.PI / 2, 0, 0, 1)
         this.scene.translate(0, -1.5, 0);
@@ -112,6 +135,38 @@ class MyHouse extends CGFobject {
        this.scene.translate(0, 0.35, 0.51); 
        this.scene.scale(0.4, 0.7, 1);
        this.door.display();
+       this.scene.popMatrix();
+
+       this.windowMaterial.apply();
+       this.scene.pushMatrix();
+       this.scene.translate(-1.25, 0.7, -0.495);
+       this.scene.scale(0.6, 0.6, 1);
+       this.door.display();
+       this.scene.popMatrix();
+
+       this.scene.pushMatrix();
+       this.scene.translate(-1.25, 0.7, -0.505 - Math.sqrt(2));
+       this.scene.rotate(Math.PI, 0, 1, 0);
+       this.scene.scale(0.6, 0.6, 1);
+       this.door.display();
+       this.scene.popMatrix();
+
+       this.scene.pushMatrix();
+       this.scene.translate(0.45, 0.7, -0.505 - Math.sqrt(2));
+       this.scene.rotate(Math.PI, 0, 1, 0);
+       this.scene.scale(0.6, 0.6, 1);
+       this.door.display();
+       this.scene.popMatrix();
+
+
+       this.roundWindowMaterial.apply();
+       this.scene.pushMatrix();
+       
+       this.scene.translate(1.105, 1.2, -0.5 - Math.sqrt(2) / 2);
+       this.scene.rotate(-Math.PI/2, 0, 0, 1); 
+       this.scene.rotate(Math.PI/2, 0, 1, 0);
+       this.scene.scale(0.25, 1, 0.25);
+       this.circle.display();
        this.scene.popMatrix();
     }
 }
