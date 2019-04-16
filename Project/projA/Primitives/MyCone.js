@@ -7,6 +7,9 @@ class MyCone extends CGFobject {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
+
+        // if texture mode is centered, the texture mapped to the cone will be mapped from it's center. If the cone is seen from above the "circle" will be the circle taken from the
+        // selected texture. If the texture mode is 'sliced' each 'face' of the cone will have a triangle from the original texture mapped (the same for every slice)
         this.textureMode = textureMode;
         this.initBuffers();
 

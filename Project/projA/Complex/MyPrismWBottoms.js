@@ -28,10 +28,12 @@ class MyPrismWBottoms extends CGFobject {
 
 
     display() {
+
         this.scene.pushMatrix();
-        this.bottomTexture.apply();
+
         // bottom face
 
+        this.bottomTexture.apply();
         this.bottom.display();
 
         this.scene.popMatrix();

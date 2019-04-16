@@ -15,9 +15,8 @@ class MyHouse extends CGFobject {
         this.prism = new MyPrism(this.scene, 8, 10);
         this.prism2 = new MyPrismWBottoms(this.scene, 4, 10, 3, this.wallMaterial, this.wallMaterial);
         this.prism3 = new MyPrismWBottoms(this.scene, 3, 10, 3, this.roofMaterial, this.wallMaterial);
-
         this.door = new MyQuad(this.scene);
-        this.circle = new MyRegPolygon(this.scene, 30);
+        this.circle = new MyRegPolygon(this.scene, 30,1);
     }
 
 
@@ -34,44 +33,52 @@ class MyHouse extends CGFobject {
         this.roofMaterial.loadTexture('images/bark.jpg');
         this.roofMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
-        // columns
+        // walls
 
         let factorT = 0.8;
         this.wallMaterial = new CGFappearance(this.scene);
-        this.wallMaterial.setAmbient(factorT, factorT, factorT, 1.0);
+        this.wallMaterial.setAmbient(0.7, 0.7, 0.7, 1.0);
         this.wallMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
-        this.wallMaterial.setSpecular(factorT, factorT, factorT, 1.0);
-        this.wallMaterial.setShininess(10.0);  
+        this.wallMaterial.setSpecular(0.6, 0.6, 0.6, 1.0);
+        this.wallMaterial.setShininess(7.0);  
         this.wallMaterial.loadTexture('images/wall2.jpg');
         this.wallMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
+        // columns
+
         this.columnsMaterial = new CGFappearance(this.scene);
-        this.columnsMaterial.setAmbient(factorT, factorT, factorT, 1.0);
+        this.columnsMaterial.setAmbient(0.7, 0.7, 0.7, 1.0);
         this.columnsMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
-        this.columnsMaterial.setSpecular(factorT, factorT, factorT, 1.0);
-        this.columnsMaterial.setShininess(10.0);  
+        this.columnsMaterial.setSpecular(0.2, 0.2, 0.2, 1.0);
+        this.columnsMaterial.setShininess(4.0);  
         this.columnsMaterial.loadTexture('images/columns.jpg');
         this.columnsMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        // door
 
         this.doorMaterial = new CGFappearance(this.scene);
         this.doorMaterial.setAmbient(factorT, factorT, factorT, 1.0);
         this.doorMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
-        this.doorMaterial.setSpecular(factorT, factorT, factorT, 1.0);
-        this.doorMaterial.setShininess(10.0);  
+        this.doorMaterial.setSpecular(0.4, 0.4, 0.4, 1.0);
+        this.doorMaterial.setShininess(5);  
         this.doorMaterial.loadTexture('images/door.jpg');
         this.doorMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
+        // windows (square)
+
         this.windowMaterial = new CGFappearance(this.scene);
-        this.windowMaterial.setAmbient(factorT, factorT, factorT, 1.0);
-        this.windowMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
+        this.windowMaterial.setAmbient(0.4, 0.4, 0.4, 1.0);
+        this.windowMaterial.setDiffuse(0.4, 0.4, 0.4, 1.0);
         this.windowMaterial.setSpecular(factorT, factorT, factorT, 1.0);
         this.windowMaterial.setShininess(10.0);  
         this.windowMaterial.loadTexture('images/window.jpg');
         this.windowMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
+        // windows (round)
+
         this.roundWindowMaterial = new CGFappearance(this.scene);
-        this.roundWindowMaterial.setAmbient(factorT, factorT, factorT, 1.0);
-        this.roundWindowMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
+        this.roundWindowMaterial.setAmbient(0.5, 0.5, 0.5, 1.0);
+        this.roundWindowMaterial.setDiffuse(0.6, 0.6, 0.6, 1.0);
         this.roundWindowMaterial.setSpecular(factorT, factorT, factorT, 1.0);
         this.roundWindowMaterial.setShininess(10.0);  
         this.roundWindowMaterial.loadTexture('images/round_window.jpg');
@@ -89,7 +96,6 @@ class MyHouse extends CGFobject {
         
         this.scene.rotate(Math.PI / 4, 0, 1, 0);
         this.scene.translate(0, 0.5, 0);
-
 
         this.pyramid.display();
 
@@ -132,42 +138,41 @@ class MyHouse extends CGFobject {
     
         this.doorMaterial.apply();
         this.scene.pushMatrix();
-       this.scene.translate(0, 0.35, 0.51); 
-       this.scene.scale(0.4, 0.7, 1);
-       this.door.display();
-       this.scene.popMatrix();
+        this.scene.translate(0, 0.35, 0.51);
+        this.scene.scale(0.4, 0.7, 1);
+        this.door.display();
+        this.scene.popMatrix();
 
-       this.windowMaterial.apply();
-       this.scene.pushMatrix();
-       this.scene.translate(-1.25, 0.7, -0.495);
-       this.scene.scale(0.6, 0.6, 1);
-       this.door.display();
-       this.scene.popMatrix();
+        this.windowMaterial.apply();
+        this.scene.pushMatrix();
+        this.scene.translate(-1.25, 0.7, -0.495);
+        this.scene.scale(0.6, 0.6, 1);
+        this.door.display();
+        this.scene.popMatrix();
 
-       this.scene.pushMatrix();
-       this.scene.translate(-1.25, 0.7, -0.505 - Math.sqrt(2));
-       this.scene.rotate(Math.PI, 0, 1, 0);
-       this.scene.scale(0.6, 0.6, 1);
-       this.door.display();
-       this.scene.popMatrix();
+        this.scene.pushMatrix();
+        this.scene.translate(-1.25, 0.7, -0.505 - Math.sqrt(2));
+        this.scene.rotate(Math.PI, 0, 1, 0);
+        this.scene.scale(0.6, 0.6, 1);
+        this.door.display();
+        this.scene.popMatrix();
 
-       this.scene.pushMatrix();
-       this.scene.translate(0.45, 0.7, -0.505 - Math.sqrt(2));
-       this.scene.rotate(Math.PI, 0, 1, 0);
-       this.scene.scale(0.6, 0.6, 1);
-       this.door.display();
-       this.scene.popMatrix();
+        this.scene.pushMatrix();
+        this.scene.translate(0.45, 0.7, -0.505 - Math.sqrt(2));
+        this.scene.rotate(Math.PI, 0, 1, 0);
+        this.scene.scale(0.6, 0.6, 1);
+        this.door.display();
+        this.scene.popMatrix();
 
+        this.roundWindowMaterial.apply();
+        this.scene.pushMatrix();
 
-       this.roundWindowMaterial.apply();
-       this.scene.pushMatrix();
-       
-       this.scene.translate(1.105, 1.2, -0.5 - Math.sqrt(2) / 2);
-       this.scene.rotate(-Math.PI/2, 0, 0, 1); 
-       this.scene.rotate(Math.PI/2, 0, 1, 0);
-       this.scene.scale(0.25, 1, 0.25);
-       this.circle.display();
-       this.scene.popMatrix();
+        this.scene.translate(1.105, 1.2, -0.5 - Math.sqrt(2) / 2);
+        this.scene.rotate(-Math.PI / 2, 0, 0, 1);
+        this.scene.rotate(Math.PI / 2, 0, 1, 0);
+        this.scene.scale(0.25, 1, 0.25);
+        this.circle.display();
+        this.scene.popMatrix();
     }
 }
     
