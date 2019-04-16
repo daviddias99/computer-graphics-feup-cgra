@@ -23,7 +23,7 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.map = new MyCubeMap(this);
-        this.terrain = new MyQuad(this,null);
+        this.terrain = new MyQuad(this,null,100);
 
         this.treeGPatch = new MyTreeGroupPatch(this);
         this.treeRPatch = new MyTreeRowPatch(this);
@@ -262,7 +262,7 @@ class MyScene extends CGFscene {
 			2,2,
 			-2,-2,
 			2,-2
-        ]) 
+        ]); 
         
         this.floorMaterial.apply();
         this.terrain.display();

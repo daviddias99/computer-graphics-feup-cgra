@@ -4,52 +4,64 @@
  * @param scene - Reference to MyScene object
  */
 class MyQuad extends CGFobject {
-	constructor(scene, coords) {
+	constructor(scene, coords, complexity) {
 		super(scene);
-
+		
 		this.initBuffers();
 		if (coords != undefined)
 			this.updateTexCoords(coords);
 	}
 	
 	initBuffers() {
-		this.vertices = [
-			-0.5, -0.5, 0,	//0
-			0.5, -0.5, 0,	//1
-			-0.5, 0.5, 0,	//2
-			0.5, 0.5, 0		//3
-		];
+		this.vertices = [];
+        this.indices = [];
+        this.normals = [];
+        this.texCoords = [];
 
-		//Counter-clockwise reference of vertices
-		this.indices = [
-			0, 1, 2,
-			1, 3, 2
-		];
+		let delta = 1 / this.complexity;
+		let ind_offset = 0;
 
-		//Facing Z positive
-		this.normals = [
-			0, 0, 1,
-			0, 0, 1,
-			0, 0, 1,
-			0, 0, 1
-		];
+		for (let i = 0; i < this.complexity; i++) {
 		
-		/*
-		Texture coords (s,t)
-		+----------> s
-        |
-        |
-		|
-		v
-        t
-        */
+			for (let j = 0; j < this.complexity; j++) { 
+				
+				let ver = [
+					-0.5 + i * delta, -0.5 + j * delta, 0,
+					-0.5 + (i + 1) * delta, -0.5 + j * delta, 0,
+					-0.5 + i * delta, -0.5 + (j + 1) * delta, 0,
+					-0.5 + (i + 1) * delta, -0.5 + (j + 1) * delta, 0
+				];
 
-		this.texCoords = [
-			0, 1,
-			1, 1,
-			0, 0,
-			1, 0
-		]
+				ind_offset += 4;
+				this.vertices.push(...ver);
+				
+				let ind = [
+					ind_offset, ind_offset + 1, ind_offset + 2,
+					ind_offset + 1, ind_offset + 3, ind_offset + 2
+				]
+
+				this.indices.push(...ind);
+
+				let nor = [
+					0, 0, 1,
+					0, 0, 1,
+					0, 0, 1,
+					0, 0, 1
+				];
+
+				this.normals.push(...nor);
+
+				let tex = [
+					i * delta, j * delta,
+					(i + 1) * delta, j * delta,
+					i * delta, (j + 1) * delta,
+					(i + 1) * delta, (j + 1) * delta
+				]
+
+				this.texCoords.push(...tex);
+			}
+		}
+		
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}
@@ -61,6 +73,16 @@ class MyQuad extends CGFobject {
 	 */
 	updateTexCoords(coords) {
 		this.texCoords = [...coords];
+
+
+
+
+
+
+
+
+
+
 		this.updateTexCoordsGLBuffers();
 	}
 
