@@ -15,7 +15,7 @@ class MyInterface extends CGFinterface {
 
         this.gui = new dat.GUI();
         this.gui.add(this.scene, 'showTextures').name("Enable textures");
-        this.gui.add(this.scene, 'timeOfDay', this.scene.dayNightSelector).name('Selected time of day').onChange(this.scene.switchTimeOfDay.bind(this.scene));
+        this.gui.add(this.scene, 'timeOfDay', this.scene.dayNightSelector).name('Time').onChange(this.scene.switchTimeOfDay.bind(this.scene));
 
         var obj = this;
 

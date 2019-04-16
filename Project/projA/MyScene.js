@@ -27,9 +27,9 @@ class MyScene extends CGFscene {
 
         this.treeGPatch = new MyTreeGroupPatch(this);
         this.treeRPatch = new MyTreeRowPatch(this);
+        this.hill = new MyVoxelHill(this);
         this.pool = new MyPool(this);
         this.house = new MyHouse(this);
-        this.pol = new MyRegPolygon(this,20,1);
         
         //Objects connected to MyInterface
 
@@ -99,70 +99,25 @@ class MyScene extends CGFscene {
         // Clear image and depth buffer everytime we update the scene
         this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
         this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
+
         // Initialize Model-View matrix as identity (no transformation
         this.updateProjectionMatrix();
         this.loadIdentity();
+
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
 
+        // Enable/Disable textures
         this.enableTextures(this.showTextures);
 
-        // Draw axis
-        // this.axis.display();
-
+        // Update lights
         this.lights[0].update();
         this.lights[1].update();
-
-        
-        
-        //Apply default appearance
-        // this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
 
         this.displayBackground();
-        // this.treeGPatch.display();
-        //this.pool.display();
-        this.house.display();
-        //this.scale(0.1,0.1,0.1);
-/*
-        this.pushMatrix();
 
-        this.translate(-30,0,-30);
-        this.treeGPatch.display();
-
-        this.popMatrix();
-        this.pushMatrix();
-
-        this.translate(8,0,-40);
-        this.treeGPatch.display();
-
-        this.popMatrix();
-        this.pushMatrix();
-
-
-        this.rotate(-Math.PI/3,0,1,0);
-        this.translate(0,0,-30);
-        
-        this.treeRPatch.display();
-        
-        this.popMatrix();
-
-
-        this.pushMatrix();
-        this.scale(0.5,0.5,0.5);
-        this.pool.display();
-
-        this.popMatrix();
-        this.pushMatrix();
-        
-        this.test.apply();
-        this.translate(0,6,0);
-        this.pol.display();
-
-        this.popMatrix();
-    */
-        // ---- END Primitive drawing section
     }
 
     initMaterials(){
@@ -197,8 +152,11 @@ class MyScene extends CGFscene {
     }
 
     displayBackground() {
+
+        
         this.skyMaterial.apply();
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
+        
         this.pushMatrix();
         this.translate(0, 2, 0);
         this.map.display();
