@@ -58,7 +58,7 @@ class MyPool extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.translate(0,0,5);
+        this.scene.translate(0,0,8);
         this.scene.scale(2,1,1);
         this.scene.translate(0,Math.sqrt(2)/2,-Math.sqrt(2)/2);
         this.scene.rotate(Math.PI/2,0,0,1);
@@ -70,7 +70,7 @@ class MyPool extends CGFobject {
 
        
         this.scene.translate(0,0,-Math.sqrt(2));
-        this.scene.scale(1,1,1.27);
+        this.scene.scale(1,1,1.88);
         this.scene.translate(Math.sqrt(2)/2,Math.sqrt(2)/2,0);
         this.scene.rotate(Math.PI/2,1,0,0);
         this.scene.rotate(Math.PI/4,0,1,0);
@@ -81,7 +81,7 @@ class MyPool extends CGFobject {
         this.scene.pushMatrix();
 
         this.scene.translate(-10-Math.sqrt(2),0,-Math.sqrt(2));
-        this.scene.scale(1,1,1.27);
+        this.scene.scale(1,1,1.88);
         this.scene.translate(Math.sqrt(2)/2,Math.sqrt(2)/2,0);
         this.scene.rotate(Math.PI/2,1,0,0);
         this.scene.rotate(Math.PI/4,0,1,0);
@@ -93,7 +93,7 @@ class MyPool extends CGFobject {
 
         this.scene.translate(Math.sqrt(2)+2,0.7,-Math.sqrt(2));
         
-        this.scene.scale(12,1,5);
+        this.scene.scale(12,1,7);
         this.scene.translate(-Math.sqrt(2)/2,0,Math.sqrt(2)/2);
         
         this.scene.rotate(-Math.PI/2,1,0,0);

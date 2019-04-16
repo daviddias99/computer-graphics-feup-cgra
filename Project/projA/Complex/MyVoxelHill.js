@@ -35,6 +35,7 @@ class MyVoxelHill extends CGFobject {
 	constructor(scene,height) {
         super(scene);
         this.height = height;
+        this.initMaterials();
         this.initBuffers();
 
 	}
@@ -42,10 +43,22 @@ class MyVoxelHill extends CGFobject {
         
         this.baseLength =  layerSideLength(this.height);
 
-        this.cube = new MyUnitCubeQuad(this.scene);
+        this.cube = new MyUnitCubeQuad(this.scene,this.waterMaterial,this.waterMaterial,this.waterMaterial);
     }
 
-    
+    initMaterials() {
+
+        let factorT = 0.6;
+        this.waterMaterial = new CGFappearance(this.scene);
+        this.waterMaterial.setAmbient(factorT, factorT, factorT, 1.0);
+        this.waterMaterial.setDiffuse(0.3, 0.3, 0.3, 1.0);
+        this.waterMaterial.setSpecular(0.8, 0.8, 1, 1.0);
+        this.waterMaterial.setShininess(10.0);  
+        this.waterMaterial.loadTexture('images/water.png');
+        this.waterMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+    }
+
 	display() {
         
         for(let i = 0; i < this.height; i++){
@@ -62,13 +75,18 @@ class MyVoxelHill extends CGFobject {
                     this.scene.translate( inLayerX + i ,i, inLayerZ + i);
                     this.cube.display();
                 }
-                else
+                else{
+                    this.scene.popMatrix();
                     continue;
+                }
+                    
 
-                this.scene.popMatrix();
                 
+                this.scene.popMatrix();
             }
+
         }
+        
     }
     
 

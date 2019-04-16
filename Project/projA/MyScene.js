@@ -27,7 +27,8 @@ class MyScene extends CGFscene {
 
         this.treeGPatch = new MyTreeGroupPatch(this);
         this.treeRPatch = new MyTreeRowPatch(this);
-        this.hill = new MyVoxelHill(this);
+        this.hillSmall = new MyVoxelHill(this,3);
+        this.hillLarge = new MyVoxelHill(this,7);
         this.pool = new MyPool(this);
         this.house = new MyHouse(this);
         
@@ -45,7 +46,7 @@ class MyScene extends CGFscene {
         // this.setGlobalAmbientLight(0.9, 0.9, 0.9, 1.0);
 
         this.lights[0].setConstantAttenuation(0.3);
-        this.lights[0].setPosition(-50, 70, -90, 1.0);
+        this.lights[0].setPosition(-10, 14, -15, 1.0);
         // this.lights[0].setAmbient(1, 1, 0.85, 1.0);
         this.lights[0].setDiffuse(1, 1, 0.8, 1.0);
         this.lights[0].setSpecular(1, 1, 0.8, 1.0);
@@ -59,7 +60,7 @@ class MyScene extends CGFscene {
         // this.setGlobalAmbientLight(0.9, 0.9, 0.9, 1.0);
 
         this.lights[1].setConstantAttenuation(0.40);
-        this.lights[1].setPosition(-50, 70, -95, 1.0);
+        this.lights[1].setPosition(19, 14, -15, 1.0);
         // this.lights[1].setAmbient(1, 1, 0.85, 1.0);
         this.lights[1].setDiffuse(0.15, 0.3, 0.3, 1.0);
         this.lights[1].setSpecular(0.15, 0.3, 0.3, 1.0);
@@ -69,7 +70,7 @@ class MyScene extends CGFscene {
         this.lights[1].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 20, 15), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 15, 30), vec3.fromValues(0, 0, 0));
     }
 
     switchTimeOfDay(time){
@@ -114,9 +115,93 @@ class MyScene extends CGFscene {
         this.lights[0].update();
         this.lights[1].update();
 
-        // ---- BEGIN Primitive drawing section
+        // ---- BEGIN Object drawing section
 
         this.displayBackground();
+        this.scale(1.2,1.2,1.2);
+        this.pushMatrix();
+        
+        // house
+
+        this.scale(0.6,0.6,0.6);
+        this.house.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
+        // hill small
+
+        this.translate(3,0,3);    
+        this.scale(0.3,0.3,0.3);
+        this.translate(0,0.5,0);
+        this.hillSmall.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
+        // hill large
+
+        this.translate(-5,0,-5);
+        this.rotate(Math.PI/7,0,1,0);    
+        this.scale(0.3,0.3,0.3);
+        this.translate(0,0.5,0);
+        this.hillLarge.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
+        // tree row patch 1
+
+        this.translate(7,0,-3);
+        this.rotate(-Math.PI/2,0,1,0);
+        this.scale(0.3,0.3,0.3);
+        this.treeRPatch.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
+        // tree group patch 1
+
+        this.rotate(-Math.PI / 8, 0, 1, 0);
+        this.translate(0, 0, -6);
+        this.scale(0.2, 0.2, 0.2);
+        this.treeGPatch.display();
+
+
+        this.popMatrix();
+        this.pushMatrix();
+
+        // tree row patch 2
+
+        this.translate(-2,0,5.5);
+        
+        this.scale(0.25,0.3,0.25);
+        this.treeRPatch.display();
+
+        this.popMatrix();
+        this.pushMatrix();
+
+        // tree group patch 2
+
+        this.rotate(-Math.PI / 6, 0, 1, 0);
+        this.translate(-3, 0, 3);
+        this.scale(0.15, 0.2, 0.15);
+        this.treeGPatch.display();
+
+
+        this.popMatrix();
+        this.pushMatrix();
+
+        // pool
+
+        this.translate(-0.5,0,1);
+        this.scale(0.1,0.1,0.1);
+        this.pool.display();
+
+
+        // ---- END Object drawing section
+
+        
 
     }
 
@@ -137,18 +222,6 @@ class MyScene extends CGFscene {
         this.skyMaterial.setEmission(1, 1, 1, 1);
         this.skyMaterial.loadTexture('images/xp.png');
         this.skyMaterial.setTextureWrap('CLAMP_TO_EDGE', 'CLAM_TO_EDGE');
-
-        /// testing materials
-
-
-        
-        this.test = new CGFappearance(this);
-        this.test.setAmbient(factor, factor, factor, 1.0);
-        this.test.setDiffuse(factor, factor, factor, 1.0);
-        this.test.setSpecular(0.1, 0.1, 0.1, 1.0);
-        this.test.setShininess(5.0);  
-        this.test.loadTexture('images/david.jpg');
-        this.test.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     displayBackground() {
@@ -158,18 +231,19 @@ class MyScene extends CGFscene {
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
         
         this.pushMatrix();
-        this.translate(0, 2, 0);
+        this.translate(0, 5, 0);
         this.map.display();
-        this.popMatrix();
 
+        this.popMatrix();
         this.pushMatrix();
-        this.scale(20, 1, 20);
+        
+        this.scale(40, 1, 40);
         this.rotate(-Math.PI / 2, 1, 0, 0);
         this.terrain.updateTexCoords([
-			-3,3,
-			3,3,
-			-3,-3,
-			3,-3
+			-2,2,
+			2,2,
+			-2,-2,
+			2,-2
         ]) 
         
         this.floorMaterial.apply();
