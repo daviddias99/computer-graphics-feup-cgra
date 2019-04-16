@@ -23,8 +23,8 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.map = new MyCubeMap(this);
+        
         this.terrain = new MyQuad(this,null);
-
         this.treeGPatch = new MyTreeGroupPatch(this);
         this.treeRPatch = new MyTreeRowPatch(this);
         this.hillSmall = new MyVoxelHill(this,3);
@@ -35,6 +35,7 @@ class MyScene extends CGFscene {
         
         //Objects connected to MyInterface
 
+        this.displayAxis = false;
         this.showTextures = true; 
         this.dayNightSelector = { 'Day': 0 , 'Night': 1};
         this.timeOfDay = 0;
@@ -43,7 +44,6 @@ class MyScene extends CGFscene {
     initLights() {
 
         //  sun light (warm)
-
 
         this.lights[0].setConstantAttenuation(0.3);
         this.lights[0].setPosition(-10, 14, -15, 1.0);
@@ -65,15 +65,14 @@ class MyScene extends CGFscene {
         this.lights[1].setVisible(true);
         this.lights[1].update();
 
-        //  moon light (cold)
-        this.lights[2].setQuadraticAttenuation(0.3);
-        
+        //  firepit (warm, large attenuation)
+
+        this.lights[2].setLinearAttenuation(0.4);
         this.lights[2].setPosition(2.4, 0.2, 3, 1.0);
         this.lights[2].setDiffuse(1, 1, 0.4, 1.0);
         this.lights[2].setSpecular(1, 1, 0.4, 1.0);
-        this.lights[2].setSpotDirection(0,1,0);
         this.lights[2].disable();
-        this.lights[2].setVisible(true);
+        this.lights[2].setVisible(false);
         this.lights[2].update();
     }
     initCameras() {
@@ -119,6 +118,10 @@ class MyScene extends CGFscene {
 
         // Enable/Disable textures
         this.enableTextures(this.showTextures);
+
+        // Draw axis
+        if (this.displayAxis)
+            this.axis.display();
 
         // Update lights
         this.lights[0].update();
@@ -194,8 +197,8 @@ class MyScene extends CGFscene {
         // tree group patch 2
 
         this.rotate(-Math.PI / 6, 0, 1, 0);
-        this.translate(-3, 0, 3);
-        this.scale(0.15, 0.2, 0.15);
+        this.translate(-4, 0, 2.6);
+        this.scale(0.20, 0.15, 0.20);
         this.treeGPatch.display();
 
 
@@ -204,7 +207,7 @@ class MyScene extends CGFscene {
 
         // pool
 
-        this.translate(-0.5,0,1);
+        this.translate(0,0,1.5);
         this.scale(0.1,0.1,0.1);
         this.pool.display();
 
@@ -218,8 +221,6 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         // ---- END Object drawing section
-
-        
 
     }
 
@@ -238,8 +239,8 @@ class MyScene extends CGFscene {
         // skybox material
         this.skyMaterial = new CGFappearance(this);
         this.skyMaterial.setEmission(1, 1, 1, 1);
-        this.skyMaterial.loadTexture('images/xp.png');
-        this.skyMaterial.setTextureWrap('CLAMP_TO_EDGE', 'CLAM_TO_EDGE');
+        this.skyMaterial.loadTexture('images/xp_day.png');
+        this.skyMaterial.setTextureWrap('CLAMP_TO_EDGE', 'CLAMP_TO_EDGE');
     }
 
     displayBackground() {

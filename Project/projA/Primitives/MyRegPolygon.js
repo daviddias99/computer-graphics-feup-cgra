@@ -7,7 +7,11 @@ class MyRegPolygon extends CGFobject {
 
         super(scene);
         this.slices = slices;
-        this.orientation = orientation;
+
+        // if orientation is 1, the visible side of the polygon will be the one seen from the positive side of y.
+        // if orientation is -1, the visible side of the polygon will be the one seen from the negative side of y.
+        
+        this.orientation = orientation; 
         this.initBuffers();
   
     }
@@ -49,8 +53,6 @@ class MyRegPolygon extends CGFobject {
                 this.indices.push(i+1,i+2,0);
             else
                 this.indices.push(i+1,1,0);
-            
-            
 
             ang += alphaAng;
         }
