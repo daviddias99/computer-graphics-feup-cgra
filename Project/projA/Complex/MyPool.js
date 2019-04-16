@@ -30,7 +30,7 @@ class MyPool extends CGFobject {
         this.stoneMaterial.loadTexture('images/rock_wall.jpg');
         this.stoneMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
-        // columns
+        // water
 
         let factorT = 0.6;
         this.waterMaterial = new CGFappearance(this.scene);
