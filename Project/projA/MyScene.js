@@ -207,12 +207,14 @@ class MyScene extends CGFscene {
 
         // pool
 
-        this.translate(0,0,1.5);
+        this.translate(0.2,0,1.5);
         this.scale(0.1,0.1,0.1);
         this.pool.display();
 
         this.popMatrix();
         this.pushMatrix();
+
+        // fire pit
 
         this.translate(1.5,0,2);
         this.scale(0.4,0.4,0.4);
