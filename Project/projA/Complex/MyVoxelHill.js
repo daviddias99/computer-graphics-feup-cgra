@@ -51,10 +51,10 @@ class MyVoxelHill extends CGFobject {
         let factorT = 0.6;
         this.waterMaterial = new CGFappearance(this.scene);
         this.waterMaterial.setAmbient(factorT, factorT, factorT, 1.0);
-        this.waterMaterial.setDiffuse(0.3, 0.3, 0.3, 1.0);
-        this.waterMaterial.setSpecular(0.8, 0.8, 1, 1.0);
-        this.waterMaterial.setShininess(10.0);  
-        this.waterMaterial.loadTexture('images/water.png');
+        this.waterMaterial.setDiffuse(0.6, 0.6, 0.6, 1.0);
+        this.waterMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.waterMaterial.setShininess(2.0);  
+        this.waterMaterial.loadTexture('images/mountain2.jpg');
         this.waterMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
     }
@@ -73,6 +73,7 @@ class MyVoxelHill extends CGFobject {
                 if( ! isInside(inLayerX,inLayerZ,this.height,i) || i == 0){ 
 
                     this.scene.translate( inLayerX + i ,i, inLayerZ + i);
+                    
                     this.cube.display();
                 }
                 else{
