@@ -33,7 +33,10 @@ class MyScene extends CGFscene {
         
         //Objects connected to MyInterface
 
-
+        this.showTextures = true; 
+        this.dayNightSelector = { 'Day': 0 , 'Night': 1};
+        this.timeOfDay = 0;
+        this.lights[this.timeOfDay].enable();
     }
     initLights() {
 
@@ -47,7 +50,7 @@ class MyScene extends CGFscene {
         this.lights[0].setDiffuse(1, 1, 0.8, 1.0);
         this.lights[0].setSpecular(1, 1, 0.8, 1.0);
         this.lights[0].setSpotDirection(1,-1,1);
-        this.lights[0].enable();
+        this.lights[0].disable();
         this.lights[0].setVisible(true);
         this.lights[0].update();
 
@@ -55,19 +58,36 @@ class MyScene extends CGFscene {
 
         // this.setGlobalAmbientLight(0.9, 0.9, 0.9, 1.0);
 
-        // this.lights[1].setConstantAttenuation(0.40);
-        // this.lights[1].setPosition(-50, 70, -90, 1.0);
-        // // this.lights[1].setAmbient(1, 1, 0.85, 1.0);
-        // this.lights[1].setDiffuse(0.15, 0.3, 0.3, 1.0);
-        // this.lights[1].setSpecular(0.15, 0.3, 0.3, 1.0);
-        // this.lights[1].setSpotDirection(1,-1,1);
-        // this.lights[1].enable();
-        // this.lights[1].setVisible(true);
-        // this.lights[1].update();
+        this.lights[1].setConstantAttenuation(0.40);
+        this.lights[1].setPosition(-50, 70, -95, 1.0);
+        // this.lights[1].setAmbient(1, 1, 0.85, 1.0);
+        this.lights[1].setDiffuse(0.15, 0.3, 0.3, 1.0);
+        this.lights[1].setSpecular(0.15, 0.3, 0.3, 1.0);
+        this.lights[1].setSpotDirection(1,-1,1);
+        this.lights[1].disable();
+        this.lights[1].setVisible(true);
+        this.lights[1].update();
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 20, 15), vec3.fromValues(0, 0, 0));
     }
+
+    switchTimeOfDay(time){
+
+        if(time == 0){
+
+            this.lights[0].enable();
+            this.lights[1].disable();
+            this.skyMaterial.loadTexture('images/xp.png');
+        } else{
+
+            this.lights[0].disable();
+            this.lights[1].enable();
+            this.skyMaterial.loadTexture('images/xp_night.png');
+        }
+
+    }
+
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
@@ -85,10 +105,15 @@ class MyScene extends CGFscene {
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
 
+        this.enableTextures(this.showTextures);
+
         // Draw axis
         // this.axis.display();
-        // this.lights[1].update();
+
         this.lights[0].update();
+        this.lights[1].update();
+
+        
         
         //Apply default appearance
         // this.setDefaultAppearance();
