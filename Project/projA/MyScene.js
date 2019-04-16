@@ -31,6 +31,7 @@ class MyScene extends CGFscene {
         this.hillLarge = new MyVoxelHill(this,7);
         this.pool = new MyPool(this);
         this.house = new MyHouse(this);
+        this.firepit = new MyFirepit(this);
         
         //Objects connected to MyInterface
 
@@ -43,11 +44,9 @@ class MyScene extends CGFscene {
 
         //  sun light (warm)
 
-        // this.setGlobalAmbientLight(0.9, 0.9, 0.9, 1.0);
 
         this.lights[0].setConstantAttenuation(0.3);
         this.lights[0].setPosition(-10, 14, -15, 1.0);
-        // this.lights[0].setAmbient(1, 1, 0.85, 1.0);
         this.lights[0].setDiffuse(1, 1, 0.8, 1.0);
         this.lights[0].setSpecular(1, 1, 0.8, 1.0);
         this.lights[0].setSpotDirection(1,-1,1);
@@ -57,17 +56,25 @@ class MyScene extends CGFscene {
 
         //  moon light (cold)
 
-        // this.setGlobalAmbientLight(0.9, 0.9, 0.9, 1.0);
-
         this.lights[1].setConstantAttenuation(0.40);
         this.lights[1].setPosition(19, 14, -15, 1.0);
-        // this.lights[1].setAmbient(1, 1, 0.85, 1.0);
         this.lights[1].setDiffuse(0.15, 0.3, 0.3, 1.0);
         this.lights[1].setSpecular(0.15, 0.3, 0.3, 1.0);
         this.lights[1].setSpotDirection(1,-1,1);
         this.lights[1].disable();
         this.lights[1].setVisible(true);
         this.lights[1].update();
+
+        //  moon light (cold)
+        this.lights[2].setQuadraticAttenuation(0.3);
+        
+        this.lights[2].setPosition(2.4, 0.2, 3, 1.0);
+        this.lights[2].setDiffuse(1, 1, 0.4, 1.0);
+        this.lights[2].setSpecular(1, 1, 0.4, 1.0);
+        this.lights[2].setSpotDirection(0,1,0);
+        this.lights[2].disable();
+        this.lights[2].setVisible(true);
+        this.lights[2].update();
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 15, 30), vec3.fromValues(0, 0, 0));
@@ -79,11 +86,13 @@ class MyScene extends CGFscene {
 
             this.lights[0].enable();
             this.lights[1].disable();
+            this.lights[2].disable();
             this.skyMaterial.loadTexture('images/xp.png');
         } else{
 
             this.lights[0].disable();
             this.lights[1].enable();
+            this.lights[2].enable();
             this.skyMaterial.loadTexture('images/xp_night.png');
         }
 
@@ -114,11 +123,12 @@ class MyScene extends CGFscene {
         // Update lights
         this.lights[0].update();
         this.lights[1].update();
+        this.lights[2].update();
 
         // ---- BEGIN Object drawing section
 
         this.displayBackground();
-        this.scale(1.2,1.2,1.2);
+        this.scale(1.5,1.5,1.5);
         this.pushMatrix();
         
         // house
@@ -198,6 +208,14 @@ class MyScene extends CGFscene {
         this.scale(0.1,0.1,0.1);
         this.pool.display();
 
+        this.popMatrix();
+        this.pushMatrix();
+
+        this.translate(1.5,0,2);
+        this.scale(0.4,0.4,0.4);
+        this.firepit.display();
+
+        this.popMatrix();
 
         // ---- END Object drawing section
 

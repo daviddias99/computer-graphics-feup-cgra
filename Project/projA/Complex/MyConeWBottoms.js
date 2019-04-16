@@ -5,11 +5,12 @@
  */
 class MyConeWBottoms extends CGFobject {
 
-	constructor(scene, slices, stacks,height, sideTexture, bottomTexture) {
+	constructor(scene, slices, stacks,height, sideTexture, bottomTexture, textureMode) {
         super(scene);
         
         this.slices = slices;
         this.stacks = stacks;
+        this.textureMode = textureMode;
 
         height === null ? this.height = 1 : this.height = height;
             
@@ -20,7 +21,7 @@ class MyConeWBottoms extends CGFobject {
 	}
 	initBuffers() {
 
-		this.cone = new MyCone(this.scene,this.slices,null);
+		this.cone = new MyCone(this.scene,this.slices,null,this.textureMode);
         this.bottom = new MyRegPolygon(this.scene,this.slices,-1);
 
     }

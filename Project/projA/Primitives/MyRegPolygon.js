@@ -1,5 +1,5 @@
 /**
-* MyCylinder
+* MyRegPolygon
 * @constructor
 */
 class MyRegPolygon extends CGFobject {

@@ -52,8 +52,8 @@ class MyVoxelHill extends CGFobject {
         this.waterMaterial = new CGFappearance(this.scene);
         this.waterMaterial.setAmbient(factorT, factorT, factorT, 1.0);
         this.waterMaterial.setDiffuse(0.6, 0.6, 0.6, 1.0);
-        this.waterMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
-        this.waterMaterial.setShininess(2.0);  
+        this.waterMaterial.setSpecular(0.3, 0.3, 0.3, 1.0);
+        this.waterMaterial.setShininess(5.0);  
         this.waterMaterial.loadTexture('images/mountain2.jpg');
         this.waterMaterial.setTextureWrap('REPEAT', 'REPEAT');
 

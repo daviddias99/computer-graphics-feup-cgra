@@ -23,6 +23,7 @@ serialInclude(['../lib/CGF.js'
                 , 'Complex/MyPrismWBottoms.js',
                 , 'Complex/MyPyramidWBottoms.js',
                 , 'Complex/MyPool.js',
+                , 'Complex/MyFirepit.js',
 
 main=function()
 {

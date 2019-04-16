@@ -3,11 +3,11 @@
 * @constructor
 */
 class MyCone extends CGFobject {
-    constructor(scene, slices, stacks) {
+    constructor(scene, slices, stacks,textureMode) {
         super(scene);
         this.slices = slices;
         this.stacks = stacks;
-
+        this.textureMode = textureMode;
         this.initBuffers();
 
     }
@@ -27,11 +27,22 @@ class MyCone extends CGFobject {
             this.normals.push(Math.cos(ang), Math.cos(Math.PI/4.0), -Math.sin(ang));
             ang+=alphaAng;
 
-            (i%2 == 0) ? this.texCoords.push(0, 0) : this.texCoords.push(1, 0);
-        }
+
+
+            if(this.textureMode == 'centered')
+                this.texCoords.push(0.5 + Math.cos(ang)*0.5, -0.5*Math.sin(ang)+0.5);
+            else if(this.textureMode == 'sliced')
+                (i%2 == 0) ? this.texCoords.push(0, 0) : this.texCoords.push(1, 0);
+
+        }       
         this.vertices.push(0,1,0);
         this.normals.push(0,1,0);
-        this.texCoords.push(0.5, 1);
+        
+
+        if (this.textureMode == 'centered')
+            this.texCoords.push(0.5, 0.5);
+        else if (this.textureMode == 'sliced')
+            this.texCoords.push(0.5, 1);
 
 
         this.primitiveType = this.scene.gl.TRIANGLES;
