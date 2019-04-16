@@ -86,7 +86,7 @@ class MyScene extends CGFscene {
             this.lights[0].enable();
             this.lights[1].disable();
             this.lights[2].disable();
-            this.skyMaterial.loadTexture('images/xp.png');
+            this.skyMaterial.loadTexture('images/xp_day.png');
         } else{
 
             this.lights[0].disable();
