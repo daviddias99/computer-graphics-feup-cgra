@@ -63,10 +63,10 @@ class MyScene extends CGFscene {
 
         //  moon light (cold)
 
-        this.lights[1].setConstantAttenuation(0.40);
+        this.lights[1].setConstantAttenuation(0.7);
         this.lights[1].setPosition(19, 14, -15, 1.0);
-        this.lights[1].setDiffuse(0.15, 0.3, 0.3, 1.0);
-        this.lights[1].setSpecular(0.15, 0.3, 0.3, 1.0);
+        this.lights[1].setDiffuse(0.1, 0.3, 0.6, 1.0);
+        this.lights[1].setSpecular(0.1, 0.3, 0.6, 1.0);
         this.lights[1].setSpotDirection(1,-1,1);
         this.lights[1].disable();
         this.lights[1].setVisible(true);
@@ -214,7 +214,7 @@ class MyScene extends CGFscene {
 
         // pool
 
-        this.translate(0.2,0,1.5);
+        this.translate(0,0,2);
         this.scale(0.15,0.1,0.15);
         this.pool.display();
 
