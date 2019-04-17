@@ -23,13 +23,15 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.map = new MyCubeMap(this);
-<<<<<<< HEAD
-        this.terrain = new MyQuad(this,null,100);
 
-=======
-        
-        this.terrain = new MyQuad(this,null);
->>>>>>> 75457d8bb5434652f5b003a7037e581345898c27
+        let texCoords = [
+            -3, -3,
+            3, -3,
+            -3, 3,
+            3, 3
+        ];
+        this.terrain = new MyQuad(this, 100, texCoords);
+
         this.treeGPatch = new MyTreeGroupPatch(this);
         this.treeRPatch = new MyTreeRowPatch(this);
         this.hillSmall = new MyVoxelHill(this,3);
@@ -72,8 +74,8 @@ class MyScene extends CGFscene {
 
         //  firepit (warm, large attenuation)
 
-        this.lights[2].setLinearAttenuation(0.4);
-        this.lights[2].setPosition(2.4, 0.2, 3, 1.0);
+        this.lights[2].setQuadraticAttenuation(0.2);
+        this.lights[2].setPosition(2.4, 0.8, 3, 1.0);
         this.lights[2].setDiffuse(1, 1, 0.4, 1.0);
         this.lights[2].setSpecular(1, 1, 0.4, 1.0);
         this.lights[2].disable();
@@ -92,7 +94,7 @@ class MyScene extends CGFscene {
             this.lights[1].disable();
             this.lights[2].disable();
             this.skyMaterial.loadTexture('images/xp_day.png');
-        } else{
+        } else {
 
             this.lights[0].disable();
             this.lights[1].enable();
@@ -141,7 +143,7 @@ class MyScene extends CGFscene {
         
         // house
 
-        this.scale(0.6,0.6,0.6);
+        this.scale(0.7,0.7,0.7);
         this.house.display();
 
         this.popMatrix();
@@ -202,7 +204,7 @@ class MyScene extends CGFscene {
         // tree group patch 2
 
         this.rotate(-Math.PI / 6, 0, 1, 0);
-        this.translate(-4, 0, 2.6);
+        this.translate(-5, 0, 2.6);
         this.scale(0.20, 0.15, 0.20);
         this.treeGPatch.display();
 
@@ -213,7 +215,7 @@ class MyScene extends CGFscene {
         // pool
 
         this.translate(0.2,0,1.5);
-        this.scale(0.1,0.1,0.1);
+        this.scale(0.15,0.1,0.15);
         this.pool.display();
 
         this.popMatrix();
@@ -257,7 +259,7 @@ class MyScene extends CGFscene {
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
         
         this.pushMatrix();
-        this.translate(0, 5, 0);
+        this.translate(0, 4, 0);
         this.map.display();
 
         this.popMatrix();
@@ -265,12 +267,7 @@ class MyScene extends CGFscene {
         
         this.scale(40, 1, 40);
         this.rotate(-Math.PI / 2, 1, 0, 0);
-        this.terrain.updateTexCoords([
-			-2,2,
-			2,2,
-			-2,-2,
-			2,-2
-        ]); 
+        
         
         this.floorMaterial.apply();
         this.terrain.display();

@@ -62,7 +62,6 @@ class MyFirepit extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.fireMaterial.apply();
         this.scene.scale(0.35,1.1,0.4);
         this.scene.rotate(Math.PI/8,1,0,0);
         this.flame.display();
@@ -70,7 +69,6 @@ class MyFirepit extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.fireMaterial.apply();
         this.scene.translate(0,0,0.3);
         this.scene.scale(0.2,0.6,0.3);
         this.scene.rotate(Math.PI/8,1,1,1);
@@ -79,7 +77,6 @@ class MyFirepit extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.fireMaterial.apply();
         this.scene.translate(0.3,0,0);
         this.scene.scale(0.3,0.53,0.4);
         this.scene.rotate(-Math.PI/7,0,0,1);
@@ -88,7 +85,6 @@ class MyFirepit extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.fireMaterial.apply();
         this.scene.translate(0.3,0,0.2);
         this.scene.scale(0.2,0.6,0.3);
         this.scene.rotate(-Math.PI/5,-1,0,1);
@@ -97,7 +93,6 @@ class MyFirepit extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.fireMaterial.apply();
         this.scene.translate(-0.3,0,-0.2);
         this.scene.scale(0.2,0.6,0.3);
         this.scene.rotate(Math.PI/5,-1,0,1);
@@ -106,7 +101,7 @@ class MyFirepit extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.fireMaterial.apply();
+    
         this.scene.translate(-0.2,0.1,+0.2);
         this.scene.scale(0.4,0.3,0.20);
         this.scene.rotate(Math.PI/6,1,0,1);
@@ -115,7 +110,7 @@ class MyFirepit extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.fireMaterial.apply();
+ 
         this.scene.translate(0.2,0.1,-0.2);
         this.scene.scale(0.4,0.3,0.20);
         this.scene.rotate(Math.PI/6,1,0,1);

@@ -24,22 +24,22 @@ class MyHouse extends CGFobject {
 
         // roof
 
-        let factorTT = 0.8;
+       
         this.roofMaterial = new CGFappearance(this.scene);
-        this.roofMaterial.setAmbient(factorTT, factorTT, factorTT, 1.0);
-        this.roofMaterial.setDiffuse(factorTT, factorTT, factorTT, 1.0);
-        this.roofMaterial.setSpecular(factorTT, factorTT, factorTT, 1.0);
+        this.roofMaterial.setAmbient(0.8, 0.8, 0.8, 1.0);
+        this.roofMaterial.setDiffuse(0.8, 0.8, 0.8, 1.0);
+        this.roofMaterial.setSpecular(0.6, 0.6, 0.6, 1.0);
         this.roofMaterial.setShininess(10.0);  
         this.roofMaterial.loadTexture('images/bark.jpg');
         this.roofMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         // walls
 
-        let factorT = 0.8;
+      
         this.wallMaterial = new CGFappearance(this.scene);
         this.wallMaterial.setAmbient(0.7, 0.7, 0.7, 1.0);
-        this.wallMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
-        this.wallMaterial.setSpecular(0.6, 0.6, 0.6, 1.0);
+        this.wallMaterial.setDiffuse(0.8, 0.8, 0.8, 1.0);
+        this.wallMaterial.setSpecular(0.4, 0.4, 0.4, 1.0);
         this.wallMaterial.setShininess(7.0);  
         this.wallMaterial.loadTexture('images/wall2.jpg');
         this.wallMaterial.setTextureWrap('REPEAT', 'REPEAT');
@@ -48,7 +48,7 @@ class MyHouse extends CGFobject {
 
         this.columnsMaterial = new CGFappearance(this.scene);
         this.columnsMaterial.setAmbient(0.7, 0.7, 0.7, 1.0);
-        this.columnsMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
+        this.columnsMaterial.setDiffuse(0.8, 0.8, 0.8, 1.0);
         this.columnsMaterial.setSpecular(0.2, 0.2, 0.2, 1.0);
         this.columnsMaterial.setShininess(4.0);  
         this.columnsMaterial.loadTexture('images/columns.jpg');
@@ -57,8 +57,8 @@ class MyHouse extends CGFobject {
         // door
 
         this.doorMaterial = new CGFappearance(this.scene);
-        this.doorMaterial.setAmbient(factorT, factorT, factorT, 1.0);
-        this.doorMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
+        this.doorMaterial.setAmbient(0.8, 0.8, 0.8, 1.0);
+        this.doorMaterial.setDiffuse(0.8, 0.8, 0.8, 1.0);
         this.doorMaterial.setSpecular(0.4, 0.4, 0.4, 1.0);
         this.doorMaterial.setShininess(5);  
         this.doorMaterial.loadTexture('images/door.jpg');
@@ -69,7 +69,7 @@ class MyHouse extends CGFobject {
         this.windowMaterial = new CGFappearance(this.scene);
         this.windowMaterial.setAmbient(0.4, 0.4, 0.4, 1.0);
         this.windowMaterial.setDiffuse(0.4, 0.4, 0.4, 1.0);
-        this.windowMaterial.setSpecular(factorT, factorT, factorT, 1.0);
+        this.windowMaterial.setSpecular(0.8, 0.8, 0.8, 1.0);
         this.windowMaterial.setShininess(10.0);  
         this.windowMaterial.loadTexture('images/window.jpg');
         this.windowMaterial.setTextureWrap('REPEAT', 'REPEAT');
@@ -78,8 +78,8 @@ class MyHouse extends CGFobject {
 
         this.roundWindowMaterial = new CGFappearance(this.scene);
         this.roundWindowMaterial.setAmbient(0.5, 0.5, 0.5, 1.0);
-        this.roundWindowMaterial.setDiffuse(0.6, 0.6, 0.6, 1.0);
-        this.roundWindowMaterial.setSpecular(factorT, factorT, factorT, 1.0);
+        this.roundWindowMaterial.setDiffuse(0.3, 0.3, 0.3, 1.0);
+        this.roundWindowMaterial.setSpecular(1, 1, 1, 1.0);
         this.roundWindowMaterial.setShininess(10.0);  
         this.roundWindowMaterial.loadTexture('images/round_window.jpg');
         this.roundWindowMaterial.setTextureWrap('REPEAT', 'REPEAT');
