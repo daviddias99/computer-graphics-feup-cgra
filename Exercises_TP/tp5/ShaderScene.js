@@ -7,7 +7,7 @@ class ShaderScene extends CGFscene {
 		// initial configuration of interface
 		this.selectedObject = 0;
 		this.wireframe = false;
-		this.selectedExampleShader = 0;
+		this.selectedExampleShader = 10;
 		this.showShaderCode = false;
 
 		this.scaleFactor = 16.0;
@@ -68,7 +68,9 @@ class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/texture3.vert", "shaders/texture3.frag"),
 			new CGFshader(this.gl, "shaders/texture3anim.vert", "shaders/texture3anim.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/sepia.frag"),
-			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/convolution.frag")
+			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/convolution.frag"),
+			new CGFshader(this.gl, "shaders/ukraine.vert", "shaders/ukraine.frag"),
+			new CGFshader(this.gl, "shaders/texture3anim_ex.vert", "shaders/texture3anim_ex.frag")
 		];
 
 		// additional texture will have to be bound to texture unit 1 later, when using the shader, with "this.texture2.bind(1);"
@@ -76,6 +78,7 @@ class ShaderScene extends CGFscene {
 		this.testShaders[5].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ timeFactor: 0 });
+		this.testShaders[10].setUniformsValues({ timeFactor: 0,uSampler2: 1 });
 
 
 		// Shaders interface variables
@@ -89,7 +92,10 @@ class ShaderScene extends CGFscene {
 			'Multiple textures in VS and FS': 5,
 			'Animation example': 6,
 			'Sepia': 7,
-			'Convolution': 8
+			'Convolution': 8,
+			'Ukraine' : 9,	
+			'Anime' : 10	
+
 		};
 
 		// shader code panels references
@@ -172,6 +178,7 @@ class ShaderScene extends CGFscene {
 		// only shader 6 is using time factor
 		if (this.selectedExampleShader == 6)
 			this.testShaders[6].setUniformsValues({ timeFactor: t / 100 % 1000 });
+			this.testShaders[10].setUniformsValues({ timeFactor: t / 100 % 1000 });
 	}
 
 	// main display function
