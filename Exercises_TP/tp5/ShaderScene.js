@@ -69,8 +69,12 @@ class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/texture3anim.vert", "shaders/texture3anim.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/sepia.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/convolution.frag"),
+
 			new CGFshader(this.gl, "shaders/ukraine.vert", "shaders/ukraine.frag"),
-			new CGFshader(this.gl, "shaders/texture3anim_ex.vert", "shaders/texture3anim_ex.frag")
+			new CGFshader(this.gl, "shaders/texture3anim_ex.vert", "shaders/texture3anim_ex.frag"),
+
+			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/grayscale.frag")
+
 		];
 
 		// additional texture will have to be bound to texture unit 1 later, when using the shader, with "this.texture2.bind(1);"
@@ -94,7 +98,8 @@ class ShaderScene extends CGFscene {
 			'Sepia': 7,
 			'Convolution': 8,
 			'Ukraine' : 9,	
-			'Anime' : 10	
+			'Anime' : 10,	
+			'Grayscale': 11
 
 		};
 
@@ -176,7 +181,7 @@ class ShaderScene extends CGFscene {
 	// called periodically (as per setUpdatePeriod() in init())
 	update(t) {
 		// only shader 6 is using time factor
-		if (this.selectedExampleShader == 6)
+		if (this.selectedExampleShader == 6 || this.selectedExampleShader == 10)
 			this.testShaders[6].setUniformsValues({ timeFactor: t / 100 % 1000 });
 			this.testShaders[10].setUniformsValues({ timeFactor: t / 100 % 1000 });
 	}
