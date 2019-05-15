@@ -25,7 +25,7 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.plane = new Plane(this, 32);
 
-        this.bird = new MyBird(this, 0, 3, 0, 0);
+        this.bird = new MyBird(this, 0, 3, 0);
 
         //Objects connected to MyInterface
     }
@@ -45,9 +45,7 @@ class MyScene extends CGFscene {
         this.setShininess(10.0);
     }
     update(t) {
-        // TODO: check keys
         this.checkKeys();
-        // TODO: turn e accelerate
         this.bird.update(t);
     }
     display() {
@@ -75,8 +73,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
         // ---- END Primitive drawing section
 
-        this.bird.display();
-
+        this.bird.display(); 
     }
     checkKeys() {
         var text = "Keys pressed: ";
@@ -94,12 +91,14 @@ class MyScene extends CGFscene {
             this.bird.accelerate(-0.1);
         }
         if (this.gui.isKeyPressed("KeyA")) { 
-            text += "  ";
+            text += " A ";
             keysPressed = true;
+            this.bird.turn(0.5);
         }
         if (this.gui.isKeyPressed("KeyD")) { 
             text += " D ";
-            keysPressed = true;
+            keysPressed = true;    
+            this.bird.turn(-0.5);
         }
         if(keysPressed)
             console.log(text);

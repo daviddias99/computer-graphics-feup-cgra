@@ -18,6 +18,10 @@ class MyInterface extends CGFinterface {
 
         this.initKeys();
 
+        // slider elements in GUI
+        this.gui.add(this.scene.bird, 'scaleFactor', 0.5, 3).name('scaleFactor');
+        this.gui.add(this.scene.bird, 'speedFactor', 0.1, 3).name('speedFactor');
+
         return true;
     }
 
