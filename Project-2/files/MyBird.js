@@ -22,7 +22,7 @@ class MyBird extends CGFobject {
     }
 
     update(t) {
-        this.y = this.y0 + Math.sin(t / 250) / 3 * this.speedFactor;
+        this.y = this.y0 + Math.sin(t * this.speedFactor / 250) / 3 ;
         this.x += this.speed * Math.cos(-this.orientation);
         this.z += this.speed * Math.sin(-this.orientation);
         // TODO: (chicken) WINGS      
