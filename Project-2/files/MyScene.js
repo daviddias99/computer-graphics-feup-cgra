@@ -25,6 +25,8 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.plane = new Plane(this, 32);
 
+        this.bird = new MyBird(this, 0, 3, 0, 0);
+
         //Objects connected to MyInterface
     }
     initLights() {
@@ -42,10 +44,12 @@ class MyScene extends CGFscene {
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
     }
-    update(t){
-
+    update(t) {
+        // TODO: check keys
+        this.checkKeys();
+        // TODO: turn e accelerate
+        this.bird.update(t);
     }
-
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene
@@ -65,10 +69,40 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
         this.pushMatrix();
-        this.rotate(-0.5*Math.PI, 1, 0, 0);
+        this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
         this.popMatrix();
         // ---- END Primitive drawing section
+
+        this.bird.display();
+
+    }
+    checkKeys() {
+        var text = "Keys pressed: ";
+        var keysPressed = false;
+        
+        // Check for key codes e.g. in ​ https://keycode.info/
+        if (this.gui.isKeyPressed("KeyW")) {
+            text += " W ";
+            keysPressed = true;
+            this.bird.accelerate(0.1);
+        }
+        if (this.gui.isKeyPressed("KeyS")) { 
+            text += " S ";
+            keysPressed = true;
+            this.bird.accelerate(-0.1);
+        }
+        if (this.gui.isKeyPressed("KeyA")) { 
+            text += "  ";
+            keysPressed = true;
+        }
+        if (this.gui.isKeyPressed("KeyD")) { 
+            text += " D ";
+            keysPressed = true;
+        }
+        if(keysPressed)
+            console.log(text);
     }
 }
+    
