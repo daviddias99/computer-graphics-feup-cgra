@@ -100,6 +100,11 @@ class MyScene extends CGFscene {
             keysPressed = true;    
             this.bird.turn(-0.5);
         }
+        if (this.gui.isKeyPressed("KeyR")) { 
+            text += " R ";
+            keysPressed = true;    
+            this.bird.reset();
+        }
         if(keysPressed)
             console.log(text);
     }
