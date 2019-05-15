@@ -73,9 +73,9 @@ class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/sepia.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/convolution.frag"),
 			new CGFshader(this.gl, "shaders/ukraine.vert", "shaders/ukraine.frag"),
-			new CGFshader(this.gl, "shaders/texture3anim_ex.vert", "shaders/texture3anim_ex.frag"),
-			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/grayscale.frag")
-
+			new CGFshader(this.gl, "shaders/tex3_x_translation.vert", "shaders/tex3_x_translation.frag"),
+			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/grayscale.frag"),
+			new CGFshader(this.gl, "shaders/water.vert", "shaders/water.frag")
 		];
 
 		// additional texture will have to be bound to texture unit 1 later, when using the shader, with "this.texture2.bind(1);"
