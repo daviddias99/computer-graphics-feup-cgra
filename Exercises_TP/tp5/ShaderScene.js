@@ -69,10 +69,8 @@ class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/texture3anim.vert", "shaders/texture3anim.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/sepia.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/convolution.frag"),
-
 			new CGFshader(this.gl, "shaders/ukraine.vert", "shaders/ukraine.frag"),
 			new CGFshader(this.gl, "shaders/texture3anim_ex.vert", "shaders/texture3anim_ex.frag"),
-
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/grayscale.frag")
 
 		];
