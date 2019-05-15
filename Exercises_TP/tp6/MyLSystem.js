@@ -95,6 +95,26 @@ class MyLSystem extends CGFobject {
                     this.scene.rotate(-this.angle, 0, 0, 1);
                     break;
 
+                case "\\":
+                    // roda sentido pos segundo X
+                    this.scene.rotate(this.angle, 1, 0, 0);
+                    break;
+
+                case "/":
+                    // roda sentido neg segundo X
+                    this.scene.rotate(-this.angle, 1, 0, 0);
+                    break;
+                
+                case "^":
+                    // roda sentido pos segundo Y
+                    this.scene.rotate(this.angle, 0, 1, 0);
+                    break;
+
+                case "&":
+                    // roda sentido neg segundo Y
+                    this.scene.rotate(-this.angle, 0, 1, 0);
+                    break;
+
                 case "[":
                     // push
                     this.scene.pushMatrix();
