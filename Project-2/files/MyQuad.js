@@ -4,72 +4,67 @@
  * @param scene - Reference to MyScene object
  */
 class MyQuad extends CGFobject {
-	constructor(scene, complexity, coords) {
+	constructor(scene, coords) {
 		super(scene);
-		
-		if (complexity != undefined)
-			this.complexity = complexity;
-		else
-			this.complexity = 1;
-	
-
 		this.initBuffers();
 		if (coords != undefined)
 			this.updateTexCoords(coords);
 	}
 	
 	initBuffers() {
-		this.vertices = [];
-        this.indices = [];
-        this.normals = [];
-        this.texCoords = [];
+		this.vertices = [
+			-0.5, -0.5, 0,	//0
+			0.5, -0.5, 0,	//1
+			-0.5, 0.5, 0,	//2
+			0.5, 0.5, 0,	//3
 
-		let delta = 1 / this.complexity;
-		let ind_offset = 0;
+			-0.5, -0.5, 0,	//4
+			0.5, -0.5, 0,	//5
+			-0.5, 0.5, 0,	//6
+			0.5, 0.5, 0		//7
+			
+		];
 
-		for (let i = 0; i < this.complexity; i++) {
+		//Counter-clockwise reference of vertices
+		this.indices = [
+			0, 1, 2,
+			1, 3, 2,
+			6, 5, 4,
+			6, 7, 5
+		];	
+
+		//Facing Z positive
+		this.normals = [
+			0, 0, 1,
+			0, 0, 1,
+			0, 0, 1,
+			0, 0, 1,
+			0, 0, -1,
+			0, 0, -1,
+			0, 0, -1,
+			0, 0, -1
+		];
 		
-			for (let j = 0; j < this.complexity; j++) { 
-				
-				let ver = [
-					-0.5 + i * delta, -0.5 + j * delta, 0,
-					-0.5 + (i + 1) * delta, -0.5 + j * delta, 0,
-					-0.5 + i * delta, -0.5 + (j + 1) * delta, 0,
-					-0.5 + (i + 1) * delta, -0.5 + (j + 1) * delta, 0
-				];
+		/*
+		Texture coords (s,t)
+		+----------> s
+        |
+        |
+		|
+		v
+        t
+        */
 
-				
-				this.vertices.push(...ver);
-				
-				let ind = [
-					ind_offset, ind_offset + 1, ind_offset + 2,
-					ind_offset + 1, ind_offset + 3, ind_offset + 2
-				]
-
-				ind_offset += 4;
-
-				this.indices.push(...ind);
-
-				let nor = [
-					0, 0, 1,
-					0, 0, 1,
-					0, 0, 1,
-					0, 0, 1
-				];
-
-				this.normals.push(...nor);
-
-				let tex = [
-					i * delta, j * delta,
-					(i + 1) * delta, j * delta,
-					i * delta, (j + 1) * delta,
-					(i + 1) * delta, (j + 1) * delta
-				]
-
-				this.texCoords.push(...tex);
-			}
-		}
-		
+		this.texCoords = [
+			0, 1,
+			1, 1,
+			0, 0,
+			1, 0,
+			0, 1,
+			1, 1,
+			0, 0,
+			1, 0
+		]
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}
@@ -80,32 +75,7 @@ class MyQuad extends CGFobject {
 	 * @param {Array} coords - Array of texture coordinates
 	 */
 	updateTexCoords(coords) {
-		this.texCoords = [];
-
-		let s_start = coords[0];
-		let s_end = coords [6];
-		let t_start = coords [1];
-		let t_end = coords[7];
-
-		let i_delta = (s_end - s_start) / this.complexity;
-		let j_delta = (t_end - t_start) / this.complexity;
-
-
-		for (let i = 0; i < this.complexity; i++) {
-		
-			for (let j = 0; j < this.complexity; j++) { 
-				
-				let tex = [
-					s_start + i * i_delta, t_start + j * j_delta,
-					s_start + (i + 1) * i_delta, t_start + j * j_delta,
-					s_start + i * i_delta, t_start + (j + 1) * j_delta,
-					s_start + (i + 1) * i_delta, t_start + (j + 1) * j_delta
-				]
-
-				this.texCoords.push(...tex);
-			}
-		}
-
+		this.texCoords = [...coords];
 		this.updateTexCoordsGLBuffers();
 	}
 }
