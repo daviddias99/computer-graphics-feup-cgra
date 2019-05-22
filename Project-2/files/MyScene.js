@@ -46,6 +46,9 @@ class MyScene extends CGFscene {
         this.appearance.setTextureWrap('CLAMP_TO_EDGE', 'REPEAT');
 
         this.bird = new MyBird(this, 0, 3, 0);
+        this.branches = [];
+        this.branches.push(new MyTreeBranch(this));
+        this.numBranches = 1;
 
 
         //Objects connected to MyInterface
@@ -86,11 +89,11 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
-        
+        /*
         this.setActiveShader(this.terrainShader);    
         this.heightmap.bind(1);
         this.altimetry.bind(2);    
-        this.appearance.apply();
+        this.appearance.apply();*/
         
         // ---- BEGIN Primitive drawing section
         this.pushMatrix();
@@ -100,8 +103,14 @@ class MyScene extends CGFscene {
         this.popMatrix();
         // ---- END Primitive drawing section
 
+        
+
         this.bird.display(); 
+
+        for (let i = 0; i < this.numBranches; i++)
+            this.branches[i].display();
     }
+
     checkKeys() {
         var text = "Keys pressed: ";
         var keysPressed = false;

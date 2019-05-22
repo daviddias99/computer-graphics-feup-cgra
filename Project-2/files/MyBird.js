@@ -38,7 +38,6 @@ class MyBird extends CGFobject {
         // update position
         this.x += this.speed * Math.cos(-this.orientation) * this.speedFactor;
         this.z += this.speed * Math.sin(-this.orientation) * this.speedFactor;
-
     }
 
     turn(v) {
