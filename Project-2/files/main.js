@@ -3,9 +3,14 @@ include=function(){function f(){var a=this.readyState;(!a||/ded|te/.test(a))&&(c
 serialInclude=function(a){var b=console,c=serialInclude.l;if(a.length>0)c.splice(0,0,a);else b.log("Done!");if(c.length>0){if(c[0].length>1){var d=c[0].splice(0,1);b.log("Loading "+d+"...");include(d,function(){serialInclude([]);});}else{var e=c[0][0];c.splice(0,1);e.call();};}else b.log("Finished.");};serialInclude.l=new Array();
 
 serialInclude( ['../lib/CGF.js','MyScene.js', 'MyInterface.js', 'Plane.js',
+<<<<<<< HEAD
                 'MyQuad.js', 'MyUnitCubeQuad.js', 'MyTriangle.js', 'MyCylinder.js',
                 'MyTreeBranch.js',
                 'MyBirdBody.js', 'MyBirdHead.js', 'MyBirdWing.js', 'MyBird.js', 
+=======
+                'MyQuad.js', 'MyUnitCubeQuad.js', 'MyTriangle.js',
+                'MyBirdBody.js', 'MyBirdHead.js', 'MyBirdWing.js', 'MyBird.js',  'MyTerrain.js',
+>>>>>>> 330f41c2bc7e60f012c1984e839b887dea1606e9
 
 main=function()
 {

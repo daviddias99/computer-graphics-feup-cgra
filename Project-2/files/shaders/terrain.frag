@@ -19,7 +19,7 @@ void main() {
 	float heightMapVValue = texture2D(uSampler2,vTextureCoord).b ;
 
 	vec2 heightMapCoord = vec2(0,-heightMapVValue);
-	color = texture2D(uSampler3, heightMapCoord);
+	color += 0.5*texture2D(uSampler3, heightMapCoord);
 
 	gl_FragColor = color;
 }
