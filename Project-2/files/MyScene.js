@@ -83,22 +83,22 @@ class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyW")) {
             text += " W ";
             keysPressed = true;
-            this.bird.accelerate(0.1);
+            this.bird.accelerate(1);
         }
         if (this.gui.isKeyPressed("KeyS")) { 
             text += " S ";
             keysPressed = true;
-            this.bird.accelerate(-0.1);
+            this.bird.accelerate(-1);
         }
         if (this.gui.isKeyPressed("KeyA")) { 
             text += " A ";
             keysPressed = true;
-            this.bird.turn(0.5);
+            this.bird.turn(1);
         }
         if (this.gui.isKeyPressed("KeyD")) { 
             text += " D ";
             keysPressed = true;    
-            this.bird.turn(-0.5);
+            this.bird.turn(-1);
         }
         if (this.gui.isKeyPressed("KeyR")) { 
             text += " R ";
