@@ -25,7 +25,28 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.plane = new Plane(this, 32);
 
+        // SHADERS
+
+
+        this.terrainShader = new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag")
+        this.heightmap = new CGFtexture(this,"images/heightmap.jpg");
+		this.altimetry = new CGFtexture(this,"images/altimetry.png");
+        this.terrain = new CGFtexture(this,"images/terrain.jpg");
+        
+        this.terrainShader.setUniformsValues({uSampler2: 1 , uSampler3 : 2});  
+
+        
+		this.appearance = new CGFappearance(this);
+		this.appearance.setAmbient(1, 1, 1, 1);
+		this.appearance.setDiffuse(1, 1, 1, 1);
+		this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
+		this.appearance.setShininess(120);
+
+		this.appearance.setTexture(this.terrain);
+        this.appearance.setTextureWrap('CLAMP_TO_EDGE', 'REPEAT');
+
         this.bird = new MyBird(this, 0, 3, 0);
+
 
         //Objects connected to MyInterface
     }
@@ -65,6 +86,12 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
+        
+        this.setActiveShader(this.terrainShader);    
+        this.heightmap.bind(1);
+        this.altimetry.bind(2);    
+        this.appearance.apply();
+        
         // ---- BEGIN Primitive drawing section
         this.pushMatrix();
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
