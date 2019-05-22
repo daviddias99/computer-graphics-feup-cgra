@@ -12,6 +12,12 @@ class MyBird extends CGFobject {
 
         this.scaleFactor = 3;
         this.speedFactor = 1;
+        
+        this.normalState = 0;
+        this.descendState = 1;
+        this.ascendState = 2;
+
+        this.state = this.normalState;
 	}
 	initBuffers() {
         this.head = new MyBirdHead(this.scene);
@@ -24,14 +30,27 @@ class MyBird extends CGFobject {
     }
 
     update(t) {
-
         let timeFactor = 250;
-
-        // up and down movement
         let verticalRange = 0.4;
-        this.y = this.y0 + Math.sin(t / timeFactor * this.speedFactor) * verticalRange;
+        
+        // up and down movement
+        switch (this.state) {
+        case 0:
+            this.y = this.y0 + Math.sin(t / timeFactor * this.speedFactor) * verticalRange;
+            break;
+        case 1:
+            this.y -= 0.3 * this.speedFactor;
+            if (this.y < 2)
+                this.ascend();
+            break;
+        case 2:
+            this.y += 0.3 * this.speedFactor;
+            if (this.y > this.y0)
+                this.stop();
+            break;
+        }   
 
-        // (chicken) WINGS      
+        // (chicken) WINGS      ==
         let wingRange = Math.PI * 40 / 180; 
         this.wingAlfa = - Math.sin(t  / timeFactor * this.speedFactor) * wingRange;
 
@@ -42,17 +61,31 @@ class MyBird extends CGFobject {
 
     turn(v) {
         if (v > 0)
-            this.orientation += 0.2 * this.speedFactor;
+            this.orientation += 0.2;// * this.speedFactor;
         else if (v < 0)
-            this.orientation -= 0.2 * this.speedFactor;
+            this.orientation -= 0.2;// * this.speedFactor;
     }
 
     accelerate(v) {
         if (v > 0)
-            this.speed += 0.2 * this.speedFactor;
+            this.speed += 0.2;// * this.speedFactor;
         else if (v < 0)
-            this.speed -= 0.2 * this.speedFactor;
+            this.speed -= 0.2;// * this.speedFactor;
     }
+
+    descend() {
+        if (this.state == this.normalState)
+            this.state = this.descendState;
+    }
+
+    ascend() {
+        this.state = this.ascendState;
+    }
+
+    stop() {
+        this.state = this.normalState;
+        this.y = this.y0;
+    }   
 
     reset() {
         this.x = this.x0;
@@ -61,6 +94,7 @@ class MyBird extends CGFobject {
         this.speed = 0;
         this.orientation = 0;
         this.wingAlfa = 0;
+        this.state = this.normalState;
     }
 
 	display() {
@@ -70,6 +104,7 @@ class MyBird extends CGFobject {
         this.scene.pushMatrix();
         this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation, 0, 1, 0);
+        this.scene.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
 
         // draw bird head
@@ -78,8 +113,8 @@ class MyBird extends CGFobject {
     
         this.scene.pushMatrix();
         
-        this.scene.translate(0.7 * this.scaleFactor, 0.6 * this.scaleFactor, 0 * this.scaleFactor);
-        this.scene.scale(headSideSize * this.scaleFactor, headSideSize * this.scaleFactor, headSideSize * this.scaleFactor);
+        this.scene.translate(0.7, 0.6 , 0 );
+        this.scene.scale(headSideSize, headSideSize, headSideSize);
         this.head.display();
 
         this.scene.popMatrix();
@@ -90,7 +125,7 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
        
-        this.scene.scale(bodySideSize * this.scaleFactor, bodySideSize * this.scaleFactor, bodySideSize * this.scaleFactor);
+        this.scene.scale(bodySideSize , bodySideSize , bodySideSize );
         this.body.display();
 
         this.scene.popMatrix();
@@ -99,8 +134,7 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0, - bodySideSize / 2 * this.scaleFactor);
-        this.scene.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
+        this.scene.translate(0, 0, - bodySideSize / 2 );
         this.scene.rotate(this.wingAlfa, 1, 0, 0);
         this.wing.display();
 
@@ -108,8 +142,8 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0, bodySideSize / 2 * this.scaleFactor);
-        this.scene.scale(this.scaleFactor, this.scaleFactor, - this.scaleFactor);
+        this.scene.translate(0, 0, bodySideSize / 2);
+        this.scene.scale(1, 1, -1);
         this.scene.rotate(this.wingAlfa, 1, 0, 0);
         this.wing.display();
 
