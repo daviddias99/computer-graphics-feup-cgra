@@ -16,6 +16,8 @@ class MyBird extends CGFobject {
         this.normalState = 0;
         this.descendState = 1;
         this.ascendState = 2;
+        this.hasBranch = false;
+        this.branch = null;
 
         this.state = this.normalState;
 	}
@@ -40,8 +42,17 @@ class MyBird extends CGFobject {
             break;
         case 1:
             this.y -= 0.3 * this.speedFactor;
-            if (this.y < 2)
+            console.log("go down");
+            if (this.y < 2) {
+                if (this.hasBranch)
+                    ;// TODO: drop in nest
+                else 
+                    this.pickBranch();   
+            
                 this.ascend();
+            }
+
+                
             break;
         case 2:
             this.y += 0.3 * this.speedFactor;
@@ -57,6 +68,12 @@ class MyBird extends CGFobject {
         // update position
         this.x += this.speed * Math.cos(-this.orientation) * this.speedFactor;
         this.z += this.speed * Math.sin(-this.orientation) * this.speedFactor;
+
+        if (this.hasBranch) {
+            this.branch.x = this.z;
+            this.branch.y = this.y - 2;
+            this.branch.z = this.z;
+        }
     }
 
     turn(v) {
@@ -87,6 +104,22 @@ class MyBird extends CGFobject {
         this.y = this.y0;
     }   
 
+    pickBranch() {
+        console.log("try to pick lanch");
+        for (let i = 0; i < this.scene.numBranches; i++) {
+            if ((this.scene.branches[i].x > this.x - 0.5 && this.scene.branches[i].x < this.x + 0.5) &&
+                (this.scene.branches[i].z > this.z - 0.5 && this.scene.branches[i].z < this.z + 0.5)) {
+                console.log("branch x " + this.scene.branches[i].x);
+                console.log("branch z " + this.scene.branches[i].z);
+                console.log("bird x " + this.x);
+                console.log("bird z " + this.z);
+                this.branch = this.scene.branches[i];
+                this.scene.numBranches--;
+                this.hasBranch = true;
+            }
+        }
+    }
+
     reset() {
         this.x = this.x0;
         this.y = this.y0;
@@ -98,12 +131,15 @@ class MyBird extends CGFobject {
     }
 
 	display() {
-        
         // translate and rotate bird in its current position and orientation
+        if (this.hasBranch)
+            this.branch.display();
+        
 
         this.scene.pushMatrix();
         this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation, 0, 1, 0);
+        
         this.scene.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
 

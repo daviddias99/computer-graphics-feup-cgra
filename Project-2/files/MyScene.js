@@ -25,7 +25,7 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.bird = new MyBird(this, 0, 3, 0);
         this.terrain = new MyTerrain(this);
-
+    
 
 		this.appearance = new CGFappearance(this);
 		this.appearance.setAmbient(1, 1, 1, 1);

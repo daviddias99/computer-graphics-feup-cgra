@@ -1,4 +1,5 @@
-class MyBirdWing extends CGFobject {
+class MyBirdWing extends CGFobject { 
+    
 	constructor(scene) {
         super(scene);
         this.initMaterials();

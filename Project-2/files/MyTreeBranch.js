@@ -9,6 +9,7 @@ class MyTreeBranch extends CGFobject {
         super(scene);
         this.x = x;
         this.z = z;
+        this.y = 0;
         
         this.height = 1.2;
         this.radius = 0.15;
@@ -49,11 +50,13 @@ class MyTreeBranch extends CGFobject {
 	display() {
         this.scene.pushMatrix();
         
-        this.scene.translate(this.x, 0, this.z);
+        this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation, 0, 1, 0);
         this.scene.rotate(Math.PI / 2, 0, 0, 1);
         this.scene.translate(0, -this.height / 2, 0);
         this.scene.scale(this.radius, this.height, this.radius);
         this.cylinder.display();
+
+        this.scene.popMatrix();
     }
 }
