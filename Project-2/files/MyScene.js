@@ -21,24 +21,32 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
         this.setUpdatePeriod(50);
 
-        //Initialize scene objects
-        this.axis = new CGFaxis(this);
-        this.bird = new MyBird(this, 0, 3, 0);
-        this.terrain = new MyTerrain(this);
+        // Appearance
 
-
-		this.appearance = new CGFappearance(this);
+        this.appearance = new CGFappearance(this);
 		this.appearance.setAmbient(1, 1, 1, 1);
 		this.appearance.setDiffuse(1, 1, 1, 1);
 		this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
 		this.appearance.setShininess(120);
         this.appearance.setTextureWrap('CLAMP_TO_EDGE', 'REPEAT');
 
+        //Initialize scene objects
+        this.axis = new CGFaxis(this);
         this.bird = new MyBird(this, 0, 3, 0);
+        this.terrain = new MyTerrain(this);
+        this.lightning = new MyLightning(this);
+        this.plane = new Plane(this);
+        this.segment = new MyLightningSegment(this);
+
+
         this.branches = [];
         this.branches.push(new MyTreeBranch(this));
         this.numBranches = 1;
 
+        this.lightning.doGenerate();
+
+        this.teste = 0;
+        
         //Objects connected to MyInterface
     }
     initLights() {
@@ -57,8 +65,18 @@ class MyScene extends CGFscene {
         this.setShininess(10.0);
     }
     update(t) {
+
+
+
+        if(this.teste == 0){
+
+            this.lightning.startAnimation(t);
+            this.teste++;
+        }
+        
         this.checkKeys();
         this.bird.update(t);
+        this.lightning.update(t);
     }
     display() {
         // ---- BEGIN Background, camera and axis setup
@@ -81,11 +99,14 @@ class MyScene extends CGFscene {
 
         // ---- END Primitive drawing section
 
-        this.bird.display(); 
-        this.terrain.display();
+        // this.bird.display(); 
+        // this.terrain.display();
+        this.lightning.display();
+        // this.segment.display();
+        // this.plane.display();
 
-        for (let i = 0; i < this.numBranches; i++)
-            this.branches[i].display();
+        // for (let i = 0; i < this.numBranches; i++)
+            // this.branches[i].display();
     }
 
     checkKeys() {

@@ -56,6 +56,6 @@ class MyTreeBranch extends CGFobject {
         this.scene.translate(0, -this.height / 2, 0);
         this.scene.scale(this.radius, this.height, this.radius);
         this.cylinder.display();
-        console.log("display branch");
+        
     }
 }
