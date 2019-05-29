@@ -17,7 +17,7 @@ varying vec2 vTextureCoord;
 void main(){
 
 	vec3 offset=vec3(0.0,0.0, texture2D(uSampler2, aTextureCoord).b);
-	vec3 newCoords = aVertexPosition + offset * 6.0;
+	vec3 newCoords = aVertexPosition + offset * 7.0;
 
 	gl_Position = uPMatrix * uMVMatrix * vec4(newCoords, 1.0);
 

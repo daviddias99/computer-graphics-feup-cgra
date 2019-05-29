@@ -96,13 +96,12 @@ class MyScene extends CGFscene {
         // ---- END Primitive drawing section
 
         // this.bird.display(); 
-        // this.terrain.display();
-        // this.lightning.display();
+        this.terrain.display();
         // this.segment.display();
         // this.plane.display();
-
-        this.bird.display(); 
-        this.displayBranches();
+        this.lightning.display();
+        // this.bird.display(); 
+        // this.displayBranches();
     }
 
     checkKeys() {

@@ -71,8 +71,12 @@ display() {
 
     var i, shownSegments = 0;
 
-    if (!this.animationOngoing)
+    if (!this.animationOngoing){
+
+        this.scene.popMatrix();
         return;
+    }
+
 
     // percorre a cadeia de caracteres
     for (i = 0; i < this.axiom.length; ++i) {
