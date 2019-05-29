@@ -61,8 +61,9 @@ class MyAnimatedLSystem extends CGFobject {
         this.scale = Math.pow(_scale, this.iterations-1);
 
         // desenvolve a sequencia de desenvolvimento do Sistema L
+
+        this.iterate();
         this.segmentCount = this.countSegments();
-        this.iterate()
      }
 
   
