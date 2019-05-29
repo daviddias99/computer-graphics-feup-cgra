@@ -44,8 +44,8 @@ class MyScene extends CGFscene {
         this.numBranches = 1;
 
         this.lightning.doGenerate();
+        this.genLightning = false;
 
-        this.teste = 0;
         this.bird = new MyBird(this, 0, 10, 0);
         this.branches = [];
         this.generateBranches(5);
@@ -69,15 +69,14 @@ class MyScene extends CGFscene {
     }
     update(t) {
 
-
-
-        if(this.teste == 0){
-
-            this.lightning.startAnimation(t);
-            this.teste++;
-        }
-        
         this.checkKeys();
+
+        if(this.genLightning){
+            this.lightning.startAnimation(t);
+            this.genLightning = false;
+        }
+            
+
         this.bird.update(t);
         this.lightning.update(t);
     }
@@ -111,8 +110,8 @@ class MyScene extends CGFscene {
         // for (let i = 0; i < this.numBranches; i++)
             // this.branches[i].display();
         //this.terrain.display();
-        this.bird.display(); 
-        this.displayBranches();
+        // this.bird.display(); 
+        // this.displayBranches();
     }
 
     checkKeys() {
@@ -149,6 +148,13 @@ class MyScene extends CGFscene {
             text += " P ";
             keysPressed = true;
             this.bird.descend();
+        }
+        if (this.gui.isKeyPressed("KeyL")) {
+            text += " L ";
+            keysPressed = true;
+
+            if(!this.genLightning)
+                this.genLightning = true;
         }
         if(keysPressed)
             console.log(text);
