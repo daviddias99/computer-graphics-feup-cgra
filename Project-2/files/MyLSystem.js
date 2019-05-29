@@ -54,6 +54,7 @@ class MyLSystem extends CGFobject {
 
             // substitui cada um dos caracteres da cadeia de caracteres de acordo com as produções
             for (j=0; j<this.axiom.length; ++j){
+
                 var axiomProductions=this.productions[this.axiom[j]];
                 // aplicar producoes
                 if (axiomProductions === undefined){
@@ -70,8 +71,6 @@ class MyLSystem extends CGFobject {
 
             this.axiom = newString;
         }
-        // console.log("Final: "+this.axiom);
-        // console.log("(length: "+this.axiom.length+")");
     }
 
     display(){

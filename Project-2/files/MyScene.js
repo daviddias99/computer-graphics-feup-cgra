@@ -34,11 +34,10 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.terrain = new MyTerrain(this);
-        this.lightning = new MyLightning(this);
+        this.lightning = new MyLightning(this,1500);
         this.plane = new Plane(this);
         this.segment = new MyLightningSegment(this);
 
-        this.lightning.doGenerate();
         this.genLightning = false;
 
         this.sphere = new MySphere(this, 20);
@@ -68,6 +67,7 @@ class MyScene extends CGFscene {
         this.checkKeys();
 
         if(this.genLightning){
+            this.lightning.doGenerate();
             this.lightning.startAnimation(t);
             this.genLightning = false;
         }
