@@ -20,32 +20,32 @@ class MyTreeBranch extends CGFobject {
     }
     
     initMaterials() {
-/*
-        // treeTop material
+
+        // wood
 
         let factorTT = 0.8;
-        this.treeTopMaterial = new CGFappearance(this.scene);
-        this.treeTopMaterial.setAmbient(factorTT, factorTT, factorTT, 1.0);
-        this.treeTopMaterial.setDiffuse(factorTT, factorTT, factorTT, 1.0);
-        this.treeTopMaterial.setSpecular(0.6, 0.6, 0.6, 1.0);
-        this.treeTopMaterial.setShininess(5.0);  
-        this.treeTopMaterial.loadTexture(this.treeTopTexture);
-        this.treeTopMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        this.woodMaterial = new CGFappearance(this.scene);
+        this.woodMaterial.setAmbient(factorTT, factorTT, factorTT, 1.0);
+        this.woodMaterial.setDiffuse(0.3, 0.3, 0.3, 1.0);
+        this.woodMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.woodMaterial.setShininess(5.0);  
+        this.woodMaterial.loadTexture('images/bark.jpg');
+        this.woodMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
-        // trunk material
+        // bottomWood
 
-        let factorT = 0.8;
-        this.trunkMaterial = new CGFappearance(this.scene);
-        this.trunkMaterial.setAmbient(factorT, factorT, factorT, 1.0);
-        this.trunkMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
-        this.trunkMaterial.setSpecular(0.2, 0.2, 0.2, 1.0);
-        this.trunkMaterial.setShininess(3.0);  
-        this.trunkMaterial.loadTexture(this.trunkTexture);
-        this.trunkMaterial.setTextureWrap('REPEAT', 'REPEAT');
-*/
+        let factorT = 0.6;
+        this.bottomMaterial = new CGFappearance(this.scene);
+        this.bottomMaterial.setAmbient(factorT, factorT, factorT, 1.0);
+        this.bottomMaterial.setDiffuse(0.3, 0.3, 0.3, 1.0);
+        this.bottomMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.bottomMaterial.setShininess(4.0);  
+        this.bottomMaterial.loadTexture('images/wood_rings.jpg');
+        this.bottomMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
     }
 	initBuffers() {
-		this.cylinder = new MyCylinder(this.scene,10,5);
+		this.log = new MyCylinderWBottoms(this.scene, 15, 5, 5, this.woodMaterial, this.bottomMaterial)
     }
 	display() {
         this.scene.pushMatrix();
@@ -55,7 +55,7 @@ class MyTreeBranch extends CGFobject {
         this.scene.rotate(Math.PI / 2, 0, 0, 1);
         this.scene.translate(0, -this.height / 2, 0);
         this.scene.scale(this.radius, this.height, this.radius);
-        this.cylinder.display();
+        this.log.display();
 
         this.scene.popMatrix();
     }
