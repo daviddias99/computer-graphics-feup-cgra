@@ -21,7 +21,7 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
         this.setUpdatePeriod(50);
 
-        // Appearance
+        //Appearance
 
         this.appearance = new CGFappearance(this);
 		this.appearance.setAmbient(1, 1, 1, 1);
@@ -32,20 +32,19 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.bird = new MyBird(this, 0, 3, 0);
         this.terrain = new MyTerrain(this);
         this.lightning = new MyLightning(this);
         this.plane = new Plane(this);
         this.segment = new MyLightningSegment(this);
 
-
-        this.branches = [];
-        this.branches.push(new MyTreeBranch(this));
-        this.numBranches = 1;
-
         this.lightning.doGenerate();
         this.genLightning = false;
 
+<<<<<<< HEAD
+=======
+        this.teste = 0;
+
+>>>>>>> c2983c934edfb17a00f5b300a35bdde3de7d3130
         this.bird = new MyBird(this, 0, 10, 0);
         this.branches = [];
         this.generateBranches(5);
@@ -68,10 +67,14 @@ class MyScene extends CGFscene {
         this.setShininess(10.0);
     }
     update(t) {
+<<<<<<< HEAD
 
         this.checkKeys();
 
         if(this.genLightning){
+=======
+        if(this.teste == 0){
+>>>>>>> c2983c934edfb17a00f5b300a35bdde3de7d3130
             this.lightning.startAnimation(t);
             this.genLightning = false;
         }
@@ -103,15 +106,20 @@ class MyScene extends CGFscene {
 
         // this.bird.display(); 
         // this.terrain.display();
-        this.lightning.display();
+        // this.lightning.display();
         // this.segment.display();
         // this.plane.display();
 
+<<<<<<< HEAD
         // for (let i = 0; i < this.numBranches; i++)
             // this.branches[i].display();
         //this.terrain.display();
         // this.bird.display(); 
         // this.displayBranches();
+=======
+        this.bird.display(); 
+        this.displayBranches();
+>>>>>>> c2983c934edfb17a00f5b300a35bdde3de7d3130
     }
 
     checkKeys() {
