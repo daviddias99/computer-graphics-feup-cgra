@@ -11,6 +11,8 @@ class MyScene extends CGFscene {
         this.initCameras();
         this.initLights();
 
+        this.setUpdatePeriod(50);
+
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
@@ -22,7 +24,6 @@ class MyScene extends CGFscene {
         this.setUpdatePeriod(50);
 
         //Appearance
-
         this.appearance = new CGFappearance(this);
 		this.appearance.setAmbient(1, 1, 1, 1);
 		this.appearance.setDiffuse(1, 1, 1, 1);
@@ -41,6 +42,7 @@ class MyScene extends CGFscene {
 
         this.teste = 0;
 
+        this.sphere = new MySphere(this, 20);
         this.bird = new MyBird(this, 0, 10, 0);
         this.branches = [];
         this.generateBranches(5);
@@ -101,6 +103,8 @@ class MyScene extends CGFscene {
 
         this.bird.display(); 
         this.displayBranches();
+
+        this.sphere.display();
     }
 
     checkKeys() {
