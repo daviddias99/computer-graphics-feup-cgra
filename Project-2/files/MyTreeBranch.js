@@ -5,14 +5,15 @@
  */
 class MyTreeBranch extends CGFobject {
 
-	constructor(scene) {
+	constructor(scene, x, y, z, o) {
         super(scene);
+        this.x = x;
+        this.z = z;
+        this.y = y;
         
         this.height = 1.2;
         this.radius = 0.15;
-        this.orientation = Math.PI * 45 / 180;
-        
-       // this.texture = texture;
+        this.orientation = o;
 
         this.initMaterials();
         this.initBuffers();
@@ -46,16 +47,20 @@ class MyTreeBranch extends CGFobject {
 	initBuffers() {
 		this.cylinder = new MyCylinder(this.scene,10,5);
     }
-    
-
 	display() {
         this.scene.pushMatrix();
         
+        this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation, 0, 1, 0);
         this.scene.rotate(Math.PI / 2, 0, 0, 1);
         this.scene.translate(0, -this.height / 2, 0);
         this.scene.scale(this.radius, this.height, this.radius);
         this.cylinder.display();
+<<<<<<< HEAD
         
+=======
+
+        this.scene.popMatrix();
+>>>>>>> 04171e7abc32e3d992f7bf6d20d6164070a71114
     }
 }

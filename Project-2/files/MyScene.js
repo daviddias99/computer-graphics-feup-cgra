@@ -21,6 +21,7 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
         this.setUpdatePeriod(50);
 
+<<<<<<< HEAD
         // Appearance
 
         this.appearance = new CGFappearance(this);
@@ -30,10 +31,13 @@ class MyScene extends CGFscene {
 		this.appearance.setShininess(120);
         this.appearance.setTextureWrap('CLAMP_TO_EDGE', 'REPEAT');
 
+=======
+>>>>>>> 04171e7abc32e3d992f7bf6d20d6164070a71114
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.bird = new MyBird(this, 0, 3, 0);
         this.terrain = new MyTerrain(this);
+<<<<<<< HEAD
         this.lightning = new MyLightning(this);
         this.plane = new Plane(this);
         this.segment = new MyLightningSegment(this);
@@ -46,6 +50,11 @@ class MyScene extends CGFscene {
         this.lightning.doGenerate();
 
         this.teste = 0;
+=======
+        this.bird = new MyBird(this, 0, 10, 0);
+        this.branches = [];
+        this.generateBranches(5);
+>>>>>>> 04171e7abc32e3d992f7bf6d20d6164070a71114
         
         //Objects connected to MyInterface
     }
@@ -92,13 +101,14 @@ class MyScene extends CGFscene {
         // Draw axis
         this.axis.display();
 
-        //Apply default appearance
+        // Apply default appearance
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
 
         // ---- END Primitive drawing section
 
+<<<<<<< HEAD
         // this.bird.display(); 
         // this.terrain.display();
         this.lightning.display();
@@ -107,6 +117,11 @@ class MyScene extends CGFscene {
 
         // for (let i = 0; i < this.numBranches; i++)
             // this.branches[i].display();
+=======
+        //this.terrain.display();
+        this.bird.display(); 
+        this.displayBranches();
+>>>>>>> 04171e7abc32e3d992f7bf6d20d6164070a71114
     }
 
     checkKeys() {
@@ -139,8 +154,33 @@ class MyScene extends CGFscene {
             keysPressed = true;    
             this.bird.reset();
         }
+        if (this.gui.isKeyPressed("KeyP")) {
+            text += " P ";
+            keysPressed = true;
+            this.bird.descend();
+        }
         if(keysPressed)
             console.log(text);
+    }
+
+    generateBranches(num) {
+        for (let i = 0; i < num; i++) {
+            let x = this.getRandomArbitrary(-10, 10);
+            let y = 0.2;
+            let z = this.getRandomArbitrary(-10, 10);
+            let o = this.getRandomArbitrary(0, 360);
+
+            this.branches[i] = new MyTreeBranch(this, x, y, z, o);
+        }
+    }
+
+    displayBranches() {
+        for (let i = 0; i < this.branches.length; i++)
+            this.branches[i].display();
+    }
+
+    getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
     }
 }
     
