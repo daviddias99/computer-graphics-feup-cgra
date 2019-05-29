@@ -40,11 +40,6 @@ class MyScene extends CGFscene {
         this.lightning.doGenerate();
         this.genLightning = false;
 
-<<<<<<< HEAD
-=======
-        this.teste = 0;
-
->>>>>>> c2983c934edfb17a00f5b300a35bdde3de7d3130
         this.bird = new MyBird(this, 0, 10, 0);
         this.branches = [];
         this.generateBranches(5);
@@ -67,14 +62,10 @@ class MyScene extends CGFscene {
         this.setShininess(10.0);
     }
     update(t) {
-<<<<<<< HEAD
 
         this.checkKeys();
 
         if(this.genLightning){
-=======
-        if(this.teste == 0){
->>>>>>> c2983c934edfb17a00f5b300a35bdde3de7d3130
             this.lightning.startAnimation(t);
             this.genLightning = false;
         }
@@ -110,16 +101,8 @@ class MyScene extends CGFscene {
         // this.segment.display();
         // this.plane.display();
 
-<<<<<<< HEAD
-        // for (let i = 0; i < this.numBranches; i++)
-            // this.branches[i].display();
-        //this.terrain.display();
-        // this.bird.display(); 
-        // this.displayBranches();
-=======
         this.bird.display(); 
         this.displayBranches();
->>>>>>> c2983c934edfb17a00f5b300a35bdde3de7d3130
     }
 
     checkKeys() {
