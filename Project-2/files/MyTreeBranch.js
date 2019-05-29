@@ -56,11 +56,7 @@ class MyTreeBranch extends CGFobject {
         this.scene.translate(0, -this.height / 2, 0);
         this.scene.scale(this.radius, this.height, this.radius);
         this.cylinder.display();
-<<<<<<< HEAD
-        
-=======
 
         this.scene.popMatrix();
->>>>>>> 04171e7abc32e3d992f7bf6d20d6164070a71114
     }
 }
