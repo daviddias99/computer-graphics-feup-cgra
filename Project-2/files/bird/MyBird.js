@@ -52,7 +52,7 @@ class MyBird extends CGFobject {
             this.y -= 0.2 * this.speedFactor;
             if (this.y < (this.bodySideSize / 2 + 0.2) * this.scaleFactor) {
                 if (this.hasBranch)
-                    ;// TODO: drop in nest
+                    this.tryToDropBranch();    
                 else 
                     this.tryToPickBranch();  
             
@@ -124,6 +124,21 @@ class MyBird extends CGFobject {
         this.branch.y = 0;
         this.scene.numBranches--;
         this.hasBranch = true;
+    }
+
+    tryToDropBranch() {
+        //TODO: check if there is a nest and drop it there
+        this.dropBranch();    
+    }
+
+    dropBranch() {
+        this.branch.x = this.x;
+        this.branch.z = this.z;
+        this.branch.y = 0.2;
+        this.branch.orientation += this.orientation;
+        this.scene.branches.push(this.branch);
+        this.hasBranch = false;
+        this.branch = null;
     }
 
     reset() {
