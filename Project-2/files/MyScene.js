@@ -25,20 +25,10 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.bird = new MyBird(this, 0, 3, 0);
         this.terrain = new MyTerrain(this);
-    
-
-		this.appearance = new CGFappearance(this);
-		this.appearance.setAmbient(1, 1, 1, 1);
-		this.appearance.setDiffuse(1, 1, 1, 1);
-		this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
-		this.appearance.setShininess(120);
-        this.appearance.setTextureWrap('CLAMP_TO_EDGE', 'REPEAT');
-
         this.bird = new MyBird(this, 0, 10, 0);
         this.branches = [];
-        this.branches.push(new MyTreeBranch(this, 5, 5));
-        this.numBranches = 1;
-
+        this.generateBranches(5);
+        
         //Objects connected to MyInterface
     }
     initLights() {
@@ -74,7 +64,7 @@ class MyScene extends CGFscene {
         // Draw axis
         this.axis.display();
 
-        //Apply default appearance
+        // Apply default appearance
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
@@ -83,9 +73,7 @@ class MyScene extends CGFscene {
 
         //this.terrain.display();
         this.bird.display(); 
-        
-        for (let i = 0; i < this.numBranches; i++)
-            this.branches[i].display();
+        this.displayBranches();
     }
 
     checkKeys() {
@@ -125,6 +113,26 @@ class MyScene extends CGFscene {
         }
         if(keysPressed)
             console.log(text);
+    }
+
+    generateBranches(num) {
+        for (let i = 0; i < num; i++) {
+            let x = this.getRandomArbitrary(-10, 10);
+            let y = 0.2;
+            let z = this.getRandomArbitrary(-10, 10);
+            let o = this.getRandomArbitrary(0, 360);
+
+            this.branches[i] = new MyTreeBranch(this, x, y, z, o);
+        }
+    }
+
+    displayBranches() {
+        for (let i = 0; i < this.branches.length; i++)
+            this.branches[i].display();
+    }
+
+    getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
     }
 }
     

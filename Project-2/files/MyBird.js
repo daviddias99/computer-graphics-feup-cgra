@@ -1,5 +1,12 @@
+
+const State = {
+    NORMAL: 1,
+    DESCENDING: 2,
+    ASCENDING: 3
+}
+
 class MyBird extends CGFobject {
-	constructor(scene, x, y, z) {
+    constructor(scene, x, y, z) {
         super(scene);
         this.initMaterials();
         this.initBuffers();
@@ -10,17 +17,18 @@ class MyBird extends CGFobject {
         this.orientation = 0;
         this.wingAlfa = 0;
 
+        this.headSideSize = 0.8;
+        this.bodySideSize = 1;
+
         this.scaleFactor = 3;
         this.speedFactor = 1;
-        
-        this.normalState = 0;
-        this.descendState = 1;
-        this.ascendState = 2;
+    
+        this.state = State.NORMAL;
+
         this.hasBranch = false;
         this.branch = null;
-
-        this.state = this.normalState;
-	}
+    }
+    
 	initBuffers() {
         this.head = new MyBirdHead(this.scene);
         this.body = new MyBirdBody(this.scene);
@@ -28,7 +36,7 @@ class MyBird extends CGFobject {
     }
 
     initMaterials() {
-
+        
     }
 
     update(t) {
@@ -37,87 +45,85 @@ class MyBird extends CGFobject {
         
         // up and down movement
         switch (this.state) {
-        case 0:
+        case State.NORMAL:
             this.y = this.y0 + Math.sin(t / timeFactor * this.speedFactor) * verticalRange;
             break;
-        case 1:
-            this.y -= 0.3 * this.speedFactor;
-            console.log("go down");
-            if (this.y < 2) {
+        case State.DESCENDING:
+            this.y -= 0.2 * this.speedFactor;
+            if (this.y < (this.bodySideSize / 2 + 0.2) * this.scaleFactor) {
                 if (this.hasBranch)
                     ;// TODO: drop in nest
                 else 
-                    this.pickBranch();   
+                    this.tryToPickBranch();  
             
                 this.ascend();
             }
-
-                
             break;
-        case 2:
-            this.y += 0.3 * this.speedFactor;
+        case State.ASCENDING:
+            this.y += 0.2 * this.speedFactor;
             if (this.y > this.y0)
                 this.stop();
             break;
         }   
 
-        // (chicken) WINGS      ==
+        // (chicken) WINGS
         let wingRange = Math.PI * 40 / 180; 
         this.wingAlfa = - Math.sin(t  / timeFactor * this.speedFactor) * wingRange;
 
         // update position
         this.x += this.speed * Math.cos(-this.orientation) * this.speedFactor;
         this.z += this.speed * Math.sin(-this.orientation) * this.speedFactor;
-
-        if (this.hasBranch) {
-            this.branch.x = this.z;
-            this.branch.y = this.y - 2;
-            this.branch.z = this.z;
-        }
     }
 
     turn(v) {
         if (v > 0)
-            this.orientation += 0.2;// * this.speedFactor;
+            this.orientation += 0.2;
         else if (v < 0)
-            this.orientation -= 0.2;// * this.speedFactor;
+            this.orientation -= 0.2;
     }
 
     accelerate(v) {
         if (v > 0)
-            this.speed += 0.2;// * this.speedFactor;
+            this.speed += 0.2;
         else if (v < 0)
-            this.speed -= 0.2;// * this.speedFactor;
+            this.speed -= 0.2;
     }
 
     descend() {
-        if (this.state == this.normalState)
-            this.state = this.descendState;
+        if (this.state == State.NORMAL)
+            this.state = State.DESCENDING;
     }
 
     ascend() {
-        this.state = this.ascendState;
+        this.state = State.ASCENDING
     }
 
     stop() {
-        this.state = this.normalState;
+        this.state = State.NORMAL;
         this.y = this.y0;
     }   
 
-    pickBranch() {
-        console.log("try to pick lanch");
-        for (let i = 0; i < this.scene.numBranches; i++) {
-            if ((this.scene.branches[i].x > this.x - 0.5 && this.scene.branches[i].x < this.x + 0.5) &&
-                (this.scene.branches[i].z > this.z - 0.5 && this.scene.branches[i].z < this.z + 0.5)) {
-                console.log("branch x " + this.scene.branches[i].x);
-                console.log("branch z " + this.scene.branches[i].z);
-                console.log("bird x " + this.x);
-                console.log("bird z " + this.z);
-                this.branch = this.scene.branches[i];
-                this.scene.numBranches--;
-                this.hasBranch = true;
+    isInRange(branch) {
+        return (branch.x > this.x - 0.8 && branch.x < this.x + 0.8) &&
+               (branch.z > this.z - 0.8 && branch.z < this.z + 0.8);
+    }
+
+    tryToPickBranch() {
+        for (let i = 0; i < this.scene.branches.length; i++) 
+            if (this.isInRange(this.scene.branches[i])) {
+                this.pickBranch(this.scene.branches[i]);
+                this.scene.branches.splice(i, 1);
             }
-        }
+    }
+
+    pickBranch(branch) {                
+        this.branch = branch;
+        this.branch.orientation -= this.orientation;
+        this.branch.x = 0;
+        this.branch.z = 0;
+        this.branch.y = 0;
+        this.scene.numBranches--;
+        this.hasBranch = true;
     }
 
     reset() {
@@ -127,50 +133,54 @@ class MyBird extends CGFobject {
         this.speed = 0;
         this.orientation = 0;
         this.wingAlfa = 0;
-        this.state = this.normalState;
+        this.state = State.NORMAL;
     }
 
 	display() {
-        // translate and rotate bird in its current position and orientation
-        if (this.hasBranch)
-            this.branch.display();
-        
-
         this.scene.pushMatrix();
+        
         this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation, 0, 1, 0);
+
+        if (this.hasBranch) {
+            this.scene.pushMatrix();
+            this.scene.translate(0, - this.bodySideSize * this.scaleFactor / 1.3, 0);
+            this.branch.display();
+            this.scene.popMatrix();
+        }
         
         this.scene.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
-
-        // draw bird head
-
-        let headSideSize = 0.8;
-    
-        this.scene.pushMatrix();
-        
-        this.scene.translate(0.7, 0.6 , 0 );
-        this.scene.scale(headSideSize, headSideSize, headSideSize);
-        this.head.display();
+        this.displayBody();
+        this.displayHead();
+        this.displayWings();
 
         this.scene.popMatrix();
+    }
 
-        // draw bird body
-
-        let bodySideSize = 1;
-
+    displayBody() {
         this.scene.pushMatrix();
-       
-        this.scene.scale(bodySideSize , bodySideSize , bodySideSize );
+
+        this.scene.scale(this.bodySideSize, this.bodySideSize, this.bodySideSize);
         this.body.display();
 
         this.scene.popMatrix();
+    }
 
-        // draw bird wings
+    displayHead() {
+        this.scene.pushMatrix();
+        
+        this.scene.translate(0.7, 0.6 , 0 );
+        this.scene.scale(this.headSideSize, this.headSideSize, this.headSideSize);
+        this.head.display();
 
+        this.scene.popMatrix();
+    }
+
+    displayWings() {
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0, - bodySideSize / 2 );
+        this.scene.translate(0, 0, - this.bodySideSize / 2 );
         this.scene.rotate(this.wingAlfa, 1, 0, 0);
         this.wing.display();
 
@@ -178,12 +188,11 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0, bodySideSize / 2);
+        this.scene.translate(0, 0, this.bodySideSize / 2);
         this.scene.scale(1, 1, -1);
         this.scene.rotate(this.wingAlfa, 1, 0, 0);
         this.wing.display();
 
-        this.scene.popMatrix();
         this.scene.popMatrix();
     }
 }

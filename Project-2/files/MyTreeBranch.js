@@ -5,15 +5,15 @@
  */
 class MyTreeBranch extends CGFobject {
 
-	constructor(scene, x, z) {
+	constructor(scene, x, y, z, o) {
         super(scene);
         this.x = x;
         this.z = z;
-        this.y = 0;
+        this.y = y;
         
         this.height = 1.2;
         this.radius = 0.15;
-        this.orientation = Math.PI * 45 / 180;
+        this.orientation = o;
 
         this.initMaterials();
         this.initBuffers();
