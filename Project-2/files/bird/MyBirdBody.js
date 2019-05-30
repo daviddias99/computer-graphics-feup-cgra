@@ -6,7 +6,7 @@ class MyBirdBody extends CGFobject {
 	}
 	initBuffers() {
         this.cylinder = new MyCylinder(this.scene, 5);
-        this.cone = new MyCone(this.scene, 5);
+        this.cone = new MyCone(this.scene, 5, 5, 'centered');
         this.triangle = new MyTriangle(this.scene);
         this.quad = new MyQuad(this.scene);
 

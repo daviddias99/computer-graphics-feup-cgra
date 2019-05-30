@@ -37,7 +37,13 @@ class MyBird extends CGFobject {
     }
 
     initMaterials() {
-        
+        this.feathers = new CGFappearance(this.scene);
+        this.feathers.setAmbient(1, 1, 1, 1);
+        this.feathers.setDiffuse(1, 1, 1, 1);
+        this.feathers.setSpecular(0.5, 0.5, 0.5, 1);
+        this.feathers.setShininess(10);
+        this.feathers.loadTexture('images/feathers.jpg');
+        this.feathers.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     update(t) {
@@ -71,7 +77,7 @@ class MyBird extends CGFobject {
         }   
 
         // (chicken) WINGS
-        let wingRange = Math.PI * 90 / 180; 
+        let wingRange =  Math.PI * 80 / 180; 
         this.wingAlfa = - Math.sin(2 * t * Math.PI / 1000) * wingRange;
 
         // update position
@@ -156,6 +162,8 @@ class MyBird extends CGFobject {
     }
 
 	display() {
+        this.feathers.apply();
+
         this.scene.pushMatrix();
         
         this.scene.translate(this.x, this.y, this.z);
@@ -163,7 +171,7 @@ class MyBird extends CGFobject {
 
         if (this.hasBranch) {
             this.scene.pushMatrix();
-            this.scene.translate(0, - this.this.bodyRadius * this.scaleFactor / 1.3, 0);
+            this.scene.translate(0, - this.bodyRadius * this.scaleFactor, 0);
             this.branch.display();
             this.scene.popMatrix();
         }
@@ -181,6 +189,7 @@ class MyBird extends CGFobject {
         
         this.scene.pushMatrix();
         this.scene.scale(this.bodyLength, this.bodyRadius, this.bodyRadius);
+        this.feathers.apply();
         this.body.display();
         this.scene.popMatrix(); 
     }

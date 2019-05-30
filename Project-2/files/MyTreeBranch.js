@@ -11,7 +11,7 @@ class MyTreeBranch extends CGFobject {
         this.z = z;
         this.y = y;
         
-        this.height = 1.2;
+        this.height = 1;
         this.radius = 0.15;
         this.orientation = o;
 
@@ -45,7 +45,7 @@ class MyTreeBranch extends CGFobject {
 
     }
 	initBuffers() {
-		this.log = new MyCylinderWBottoms(this.scene, 15, 5, 5, this.woodMaterial, this.bottomMaterial)
+		this.log = new MyCylinderWBottoms(this.scene, 15, 5, 1, this.woodMaterial, this.bottomMaterial)
     }
 	display() {
         this.scene.pushMatrix();
