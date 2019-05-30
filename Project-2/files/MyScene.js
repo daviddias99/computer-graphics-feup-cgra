@@ -36,13 +36,13 @@ class MyScene extends CGFscene {
         this.terrain = new MyTerrain(this);
         this.lightning = new MyLightning(this,1500);
         this.plane = new Plane(this);
-        this.segment = new MyLightningSegment(this);
         this.skybox = new MySkybox(this);
+        this.nest = new MyNest(this);
 
         this.genLightning = false;
 
         this.sphere = new MySphere(this, 20);
-        this.bird = new MyBird(this, 0, 0, 0);
+        this.bird = new MyBird(this, 0, 10, 0);
         this.branches = [];
         this.generateBranches(5);
         
@@ -75,7 +75,7 @@ class MyScene extends CGFscene {
             this.genLightning = false;
         }
             
-        //this.bird.update(t);
+        this.bird.update(t);
         this.lightning.update(t);
     }
     display() {
@@ -101,14 +101,18 @@ class MyScene extends CGFscene {
 
         // this.bird.display(); 
         // this.terrain.display();
-        // this.segment.display();
-        // this.plane.display();
         this.lightning.display();
         //this.skybox.display();
         this.bird.display(); 
         //this.displayBranches();
 
         //this.sphere.display();
+        this.skybox.display();
+        this.nest.display();
+        // this.bird.display(); 
+        // this.displayBranches();
+
+        // this.sphere.display();
     }
 
     checkKeys() {
