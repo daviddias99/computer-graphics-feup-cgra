@@ -104,6 +104,11 @@ class MyScene extends CGFscene {
         // this.bird.display(); 
         // this.terrain.display();
         this.lightning.display();
+        //this.skybox.display();
+        this.bird.display(); 
+        //this.displayBranches();
+
+        //this.sphere.display();
         this.skybox.display();
         this.tree.display();
         // this.nest.display();

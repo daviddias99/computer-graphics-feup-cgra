@@ -17,8 +17,9 @@ class MyBird extends CGFobject {
         this.orientation = 0;
         this.wingAlfa = 0;
 
-        this.headSideSize = 0.8;
-        this.bodySideSize = 1;
+        this.headRadius = 0.3;
+        this.bodyRadius = 0.4;
+        this.bodyLength = 1.6;
 
         this.scaleFactor = 3;
         this.speedFactor = 1;
@@ -51,7 +52,7 @@ class MyBird extends CGFobject {
             break;
         case State.DESCENDING:
             this.y -= 0.2 * this.speedFactor;
-            if (this.y < (this.bodySideSize / 2 + 0.2) * this.scaleFactor) {
+            if (this.y < (this.bodyRadius / 2 + 0.2) * this.scaleFactor) {
                 if (this.hasBranch)
                     this.tryToDropBranch();    
                 else 
@@ -160,7 +161,7 @@ class MyBird extends CGFobject {
 
         if (this.hasBranch) {
             this.scene.pushMatrix();
-            this.scene.translate(0, - this.bodySideSize * this.scaleFactor / 1.3, 0);
+            this.scene.translate(0, - this.this.bodyRadius * this.scaleFactor / 1.3, 0);
             this.branch.display();
             this.scene.popMatrix();
         }
@@ -175,19 +176,18 @@ class MyBird extends CGFobject {
     }
 
     displayBody() {
+        
         this.scene.pushMatrix();
-
-        this.scene.scale(this.bodySideSize, this.bodySideSize, this.bodySideSize);
+        this.scene.scale(this.bodyLength, this.bodyRadius, this.bodyRadius);
         this.body.display();
-
-        this.scene.popMatrix();
+        this.scene.popMatrix(); 
     }
 
     displayHead() {
         this.scene.pushMatrix();
         
-        this.scene.translate(0.7, 0.6 , 0 );
-        this.scene.scale(this.headSideSize, this.headSideSize, this.headSideSize);
+        this.scene.translate(0.5, 0.25, 0);
+        this.scene.scale(this.headRadius, this.headRadius, this.headRadius);
         this.head.display();
 
         this.scene.popMatrix();
@@ -196,7 +196,7 @@ class MyBird extends CGFobject {
     displayWings() {
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0, - this.bodySideSize / 2 );
+        this.scene.translate(0, this.bodyRadius * Math.sin(Math.PI / 2 - Math.PI * 2 / 5), - this.bodyRadius * Math.cos(Math.PI / 2 - Math.PI * 2 / 5));
         this.scene.rotate(this.wingAlfa, 1, 0, 0);
         this.wing.displayLeft();
 
@@ -204,7 +204,7 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(0, 0, this.bodySideSize / 2);
+        this.scene.translate(0, this.bodyRadius * Math.sin(Math.PI / 2 - Math.PI * 2 / 5), this.bodyRadius * Math.cos(Math.PI / 2 - Math.PI * 2 / 5));
         this.scene.rotate(- this.wingAlfa, 1, 0, 0);
         this.wing.displayRight();
 
