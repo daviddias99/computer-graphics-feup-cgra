@@ -37,6 +37,7 @@ class MyScene extends CGFscene {
         this.lightning = new MyLightning(this,1500);
         this.plane = new Plane(this);
         this.segment = new MyLightningSegment(this);
+        this.skybox = new MySkybox(this);
 
         this.genLightning = false;
 
@@ -53,6 +54,8 @@ class MyScene extends CGFscene {
         this.lights[0].enable();
         this.lights[0].update();
     }
+
+
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(45, 45, 45), vec3.fromValues(0, 0, 0));
     }
@@ -101,6 +104,7 @@ class MyScene extends CGFscene {
         // this.segment.display();
         // this.plane.display();
         this.lightning.display();
+        this.skybox.display();
         // this.bird.display(); 
         this.displayBranches();
 
