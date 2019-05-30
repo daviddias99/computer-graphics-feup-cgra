@@ -17,13 +17,13 @@ class MyBirdWing extends CGFobject {
     }
 
     update(t) {
-        this.alfa = this.alfa0 / 2 + Math.sin(t / 2 / Math.PI * 0.05) * this.alfa0 / 2;
+        this.alfa = this.alfa0 / 2 + Math.sin(2 * t * Math.PI / 1000) * this.alfa0 / 2;
     }
 
 	displayLeft() {
         let alfa = this.alfa;
-        let rectangleLength = 0.6;
-        let wingWidth = 0.4;
+        let rectangleLength = 0.5;
+        let wingWidth = 0.3;
 
         this.scene.pushMatrix();
         
@@ -49,7 +49,7 @@ class MyBirdWing extends CGFobject {
 
     displayRight() {
         let alfa = this.alfa;
-        let rectangleLength = 0.6;
+        let rectangleLength = 0.5;
         let wingWidth = 0.4;
 
         this.scene.pushMatrix();
