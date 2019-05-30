@@ -15,8 +15,6 @@ class MyNest extends CGFobject {
         this.initMaterials();
         this.initBuffers();
         this.genRandoms();
-
-        this.numberOfSides = 6;
 	}
 
     initMaterials() {
@@ -47,6 +45,7 @@ class MyNest extends CGFobject {
 	initBuffers() {
 		this.log = new MyCylinderWBottoms(this.scene, 15, 5, 5, this.woodMaterial, this.bottomMaterial);
 		this.bottom = new MyRegPolygon(this.scene,20,1);
+		this.egg = new MyEgg(this.scene);
     }
 
 	display() {
@@ -81,7 +80,7 @@ class MyNest extends CGFobject {
         this.scene.scale(0.8,1,0.8);
 
 
-        for(let i = 0; i < 360/this.numberOfSides;i++){
+        for(let i = 0; i < 360/6;i++){
 
             let factor = 1;
 
@@ -93,7 +92,7 @@ class MyNest extends CGFobject {
                 factor *=-1;
 
 
-            this.scene.rotate(factor*Math.PI/8 + this.rands[360/this.numberOfSides+i],0,0,1);
+            this.scene.rotate(factor*Math.PI/8 + this.rands[360/6+i],0,0,1);
 
             this.scene.translate(0,0,4);
             this.scene.rotate(Math.PI/2,0,0,1);
@@ -109,7 +108,7 @@ class MyNest extends CGFobject {
         this.scene.scale(1,1,1,1.1);
 
 
-        for(let i = 0; i < 360/this.numberOfSides;i++){
+        for(let i = 0; i < 360/6;i++){
 
             let factor = 1;
 
@@ -121,7 +120,7 @@ class MyNest extends CGFobject {
                 factor *=-1;
 
 
-            this.scene.rotate(factor*Math.PI/8 + this.rands[360/this.numberOfSides+i],0,0,1);
+            this.scene.rotate(factor*Math.PI/8 + this.rands[360/6+i],0,0,1);
 
             this.scene.translate(0,0,4);
             this.scene.rotate(Math.PI/2,0,0,1);
@@ -137,7 +136,7 @@ class MyNest extends CGFobject {
         this.scene.scale(0.95,1,0.95);
 
 
-        for(let i = 0; i < 360/this.numberOfSides;i++){
+        for(let i = 0; i < 360/6;i++){
 
             let factor = 1;
 
@@ -149,7 +148,7 @@ class MyNest extends CGFobject {
                 factor *=-1;
 
 
-            this.scene.rotate(factor*Math.PI/8 + this.rands[360/this.numberOfSides+i],0,0,1);
+            this.scene.rotate(factor*Math.PI/8 + this.rands[360/6+i],0,0,1);
 
             this.scene.translate(0,0,4);
             this.scene.rotate(Math.PI/2,0,0,1);
@@ -161,14 +160,39 @@ class MyNest extends CGFobject {
 
         }
 
-
         this.scene.popMatrix();
-
         this.scene.pushMatrix();
+
+        // draw bottom
+
         this.scene.translate(0,-1,0);
         this.scene.scale(4,1,4);
 
         this.bottom.display();
+
+        this.scene.popMatrix();
+        this.scene.pushMatrix();
+
+        // draw egg 1
+
+        this.scene.translate(0,0,2.3);
+        this.scene.rotate(Math.PI/4,1,1,0);
+        this.scene.translate(0,-0.5,0);
+        this.scene.scale(0.7,0.7,0.7);
+        this.egg.display();
+
+        this.scene.popMatrix();
+        this.scene.pushMatrix();
+
+        // draw egg 2
+
+        this.scene.translate(1.0,0,1.6);
+        this.scene.rotate(Math.PI/4,0,1,1);
+        this.scene.translate(0,-0.5,0);
+        this.scene.scale(0.7,0.7,0.7);
+        this.egg.display();
+
+
         this.scene.popMatrix();
     }
 
@@ -177,7 +201,7 @@ class MyNest extends CGFobject {
 
         this.rands = [];
 
-        for(let i = 0; i < 2*360/this.numberOfSides; i++){
+        for(let i = 0; i < 2*360/6; i++){
 
             this.rands[i] = getRandNumber(-0.2,0.2);
         }

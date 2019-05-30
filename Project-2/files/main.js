@@ -26,6 +26,7 @@ serialInclude( ['../lib/CGF.js'
                 , 'MyCubeMap.js'
                 , 'MySkybox.js'
                 , 'MyNest.js'
+                , 'MyEgg.js'
                 ,
 
 main=function()
