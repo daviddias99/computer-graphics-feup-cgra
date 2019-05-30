@@ -48,117 +48,56 @@ class MyNest extends CGFobject {
 		this.egg = new MyEgg(this.scene);
     }
 
+    displayCrown(){
+
+
+        for(let i = 0; i < 360/6;i++){
+
+            let factor = 1;
+
+            if(i%2)
+                factor *=-1;
+
+            this.scene.pushMatrix();
+        
+            this.scene.rotate(i*Math.PI/6 + this.rands[i],0,1,0);
+            this.scene.rotate(factor*Math.PI/8 + this.rands[360/6+i],0,0,1);
+
+            this.scene.translate(0,0,4);
+            this.scene.rotate(Math.PI/2,0,0,1);
+            this.scene.translate(0,-2.5,0);
+            this.scene.scale(0.1,1,0.1);
+            this.log.display();
+    
+            this.scene.popMatrix();
+
+        }
+
+    }
+
 	display() {
         
         this.scene.pushMatrix();
 
-        for(let i = 0; i < 360/6;i++){
-
-            let factor = 1;
-
-            this.scene.pushMatrix();
-        
-            this.scene.rotate(i*Math.PI/6 + this.rands[i],0,1,0);
-
-            if(i%2)
-                factor *=-1;
-
-
-            this.scene.rotate(factor*Math.PI/8 + this.rands[360/6+i],0,0,1);
-
-            this.scene.translate(0,0,4);
-            this.scene.rotate(Math.PI/2,0,0,1);
-            this.scene.translate(0,-2.5,0);
-            this.scene.scale(0.1,1,0.1);
-            this.log.display();
-    
-            this.scene.popMatrix();
-
-        }
-
+        this.displayCrown();
+      
         this.scene.rotate(Math.PI/5,1,1,0);
         this.scene.scale(0.8,1,0.8);
 
 
-        for(let i = 0; i < 360/6;i++){
-
-            let factor = 1;
-
-            this.scene.pushMatrix();
-        
-            this.scene.rotate(i*Math.PI/6 + this.rands[i],0,1,0);
-
-            if(i%2)
-                factor *=-1;
-
-
-            this.scene.rotate(factor*Math.PI/8 + this.rands[360/6+i],0,0,1);
-
-            this.scene.translate(0,0,4);
-            this.scene.rotate(Math.PI/2,0,0,1);
-            this.scene.translate(0,-2.5,0);
-            this.scene.scale(0.1,1,0.1);
-            this.log.display();
-    
-            this.scene.popMatrix();
-
-        }
+        this.displayCrown();
 
         this.scene.rotate(Math.PI/6,-1,1,-1);
         this.scene.scale(1,1,1,1.1);
 
 
-        for(let i = 0; i < 360/6;i++){
-
-            let factor = 1;
-
-            this.scene.pushMatrix();
-        
-            this.scene.rotate(i*Math.PI/6 + this.rands[i],0,1,0);
-
-            if(i%2)
-                factor *=-1;
-
-
-            this.scene.rotate(factor*Math.PI/8 + this.rands[360/6+i],0,0,1);
-
-            this.scene.translate(0,0,4);
-            this.scene.rotate(Math.PI/2,0,0,1);
-            this.scene.translate(0,-2.5,0);
-            this.scene.scale(0.1,1,0.1);
-            this.log.display();
-    
-            this.scene.popMatrix();
-
-        }
+        this.displayCrown();
 
         this.scene.rotate(Math.PI/4,0,1,0);
         this.scene.scale(0.95,1,0.95);
 
 
-        for(let i = 0; i < 360/6;i++){
-
-            let factor = 1;
-
-            this.scene.pushMatrix();
-        
-            this.scene.rotate(i*Math.PI/6 + this.rands[i],0,1,0);
-
-            if(i%2)
-                factor *=-1;
-
-
-            this.scene.rotate(factor*Math.PI/8 + this.rands[360/6+i],0,0,1);
-
-            this.scene.translate(0,0,4);
-            this.scene.rotate(Math.PI/2,0,0,1);
-            this.scene.translate(0,-2.5,0);
-            this.scene.scale(0.1,1,0.1);
-            this.log.display();
-    
-            this.scene.popMatrix();
-
-        }
+        this.displayCrown();
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
