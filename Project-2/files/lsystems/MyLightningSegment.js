@@ -12,11 +12,11 @@ class MyLightningSegment extends CGFobject {
     initMaterials() {
 
 
-        let factorT = 0.8;
+        let factorT = 1;
         this.lightningMaterial = new CGFappearance(this.scene);
         this.lightningMaterial.setAmbient(factorT, factorT, factorT, 1.0);
         this.lightningMaterial.setDiffuse(factorT, factorT, factorT, 1.0);
-        this.lightningMaterial.setSpecular(0.8, 0.8, 0.8, 1.0);
+        this.lightningMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
         this.lightningMaterial.setShininess(10.0);
         this.lightningMaterial.loadTexture('images/blue.jpeg');
         this.lightningMaterial.setTextureWrap('REPEAT', 'REPEAT');
