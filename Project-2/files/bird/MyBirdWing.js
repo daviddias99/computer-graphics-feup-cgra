@@ -50,7 +50,7 @@ class MyBirdWing extends CGFobject {
     displayRight() {
         let alfa = this.alfa;
         let rectangleLength = 0.5;
-        let wingWidth = 0.4;
+        let wingWidth = 0.3;
 
         this.scene.pushMatrix();
         
