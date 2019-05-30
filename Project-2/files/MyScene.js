@@ -38,6 +38,8 @@ class MyScene extends CGFscene {
         this.plane = new Plane(this);
         this.skybox = new MySkybox(this);
         this.nest = new MyNest(this);
+        this.leaf = new MyLeaf(this);
+        this.tree = new MyLSPlant(this);
 
         this.genLightning = false;
 
@@ -108,9 +110,11 @@ class MyScene extends CGFscene {
 
         //this.sphere.display();
         this.skybox.display();
-        this.nest.display();
+        this.tree.display();
+        // this.nest.display();
         // this.bird.display(); 
         // this.displayBranches();
+        // this.leaf.display();
 
         // this.sphere.display();
     }
