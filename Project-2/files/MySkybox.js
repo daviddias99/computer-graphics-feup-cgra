@@ -30,6 +30,8 @@ class MySkybox extends CGFobject {
         this.scene.pushMatrix();
         
         this.skyMaterial.apply();
+        this.scene.translate(0,2,0);
+        this.scene.scale(2,2,2);
         this.skybox.display();
 
         this.scene.popMatrix();

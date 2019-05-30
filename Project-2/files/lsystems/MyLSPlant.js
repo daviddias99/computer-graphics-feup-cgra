@@ -23,7 +23,7 @@ class MyLSPlant extends MyLSystem {
 
         this.axiom = "X";
         this.angle = 30.0; 
-        this.iterations = 6; 
+        this.iterations = 5; 
         this.productions = {
             "F": [ "FF" ],
             "X": [ "F[-X][X]F[-X]+X" , "F[-X][x]+X", "F[+X]-X", "​F[/X][X]F[\\X]+X", "F[\\X][X]/X", "F[/X]\\X", "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X" ]
