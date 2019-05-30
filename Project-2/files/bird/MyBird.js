@@ -44,6 +44,8 @@ class MyBird extends CGFobject {
 
         let timeFactor = 250;
         let verticalRange = 0.4;
+
+        this.wing.update(t);
         
         // up and down movement
         switch (this.state) {
@@ -69,7 +71,7 @@ class MyBird extends CGFobject {
         }   
 
         // (chicken) WINGS
-        let wingRange = Math.PI * 40 / 180; 
+        let wingRange = Math.PI * 90 / 180; 
         this.wingAlfa = - Math.sin(t / 2 / Math.PI * 0.05 * this.speedFactor) * wingRange;
 
         // update position
