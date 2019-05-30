@@ -13,7 +13,7 @@ class MyLeaf extends CGFobject {
         this.material.apply();
 
         this.scene.pushMatrix();
-        this.scene.scale(1.5,1,1);
+        this.scene.scale(3,1,2);
 
         this.leafTop.display();
         this.leafBottom.display();
