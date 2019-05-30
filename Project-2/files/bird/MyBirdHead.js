@@ -6,6 +6,7 @@ class MyBirdHead extends CGFobject {
 	}
 	initBuffers() {
         this.cube = new MyUnitCubeQuad(this.scene);
+        this.sphere = new MySphere(this.scene, 20);
     }
 
     initMaterials(){
@@ -13,7 +14,9 @@ class MyBirdHead extends CGFobject {
     }
 
 	display() {
-        this.cube.display();
+        this.scene.pushMatrix();
+        this.sphere.display();
+        this.scene.popMatrix();
     }
 }
     

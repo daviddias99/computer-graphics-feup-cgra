@@ -42,7 +42,7 @@ class MyScene extends CGFscene {
         this.genLightning = false;
 
         this.sphere = new MySphere(this, 20);
-        this.bird = new MyBird(this, 0, 10, 0);
+        this.bird = new MyBird(this, 0, 0, 0);
         this.branches = [];
         this.generateBranches(5);
         
@@ -75,7 +75,7 @@ class MyScene extends CGFscene {
             this.genLightning = false;
         }
             
-        this.bird.update(t);
+        //this.bird.update(t);
         this.lightning.update(t);
     }
     display() {
@@ -104,11 +104,11 @@ class MyScene extends CGFscene {
         // this.segment.display();
         // this.plane.display();
         this.lightning.display();
-        this.skybox.display();
-        // this.bird.display(); 
-        this.displayBranches();
+        //this.skybox.display();
+        this.bird.display(); 
+        //this.displayBranches();
 
-        this.sphere.display();
+        //this.sphere.display();
     }
 
     checkKeys() {
