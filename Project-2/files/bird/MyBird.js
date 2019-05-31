@@ -23,11 +23,16 @@ class MyBird extends CGFobject {
 
         this.scaleFactor = 3;
         this.speedFactor = 1;
+
+        this.oscilationPeriod = 1000;
+        this.descentTime = 1000;
     
         this.state = State.NORMAL;
 
         this.hasBranch = false;
         this.branch = null;
+
+        this.last_t = 0;
     }
     
 	initBuffers() {
@@ -50,15 +55,14 @@ class MyBird extends CGFobject {
 
         let timeFactor = 250;
         let verticalRange = 0.4;
-        
         // up and down movement
         switch (this.state) {
         case State.NORMAL:
             this.y = this.y0 + Math.sin(2 * t * Math.PI * this.speedFactor / 1000) * verticalRange;
             break;
         case State.DESCENDING:
-            this.y -= 0.2 * this.speedFactor;
-            if (this.y < (this.bodyRadius / 2 + 0.2) * this.scaleFactor) {
+            this.y -= this.ySpeed * (t - this.last_t);
+            if (this.y < this.lowerLimit * this.scaleFactor) {
                 if (this.hasBranch)
                     this.tryToDropBranch();    
                 else 
@@ -68,7 +72,7 @@ class MyBird extends CGFobject {
             }
             break;
         case State.ASCENDING:
-            this.y += 0.2 * this.speedFactor;
+            this.y += this.ySpeed * (t - this.last_t);
             if (this.y > this.y0)
                 this.stop();
             break;
@@ -76,19 +80,21 @@ class MyBird extends CGFobject {
 
         // (chicken) WINGS
         let wingRange =  Math.PI * 80 / 180; 
-        this.wingAlfa = - Math.sin(2 * t * Math.PI * this.speedFactor / 1000) * wingRange;
+        this.wingAlfa = - Math.sin(2 * t * Math.PI * this.speedFactor * (1 + this.speed / 2) / 1000) * wingRange;
         this.wing.update(wingRange, this.wingAlfa);
 
         // update position
         this.x += this.speed * Math.cos(-this.orientation) * this.speedFactor;
         this.z += this.speed * Math.sin(-this.orientation) * this.speedFactor;
+
+        this.last_t = t;
     }
 
     turn(v) {
         if (v > 0)
-            this.orientation += 0.2;
+            this.orientation += 0.2 * this.speedFactor;
         else if (v < 0)
-            this.orientation -= 0.2;
+            this.orientation -= 0.2 * this.speedFactor;
     }
 
     accelerate(v) {
@@ -99,8 +105,11 @@ class MyBird extends CGFobject {
     }
 
     descend() {
-        if (this.state == State.NORMAL)
-            this.state = State.DESCENDING;
+        if (this.state == State.NORMAL) {
+            this.state = State.DESCENDING;        
+            this.lowerLimit = this.bodyRadius / 2 + 0.2;
+            this.ySpeed = (this.y - this.lowerLimit) / this.descentTime; 
+        }
     }
 
     ascend() {
@@ -110,6 +119,7 @@ class MyBird extends CGFobject {
     stop() {
         this.state = State.NORMAL;
         this.y = this.y0;
+        this.ySpeed = 0;
     }   
 
     isInRange(branch) {
