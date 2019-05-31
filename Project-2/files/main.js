@@ -15,6 +15,9 @@ serialInclude( ['../lib/CGF.js'
                 , 'primitive_objects/MySphere.js'
                 , 'primitive_objects/MyCone.js'
                 , 'primitive_objects/MyPyramid.js'
+                , 'primitive_objects/MyPyramidWBottoms.js'
+                , 'primitive_objects/MyPrism.js'
+                , 'primitive_objects/MyPrismWBottoms.js'
                 , 'bird/MyBirdBody.js'
                 , 'bird/MyBirdHead.js'
                 , 'bird/MyBirdWing.js'
@@ -32,6 +35,7 @@ serialInclude( ['../lib/CGF.js'
                 , 'MySkybox.js'
                 , 'MyNest.js'
                 , 'MyEgg.js'
+                , 'MyHouse.js'
                 ,
 
 main=function()

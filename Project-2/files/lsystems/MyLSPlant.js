@@ -4,12 +4,15 @@
  * @param scene - Reference to MyScene object
  */
 class MyLSPlant extends MyLSystem {
-    constructor(scene) {
+    constructor(scene, x, y, z) {
         super(scene);
 
         this.initValues();
         this.initGrammar();
         this.doGenerate();
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     initGrammar() {
@@ -22,10 +25,10 @@ class MyLSPlant extends MyLSystem {
     initValues() {
 
         this.axiom = "X";
-        this.angle = 30.0; 
-        this.iterations = 5 ; 
+        this.angle = 35.0; 
+        this.iterations = 4 ; 
         this.productions = {
-            "F": [ "FF", "F" ],
+            "F": [ "FF" ],
             "X": [ "F[-X][X]F[-X]+X" , "F[-X][x]+X", "F[+X]-X", "​F[/X][X]F[\\X]+X", "F[\\X][X]/X", "F[/X]\\X", "F[^X][X]F[&X]^X", "F[^X]&X", "F[&X]^X" ]
         };
         this.scaleFactor = 0.5;
@@ -38,4 +41,16 @@ class MyLSPlant extends MyLSystem {
         super.generate(this.axiom, this.productions, this.angle, this.iterations, this.scaleFactor);
 
     }
+
+    display() {
+
+        this.scene.pushMatrix();
+
+        this.scene.translate(this.x,this.y,this.z);
+
+        super.display();
+
+        this.scene.popMatrix();
+    }
+
 }

@@ -37,16 +37,17 @@ class MyScene extends CGFscene {
         this.lightning = new MyLightning(this,1500);
         this.plane = new Plane(this);
         this.skybox = new MySkybox(this);
-        this.nest = new MyNest(this, 10, 0.5, 10, 1);
-        this.leaf = new MyLeaf(this);
-        this.tree = new MyLSPlant(this);
+        this.nest = new MyNest(this);
+        this.house = new MyHouse(this);
+        this.bird = new MyBird(this, 0, 10, 0);
 
         this.genLightning = false;
 
-        this.sphere = new MySphere(this, 20);
-        this.bird = new MyBird(this, 0, 3, 0);
+
         this.branches = [];
+        this.trees = [];
         this.generateBranches(5);
+        this.generateTrees();
         
         //Objects connected to MyInterface
     }
@@ -79,6 +80,7 @@ class MyScene extends CGFscene {
             
         this.bird.update(t);
         this.lightning.update(t);
+        this.terrain.setUniform(t);
     }
     display() {
         // ---- BEGIN Background, camera and axis setup
@@ -99,22 +101,17 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        // ---- END Primitive drawing section
 
-        // this.bird.display(); 
-        //this.terrain.display();
-        this.lightning.display();
-        //this.skybox.display();
+        this.terrain.display();
+
+        this.skybox.display();
         this.bird.display(); 
-        //this.displayBranches();
-
-        //this.sphere.display();
-        // this.skybox.display();
-        this.tree.display();
-        this.nest.display();
-        // this.bird.display(); 
+        this.displayLightning();
         this.displayBranches();
-        // this.leaf.display();
+        this.displayHouse();
+        this.displayTrees();
+
+        // ---- END Primitive drawing section 
     }
 
     checkKeys() {
@@ -173,9 +170,53 @@ class MyScene extends CGFscene {
         }
     }
 
+    generateTrees(){
+
+        this.trees[0] = new MyLSPlant(this,6,0,0);
+        this.trees[1] = new MyLSPlant(this,0,0,-3);
+        this.trees[2] = new MyLSPlant(this,4,0,-3.6);
+        this.trees[3] = new MyLSPlant(this,4,0,1.1);
+        this.trees[4] = new MyLSPlant(this,-5,0,0);
+        this.trees[5] = new MyLSPlant(this,2,0,6);
+        this.trees[6] = new MyLSPlant(this,-2.1,0,3.5);
+        this.trees[7] = new MyLSPlant(this,6,0,5);
+        this.trees[8] = new MyLSPlant(this,6,0,-7);
+    }
+
     displayBranches() {
         for (let i = 0; i < this.branches.length; i++)
             this.branches[i].display();
+    }
+
+    displayTrees() {
+        for (let i = 0; i < this.trees.length; i++)
+            this.trees[i].display();
+    }
+
+    displayTrees() {
+        for (let i = 0; i < this.trees.length; i++)
+            this.trees[i].display();
+    }
+
+    displayLightning() {
+
+        this.pushMatrix();
+        this.translate(0,30,0);
+        this.scale(3,3,3);
+        this.lightning.display();
+        this.popMatrix();
+    }
+
+
+    displayHouse() {
+
+        this.pushMatrix();
+
+        this.translate(-3.5,0,-4.5);
+        this.rotate(Math.PI/8,0,1,0);
+
+        this.house.display();
+        this.popMatrix();
     }
 
     getRandomArbitrary(min, max) {
