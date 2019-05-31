@@ -20,7 +20,7 @@ class MyTerrain extends CGFobject {
 
         this.heightmap = new CGFtexture(this.scene,"images/heightmap7.jpg");
 		this.altimetry = new CGFtexture(this.scene,"images/altimetry.png");
-        this.terrain = new CGFtexture(this.scene,"images/terrain.jpg");
+        this.terrain = new CGFtexture(this.scene,"images/terrain2.jpg");
     }
 
 
