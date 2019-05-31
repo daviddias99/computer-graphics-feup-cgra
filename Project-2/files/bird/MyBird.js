@@ -37,18 +37,26 @@ class MyBird extends CGFobject {
     }
 
     initMaterials() {
-        
+        this.feathers = new CGFappearance(this.scene);
+        this.feathers.setAmbient(1, 1, 1, 1);
+        this.feathers.setDiffuse(1, 1, 1, 1);
+        this.feathers.setSpecular(0.5, 0.5, 0.5, 1);
+        this.feathers.setShininess(10);
+        this.feathers.loadTexture('images/feathers.jpg');
+        this.feathers.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     update(t) {
 
         let timeFactor = 250;
         let verticalRange = 0.4;
+
+        this.wing.update(t);
         
         // up and down movement
         switch (this.state) {
         case State.NORMAL:
-            this.y = this.y0 + Math.sin(t / 2 / Math.PI * 0.05 * this.speedFactor) * verticalRange;
+            this.y = this.y0 + Math.sin(2 * t * Math.PI / 1000) * verticalRange;
             break;
         case State.DESCENDING:
             this.y -= 0.2 * this.speedFactor;
@@ -69,8 +77,8 @@ class MyBird extends CGFobject {
         }   
 
         // (chicken) WINGS
-        let wingRange = Math.PI * 40 / 180; 
-        this.wingAlfa = - Math.sin(t / 2 / Math.PI * 0.05 * this.speedFactor) * wingRange;
+        let wingRange =  Math.PI * 80 / 180; 
+        this.wingAlfa = - Math.sin(2 * t * Math.PI / 1000) * wingRange;
 
         // update position
         this.x += this.speed * Math.cos(-this.orientation) * this.speedFactor;
@@ -154,6 +162,8 @@ class MyBird extends CGFobject {
     }
 
 	display() {
+        this.feathers.apply();
+
         this.scene.pushMatrix();
         
         this.scene.translate(this.x, this.y, this.z);
@@ -161,7 +171,7 @@ class MyBird extends CGFobject {
 
         if (this.hasBranch) {
             this.scene.pushMatrix();
-            this.scene.translate(0, - this.this.bodyRadius * this.scaleFactor / 1.3, 0);
+            this.scene.translate(0, - this.bodyRadius * this.scaleFactor, 0);
             this.branch.display();
             this.scene.popMatrix();
         }
@@ -179,6 +189,7 @@ class MyBird extends CGFobject {
         
         this.scene.pushMatrix();
         this.scene.scale(this.bodyLength, this.bodyRadius, this.bodyRadius);
+        this.feathers.apply();
         this.body.display();
         this.scene.popMatrix(); 
     }

@@ -22,7 +22,6 @@ class MyQuad extends CGFobject {
 			0.5, -0.5, 0,	//5
 			-0.5, 0.5, 0,	//6
 			0.5, 0.5, 0		//7
-			
 		];
 
 		//Counter-clockwise reference of vertices

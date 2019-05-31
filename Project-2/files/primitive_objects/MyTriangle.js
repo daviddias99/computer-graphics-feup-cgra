@@ -17,7 +17,6 @@ class MyTriangle extends CGFobject {
 			-1, -1, 0,	//0 - 3
 			1, -1, 0,	//1 - 4
 			-1, 1, 0	//2 - 5
-
 		];
 
 		//Counter-clockwise reference of vertices

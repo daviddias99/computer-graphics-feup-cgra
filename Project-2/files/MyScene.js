@@ -71,7 +71,7 @@ class MyScene extends CGFscene {
 
         this.checkKeys();
 
-        if(this.genLightning){
+        if (this.genLightning){
             this.lightning.doGenerate();
             this.lightning.startAnimation(t);
             this.genLightning = false;
@@ -109,14 +109,12 @@ class MyScene extends CGFscene {
         //this.displayBranches();
 
         //this.sphere.display();
-        this.skybox.display();
+        // this.skybox.display();
         this.tree.display();
         // this.nest.display();
         // this.bird.display(); 
         // this.displayBranches();
         // this.leaf.display();
-
-        // this.sphere.display();
     }
 
     checkKeys() {
@@ -158,6 +156,7 @@ class MyScene extends CGFscene {
             text += " L ";
             keysPressed = true;
 
+            // FIXME: unnecessary condition (DAVID ÉS UM BURRO ass: Bernardo)
             if(!this.genLightning)
                 this.genLightning = true;
         }
