@@ -38,15 +38,16 @@ class MyScene extends CGFscene {
         this.plane = new Plane(this);
         this.skybox = new MySkybox(this);
         this.nest = new MyNest(this);
-        this.leaf = new MyLeaf(this);
-        this.tree = new MyLSPlant(this);
+        this.house = new MyHouse(this);
+        this.bird = new MyBird(this, 0, 10, 0);
 
         this.genLightning = false;
 
-        this.sphere = new MySphere(this, 20);
-        this.bird = new MyBird(this, 0, 10, 0);
+
         this.branches = [];
+        this.trees = [];
         this.generateBranches(5);
+        this.generateTrees();
         
         //Objects connected to MyInterface
     }
@@ -99,22 +100,16 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        // ---- END Primitive drawing section
 
-        // this.bird.display(); 
         this.terrain.display();
         this.lightning.display();
-        //this.skybox.display();
+        this.skybox.display();
         this.bird.display(); 
-        //this.displayBranches();
+        this.displayBranches();
+        this.displayHouse();
+        this.displayTrees();
 
-        //this.sphere.display();
-        // this.skybox.display();
-        this.tree.display();
-        // this.nest.display();
-        // this.bird.display(); 
-        // this.displayBranches();
-        // this.leaf.display();
+        // ---- END Primitive drawing section 
     }
 
     checkKeys() {
@@ -156,9 +151,7 @@ class MyScene extends CGFscene {
             text += " L ";
             keysPressed = true;
 
-            // FIXME: unnecessary condition (DAVID ÉS UM BURRO ass: Bernardo)
-            if(!this.genLightning)
-                this.genLightning = true;
+            this.genLightning = true;
         }
         if(keysPressed)
             console.log(text);
@@ -175,9 +168,36 @@ class MyScene extends CGFscene {
         }
     }
 
+    generateTrees(){
+
+        this.trees[0] = new MyLSPlant(this,8,0,-5);
+        this.trees[1] = new MyLSPlant(this,5,0,-2);
+        this.trees[2] = new MyLSPlant(this,4,0,4);
+        this.trees[3] = new MyLSPlant(this,3,0,5);
+        this.trees[4] = new MyLSPlant(this,-6,0,0);
+        this.trees[5] = new MyLSPlant(this,2,0,6);
+    }
+
     displayBranches() {
         for (let i = 0; i < this.branches.length; i++)
             this.branches[i].display();
+    }
+
+    displayTrees() {
+        for (let i = 0; i < this.trees.length; i++)
+            this.trees[i].display();
+    }
+
+
+    displayHouse() {
+
+        this.pushMatrix();
+
+        this.translate(-3.5,0,-4.5);
+        this.rotate(Math.PI/8,0,1,0);
+
+        this.house.display();
+        this.popMatrix();
     }
 
     getRandomArbitrary(min, max) {

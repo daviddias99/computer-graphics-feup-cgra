@@ -10,14 +10,15 @@ uniform mat4 uMVMatrix;
 uniform mat4 uPMatrix;
 uniform mat4 uNMatrix;
 
-uniform sampler2D uSampler2;
+uniform sampler2D uSampler2;		// stores the heightmap
 
-varying vec2 vTextureCoord;
+varying vec2 vTextureCoord;			
 
 void main(){
 
-	vec3 offset=vec3(0.0,0.0, texture2D(uSampler2, aTextureCoord).b);
-	vec3 newCoords = aVertexPosition + offset * 7.0;
+	float offsetMultiplier = 7.0;
+	vec3 offset=vec3(0.0,0.0, texture2D(uSampler2, aTextureCoord).b); // get the offset of the vertex from the heightmap
+	vec3 newCoords = aVertexPosition + offset * offsetMultiplier;	  // calculate the new coordinates of the vertex
 
 	gl_Position = uPMatrix * uMVMatrix * vec4(newCoords, 1.0);
 

@@ -22,8 +22,15 @@ class MyBranch extends CGFobject {
     }
 
     display() {
+
+        this.scene.pushMatrix();
+
         this.woodMaterial.apply();
+
+        this.scene.scale(1,2,1);
         this.cylinder.display();
+
+        this.scene.popMatrix();
     }
 
     
