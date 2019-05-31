@@ -80,6 +80,7 @@ class MyScene extends CGFscene {
             
         this.bird.update(t);
         this.lightning.update(t);
+        this.terrain.setUniform(t);
     }
     display() {
         // ---- BEGIN Background, camera and axis setup
@@ -102,9 +103,10 @@ class MyScene extends CGFscene {
 
 
         this.terrain.display();
-        this.lightning.display();
+
         this.skybox.display();
         this.bird.display(); 
+        this.displayLightning();
         this.displayBranches();
         this.displayHouse();
         this.displayTrees();
@@ -170,12 +172,15 @@ class MyScene extends CGFscene {
 
     generateTrees(){
 
-        this.trees[0] = new MyLSPlant(this,8,0,-5);
-        this.trees[1] = new MyLSPlant(this,5,0,-2);
-        this.trees[2] = new MyLSPlant(this,4,0,4);
-        this.trees[3] = new MyLSPlant(this,3,0,5);
-        this.trees[4] = new MyLSPlant(this,-6,0,0);
+        this.trees[0] = new MyLSPlant(this,6,0,0);
+        this.trees[1] = new MyLSPlant(this,0,0,-3);
+        this.trees[2] = new MyLSPlant(this,4,0,-3.6);
+        this.trees[3] = new MyLSPlant(this,4,0,1.1);
+        this.trees[4] = new MyLSPlant(this,-5,0,0);
         this.trees[5] = new MyLSPlant(this,2,0,6);
+        this.trees[6] = new MyLSPlant(this,-2.1,0,3.5);
+        this.trees[7] = new MyLSPlant(this,6,0,5);
+        this.trees[8] = new MyLSPlant(this,6,0,-7);
     }
 
     displayBranches() {
@@ -186,6 +191,20 @@ class MyScene extends CGFscene {
     displayTrees() {
         for (let i = 0; i < this.trees.length; i++)
             this.trees[i].display();
+    }
+
+    displayTrees() {
+        for (let i = 0; i < this.trees.length; i++)
+            this.trees[i].display();
+    }
+
+    displayLightning() {
+
+        this.pushMatrix();
+        this.translate(0,30,0);
+        this.scale(3,3,3);
+        this.lightning.display();
+        this.popMatrix();
     }
 
 
