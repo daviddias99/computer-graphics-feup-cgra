@@ -37,6 +37,7 @@ class MyScene extends CGFscene {
         this.lightning = new MyLightning(this,1500);
         this.plane = new Plane(this);
         this.skybox = new MySkybox(this);
+<<<<<<< HEAD
         this.nest = new MyNest(this);
         this.house = new MyHouse(this);
         this.bird = new MyBird(this, 0, 10, 0);
@@ -44,6 +45,16 @@ class MyScene extends CGFscene {
         this.genLightning = false;
 
 
+=======
+        this.nest = new MyNest(this, 10, 0.5, 10, 1);
+        this.leaf = new MyLeaf(this);
+        this.tree = new MyLSPlant(this);
+
+        this.genLightning = false;
+
+        this.sphere = new MySphere(this, 20);
+        this.bird = new MyBird(this, 0, 3, 0);
+>>>>>>> efe97630638dd3cc8b6dd6584e5b24bad1e98943
         this.branches = [];
         this.trees = [];
         this.generateBranches(5);
@@ -101,15 +112,32 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
 
+<<<<<<< HEAD
         this.terrain.display();
+=======
+        // this.bird.display(); 
+        //this.terrain.display();
+>>>>>>> efe97630638dd3cc8b6dd6584e5b24bad1e98943
         this.lightning.display();
         this.skybox.display();
         this.bird.display(); 
+<<<<<<< HEAD
         this.displayBranches();
         this.displayHouse();
         this.displayTrees();
 
         // ---- END Primitive drawing section 
+=======
+        //this.displayBranches();
+
+        //this.sphere.display();
+        // this.skybox.display();
+        this.tree.display();
+        this.nest.display();
+        // this.bird.display(); 
+        this.displayBranches();
+        // this.leaf.display();
+>>>>>>> efe97630638dd3cc8b6dd6584e5b24bad1e98943
     }
 
     checkKeys() {
