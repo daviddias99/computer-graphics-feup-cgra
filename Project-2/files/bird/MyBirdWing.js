@@ -4,7 +4,7 @@ class MyBirdWing extends CGFobject {
         super(scene);
         this.initMaterials();
         this.initBuffers();
-        this.alfa0 = Math.PI * 30 / 180;
+        this.alfa0 = Math.PI * 22 / 180;
         this.alfa;
     }
 	initBuffers() {
@@ -16,8 +16,8 @@ class MyBirdWing extends CGFobject {
         
     }
 
-    update(t) {
-        this.alfa = this.alfa0 / 2 + Math.sin(2 * t * Math.PI / 1000) * this.alfa0 / 2;
+    update(wingRange, wingAng) {        
+        this.alfa = this.alfa0 / 2 - wingAng / 2 / wingRange * this.alfa0;
     }
 
 	displayLeft() {
