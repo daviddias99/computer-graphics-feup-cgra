@@ -10,11 +10,15 @@ function getRandNumber(a,b){
 }
 
 class MyNest extends CGFobject {
-	constructor(scene) {
+	constructor(scene, x, y, z, r) {
         super(scene);
         this.initMaterials();
         this.initBuffers();
         this.genRandoms();
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.radius = r;
 	}
 
     initMaterials() {
@@ -44,8 +48,9 @@ class MyNest extends CGFobject {
     }
 	initBuffers() {
 		this.log = new MyCylinderWBottoms(this.scene, 15, 5, 5, this.woodMaterial, this.bottomMaterial);
-		this.bottom = new MyRegPolygon(this.scene,20,1);
-		this.egg = new MyEgg(this.scene);
+		this.bottom = new MyRegPolygon(this.scene,10,1);
+        this.egg = new MyEgg(this.scene);
+        this.branches = [];
     }
 
     displayCrown(){
@@ -76,7 +81,11 @@ class MyNest extends CGFobject {
     }
 
 	display() {
+        this.scene.pushMatrix();
+        this.scene.translate(this.x, this.y, this.z);
+        this.scene.scale(this.radius / 4, this.radius / 6, this.radius / 4);
         
+
         this.scene.pushMatrix();
 
         this.displayCrown();
@@ -88,8 +97,7 @@ class MyNest extends CGFobject {
         this.displayCrown();
 
         this.scene.rotate(Math.PI/6,-1,1,-1);
-        this.scene.scale(1,1,1,1.1);
-
+    
 
         this.displayCrown();
 
@@ -110,34 +118,41 @@ class MyNest extends CGFobject {
         this.bottom.display();
 
         this.scene.popMatrix();
-        this.scene.pushMatrix();
 
-        // draw egg 1
-
-        this.scene.translate(0,0,2.3);
-        this.scene.rotate(Math.PI/4,1,1,0);
-        this.scene.translate(0,-0.5,0);
-        this.scene.scale(0.7,0.7,0.7);
-        this.egg.display();
+        this.displayEggs();
 
         this.scene.popMatrix();
+    
+        this.displayBranches();
+    }
+
+    displayEggs() {
         this.scene.pushMatrix();
-
-        // draw egg 2
-
-        this.scene.translate(1.0,0,1.6);
-        this.scene.rotate(Math.PI/4,0,1,1);
         this.scene.translate(0,-0.5,0);
         this.scene.scale(0.7,0.7,0.7);
-        this.egg.display();
 
+        this.scene.pushMatrix();
+        this.scene.translate(0,0,2.3);
+        this.scene.rotate(Math.PI/4,1,1,0);
+        this.egg.display();
+        this.scene.popMatrix();
+
+        // draw egg 2
+        this.scene.pushMatrix();
+        this.scene.translate(1.0,0,1.6);
+        this.scene.rotate(Math.PI/4,0,1,1);
+        this.egg.display();
+        this.scene.popMatrix();
 
         this.scene.popMatrix();
     }
 
+    displayBranches() {
+        for (let i = 0; i < this.branches.length; i++)
+            this.branches[i].display();
+    }
 
     genRandoms(){
-
         this.rands = [];
 
         for(let i = 0; i < 2*360/6; i++){
@@ -145,5 +160,4 @@ class MyNest extends CGFobject {
             this.rands[i] = getRandNumber(-0.2,0.2);
         }
     }
-
 }

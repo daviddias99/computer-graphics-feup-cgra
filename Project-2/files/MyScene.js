@@ -37,14 +37,14 @@ class MyScene extends CGFscene {
         this.lightning = new MyLightning(this,1500);
         this.plane = new Plane(this);
         this.skybox = new MySkybox(this);
-        this.nest = new MyNest(this);
+        this.nest = new MyNest(this, 10, 0.5, 10, 1);
         this.leaf = new MyLeaf(this);
         this.tree = new MyLSPlant(this);
 
         this.genLightning = false;
 
         this.sphere = new MySphere(this, 20);
-        this.bird = new MyBird(this, 0, 10, 0);
+        this.bird = new MyBird(this, 0, 3, 0);
         this.branches = [];
         this.generateBranches(5);
         
@@ -102,7 +102,7 @@ class MyScene extends CGFscene {
         // ---- END Primitive drawing section
 
         // this.bird.display(); 
-        this.terrain.display();
+        //this.terrain.display();
         this.lightning.display();
         //this.skybox.display();
         this.bird.display(); 
@@ -111,9 +111,9 @@ class MyScene extends CGFscene {
         //this.sphere.display();
         // this.skybox.display();
         this.tree.display();
-        // this.nest.display();
+        this.nest.display();
         // this.bird.display(); 
-        // this.displayBranches();
+        this.displayBranches();
         // this.leaf.display();
     }
 
@@ -156,9 +156,7 @@ class MyScene extends CGFscene {
             text += " L ";
             keysPressed = true;
 
-            // FIXME: unnecessary condition (DAVID ÉS UM BURRO ass: Bernardo)
-            if(!this.genLightning)
-                this.genLightning = true;
+            this.genLightning = true;
         }
         if(keysPressed)
             console.log(text);

@@ -137,16 +137,23 @@ class MyBird extends CGFobject {
     }
 
     tryToDropBranch() {
+
+        if (Math.abs(Math.sqrt(this.x * this.x + this.z * this.z)
+                -  Math.sqrt(this.scene.nest.x * this.scene.nest.x + this.scene.nest.z * this.scene.nest.z)) < this.scene.nest.radius) {
+    
+            console.log('drop the branch');
+            this.dropBranch();    
+        }
+
         //TODO: check if there is a nest and drop it there
-        this.dropBranch();    
     }
 
     dropBranch() {
         this.branch.x = this.x;
         this.branch.z = this.z;
-        this.branch.y = 0.2;
+        this.branch.y = 1;
         this.branch.orientation += this.orientation;
-        this.scene.branches.push(this.branch);
+        this.scene.nest.branches.push(this.branch);
         this.hasBranch = false;
         this.branch = null;
     }
