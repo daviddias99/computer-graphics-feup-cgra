@@ -154,7 +154,6 @@ class MyBird extends CGFobject {
             this.dropBranch();    
         }
 
-        //TODO: check if there is a nest and drop it there
     }
 
     dropBranch() {
