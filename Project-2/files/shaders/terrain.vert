@@ -11,11 +11,8 @@ uniform mat4 uPMatrix;
 uniform mat4 uNMatrix;
 
 uniform sampler2D uSampler2;		// stores the heightmap
-uniform sampler2D uSampler4;		// stores the water heigthmap
-uniform sampler2D uSampler5;		// check if it's water
 
 varying vec2 vTextureCoord;			
-uniform float timeFactor;
 
 void main(){
 
