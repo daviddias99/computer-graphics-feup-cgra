@@ -37,9 +37,9 @@ class MyScene extends CGFscene {
         this.lightning = new MyLightning(this,1500);
         this.plane = new Plane(this);
         this.skybox = new MySkybox(this);
-        this.nest = new MyNest(this);
+        this.nest = new MyNest(this,0,0,0,4);
         this.house = new MyHouse(this);
-        this.bird = new MyBird(this, 0, 10, 0);
+        this.bird = new MyBird(this, 0, 3, 0);
 
         this.genLightning = false;
 
@@ -106,7 +106,8 @@ class MyScene extends CGFscene {
 
         this.skybox.display();
         this.bird.display(); 
-        this.displayLightning();
+        this.displayNest();   
+        this.displayLightning();    
         this.displayBranches();
         this.displayHouse();
         this.displayTrees();
@@ -186,6 +187,8 @@ class MyScene extends CGFscene {
     displayBranches() {
         for (let i = 0; i < this.branches.length; i++)
             this.branches[i].display();
+        
+            
     }
 
     displayTrees() {
@@ -204,6 +207,15 @@ class MyScene extends CGFscene {
         this.translate(0,30,0);
         this.scale(3,3,3);
         this.lightning.display();
+        this.popMatrix();
+    }
+
+    displayNest() {
+        this.pushMatrix();
+
+        this.scale(0.2,0.2,0.2);
+        this.translate(0,1,0);
+        this.nest.display();
         this.popMatrix();
     }
 

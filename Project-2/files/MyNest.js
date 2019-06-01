@@ -148,8 +148,14 @@ class MyNest extends CGFobject {
     }
 
     displayBranches() {
-        for (let i = 0; i < this.branches.length; i++)
+        for (let i = 0; i < this.branches.length; i++){
+
+            this.scene.pushMatrix();
+            this.scene.translate(0,-1.1,0);
             this.branches[i].display();
+            this.scene.popMatrix();
+        }
+            
     }
 
     genRandoms(){

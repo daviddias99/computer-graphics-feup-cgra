@@ -29,7 +29,7 @@ class MyTreeBranch extends CGFobject {
         this.woodMaterial.setDiffuse(0.3, 0.3, 0.3, 1.0);
         this.woodMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
         this.woodMaterial.setShininess(5.0);  
-        this.woodMaterial.loadTexture('images/bark2.jpeg');
+        this.woodMaterial.loadTexture('images/bark3.jpg');
         this.woodMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         // bottomWood
@@ -50,9 +50,12 @@ class MyTreeBranch extends CGFobject {
     }
 	display() {
         this.scene.pushMatrix();
-        
+
+        this.scene.scale(0.5,0.5,0.5);
         this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation, 0, 1, 0);
+
+        this.scene.pushMatrix();
         this.scene.rotate(Math.PI / 2, 0, 0, 1);
         this.scene.translate(0, -this.height / 2, 0);
         this.scene.scale(this.radius, this.height, this.radius);
@@ -61,8 +64,6 @@ class MyTreeBranch extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
         
-        this.scene.translate(this.x, this.y, this.z);
-        this.scene.rotate(this.orientation, 0, 1, 0);
         this.scene.translate(this.height/6,0,0);
         this.scene.rotate(-Math.PI/4, 0, 1, 0);
         this.scene.translate(this.height/6,0,0);
@@ -74,14 +75,13 @@ class MyTreeBranch extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.translate(this.x, this.y, this.z);
-        this.scene.rotate(this.orientation, 0, 1, 0);
         this.scene.translate(this.height/6,0,0);
         this.scene.rotate(-Math.PI/4, 0, 1, 0);
         this.scene.translate(this.height/6 + 0.15,0.01,0);
         this.scene.scale(0.01, 1, 0.01);
         this.leaf.display();
 
+        this.scene.popMatrix();
         this.scene.popMatrix();
 
     }
