@@ -204,7 +204,7 @@ class MyScene extends CGFscene {
     displayLightning() {
 
         this.pushMatrix();
-        this.translate(0,30,0);
+        this.translate(0,20,0);
         this.scale(3,3,3);
         this.lightning.display();
         this.popMatrix();
