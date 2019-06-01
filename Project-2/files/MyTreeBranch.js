@@ -11,8 +11,8 @@ class MyTreeBranch extends CGFobject {
         this.z = z;
         this.y = y;
         
-        this.height = 1;
-        this.radius = 0.05;
+        this.height = 2;
+        this.radius = 0.2;
         this.orientation = o;
 
         this.initMaterials();

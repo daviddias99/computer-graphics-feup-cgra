@@ -123,16 +123,23 @@ class MyBird extends CGFobject {
     }   
 
     isInRange(branch) {
-        return (branch.x > this.x - 0.8 && branch.x < this.x + 0.8) &&
-               (branch.z > this.z - 0.8 && branch.z < this.z + 0.8);
+        return (branch.x > this.x - 1 && branch.x < this.x + 1) &&
+               (branch.z > this.z - 1 && branch.z < this.z + 1);
     }
 
     tryToPickBranch() {
-        for (let i = 0; i < this.scene.branches.length; i++) 
+        console.log("try to pick branch");
+        
+        for (let i = 0; i < this.scene.branches.length; i++) {
+            console.log("iter " + i);
+
             if (this.isInRange(this.scene.branches[i])) {
+                console.log("is in range");
+                
                 this.pickBranch(this.scene.branches[i]);
                 this.scene.branches.splice(i, 1);
             }
+        }
     }
 
     pickBranch(branch) {                
@@ -141,7 +148,6 @@ class MyBird extends CGFobject {
         this.branch.x = 0;
         this.branch.z = 0;
         this.branch.y = 0;
-        this.scene.numBranches--;
         this.hasBranch = true;
     }
 
