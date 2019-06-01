@@ -17,15 +17,13 @@ class MyBirdHead extends CGFobject {
         this.beak.setDiffuse(1, 1, 1, 1);
         this.beak.setSpecular(1, 1, 1, 1);
         this.beak.setShininess(10);
-        this.beak.loadTexture('images/bico.jpg');
+        this.beak.loadTexture('images/beak.png');
         this.beak.setTextureWrap('REPEAT', 'REPEAT');   
         this.eyeMaterial = new CGFappearance(this.scene);
-        this.eyeMaterial.setAmbient(1, 1, 1, 1);
-        this.eyeMaterial.setDiffuse(1, 1, 1, 1);
-        this.eyeMaterial.setSpecular(1, 1, 1, 1);
-        this.eyeMaterial.setShininess(10);
-        this.eyeMaterial.loadTexture('images/eye.jpg');
-        this.eyeMaterial.setTextureWrap('REPEAT', 'REPEAT');   
+        this.eyeMaterial.setAmbient(0, 0, 0, 0);
+        this.eyeMaterial.setDiffuse(0, 0, 0, 0);
+        this.eyeMaterial.setSpecular(0, 0, 0, 0);
+        this.eyeMaterial.setShininess(10);   
     }
 
 	display() {
@@ -48,14 +46,14 @@ class MyBirdHead extends CGFobject {
         this.eyeMaterial.apply();
 
         this.scene.pushMatrix();        
-        this.scene.translate(Math.cos(eyesAng) - 0.02, 0.3, Math.sin(eyesAng) - 0.02);
+        this.scene.translate(Math.cos(eyesAng) - 0.05, 0.3, Math.sin(eyesAng));
         this.scene.rotate(- eyesAng, 0, 1, 0);
         this.scene.scale(0.05, 0.2, 0.2);
         this.eye.display();
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(Math.cos(eyesAng) - 0.02, 0.3, - Math.sin(eyesAng) - 0.02);
+        this.scene.translate(Math.cos(eyesAng) - 0.05, 0.3, - Math.sin(eyesAng));
         this.scene.rotate(eyesAng, 0, 1, 0);
         this.scene.scale(0.05, 0.2, 0.2);
         this.eye.display();

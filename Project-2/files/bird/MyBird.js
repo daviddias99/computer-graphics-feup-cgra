@@ -45,7 +45,7 @@ class MyBird extends CGFobject {
         this.feathers = new CGFappearance(this.scene);
         this.feathers.setAmbient(1, 1, 1, 1);
         this.feathers.setDiffuse(1, 1, 1, 1);
-        this.feathers.setSpecular(0.5, 0.5, 0.5, 1);
+        this.feathers.setSpecular(0.1, 0.1, 0.1);
         this.feathers.setShininess(10);
         this.feathers.loadTexture('images/feathers.jpg');
         this.feathers.setTextureWrap('REPEAT', 'REPEAT');
@@ -195,8 +195,8 @@ class MyBird extends CGFobject {
         this.scene.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
         this.displayBody();
-        this.displayHead();
         this.displayWings();
+        this.displayHead();
 
         this.scene.popMatrix();
     }
