@@ -37,7 +37,7 @@ class MyScene extends CGFscene {
         this.lightning = new MyLightning(this,1500);
         this.plane = new Plane(this);
         this.skybox = new MySkybox(this);
-        this.nest = new MyNest(this,0,0,0,4);
+        this.nest = new MyNest(this,0,0,0,1);
         this.house = new MyHouse(this);
         this.bird = new MyBird(this, 0, 3, 0);
 
@@ -213,8 +213,7 @@ class MyScene extends CGFscene {
     displayNest() {
         this.pushMatrix();
 
-        this.scale(0.2,0.2,0.2);
-        this.translate(0,1,0);
+        this.translate(0,0.3,0);
         this.nest.display();
         this.popMatrix();
     }

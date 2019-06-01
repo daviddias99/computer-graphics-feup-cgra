@@ -155,7 +155,7 @@ class MyNest extends CGFobject {
             this.branches[i].display();
         }
        
-        this.scene.popMatrix(); 
+        this.scene.popMatrix();
     }
 
     genRandoms(){
