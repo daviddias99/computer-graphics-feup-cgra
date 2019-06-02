@@ -167,4 +167,4 @@ class MyNest extends CGFobject {
             this.rands[i] = getRandNumber(-0.2,0.2);
         }
     }
-}
+}   
