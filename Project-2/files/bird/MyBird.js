@@ -66,7 +66,7 @@ class MyBird extends CGFobject {
             this.y = this.y0 + Math.sin(2 * this.time * Math.PI  / 1000) * verticalRange;
             break;
         case State.DESCENDING:
-            this.y -= this.ySpeed * (t - this.last_t);
+            this.y -= this.ySpeed * (delta_t);
             if (this.y < this.lowerLimit * this.scaleFactor) {
                 if (this.hasBranch)
                     this.tryToDropBranch();    
@@ -77,7 +77,7 @@ class MyBird extends CGFobject {
             }
             break;
         case State.ASCENDING:
-            this.y += this.ySpeed * (t - this.last_t);
+            this.y += this.ySpeed * (delta_t);
             if (this.y > this.y0)
                 this.stop();
             break;
