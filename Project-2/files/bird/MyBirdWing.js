@@ -4,8 +4,11 @@ class MyBirdWing extends CGFobject {
         super(scene);
         this.initMaterials();
         this.initBuffers();
-        this.alfa0 = Math.PI * 22 / 180;
+        this.alfa0 = Math.PI * 28 / 180;
         this.alfa;
+
+        this.time = 0;
+        this.last_t = 0;
     }
 	initBuffers() {
         this.rectangle = new MyQuad(this.scene);
