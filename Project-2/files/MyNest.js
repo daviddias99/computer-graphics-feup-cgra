@@ -131,6 +131,7 @@ class MyNest extends CGFobject {
         this.scene.translate(0,-0.5,0);
         this.scene.scale(0.7,0.7,0.7);
 
+        // draw egg 1
         this.scene.pushMatrix();
         this.scene.translate(0,0,2.3);
         this.scene.rotate(Math.PI/4,1,1,0);
@@ -166,4 +167,4 @@ class MyNest extends CGFobject {
             this.rands[i] = getRandNumber(-0.2,0.2);
         }
     }
-}
+}   

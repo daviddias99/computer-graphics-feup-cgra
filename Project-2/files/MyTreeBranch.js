@@ -11,8 +11,8 @@ class MyTreeBranch extends CGFobject {
         this.z = z;
         this.y = y;
         
-        this.height = 2;
-        this.radius = 0.2;
+        this.height = 1;
+        this.radius = 0.05;
         this.orientation = o;
 
         this.initMaterials();
@@ -26,10 +26,10 @@ class MyTreeBranch extends CGFobject {
         let factorTT = 0.8;
         this.woodMaterial = new CGFappearance(this.scene);
         this.woodMaterial.setAmbient(factorTT, factorTT, factorTT, 1.0);
-        this.woodMaterial.setDiffuse(0.3, 0.3, 0.3, 1.0);
+        this.woodMaterial.setDiffuse(factorTT, factorTT, factorTT, 1.0);
         this.woodMaterial.setSpecular(0.1, 0.1, 0.1, 1.0);
         this.woodMaterial.setShininess(5.0);  
-        this.woodMaterial.loadTexture('images/bark3.jpg');
+        this.woodMaterial.loadTexture('images/bark4.jpg');
         this.woodMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         // bottomWood
@@ -51,11 +51,11 @@ class MyTreeBranch extends CGFobject {
 	display() {
         this.scene.pushMatrix();
 
+        // main branch
         
         this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation, 0, 1, 0);
         this.scene.scale(0.5,0.5,0.5);
-        
         this.scene.pushMatrix();
         this.scene.rotate(Math.PI / 2, 0, 0, 1);
         this.scene.translate(0, -this.height / 2, 0);
@@ -64,8 +64,10 @@ class MyTreeBranch extends CGFobject {
 
         this.scene.popMatrix();
         this.scene.pushMatrix();
+
+        // small branch
         
-        this.scene.translate(this.height/6,0,0);
+        this.scene.translate(this.height/5,0,0);
         this.scene.rotate(-Math.PI/4, 0, 1, 0);
         this.scene.translate(this.height/6,0,0);
         this.scene.rotate(Math.PI / 2, 0, 0, 1);
@@ -76,10 +78,12 @@ class MyTreeBranch extends CGFobject {
         this.scene.popMatrix();
         this.scene.pushMatrix();
 
-        this.scene.translate(this.height/6,0,0);
+        // leaf
+
+        this.scene.translate(this.height/5,0,0);
         this.scene.rotate(-Math.PI/4, 0, 1, 0);
         this.scene.translate(this.height/6 + 0.15,0.01,0);
-        this.scene.scale(0.01, 1, 0.01);
+        this.scene.scale(0.05, 1, 0.05);
         this.leaf.display();
 
         this.scene.popMatrix();
